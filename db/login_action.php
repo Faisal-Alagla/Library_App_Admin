@@ -38,15 +38,16 @@ if (isset($_POST['login'])) {
             }
             
         } catch (Exception $e) {
+            echo $e->getMessage();
             $_SESSION['invalid_login'] = "Invalid login";
             header('location: ../pages/login.php');
             exit();
         }
         
     } catch (Exception $e) {
+        echo $e->getMessage();
         $_SESSION['invalid_login'] = "Invalid login";
         header('location: ../pages/login.php');
         exit();
     }
 }
-?>

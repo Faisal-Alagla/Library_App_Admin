@@ -20,10 +20,9 @@ include('../includes/header.php');
     }
 </style>
 
-<div class="container-fluid p-2 m-0">
+<div class="container-fluid p-0 m-0">
 
-    <!-- Logo -->
-    <div class="py-5">
+    <div class="my-5">
         <div class="container p-0">
             <div class="row d-flex justify-content-center align-items-center h-100 p-0">
                 <div class="col-12 col-md-10 col-lg-8 col-xl-6">
@@ -51,7 +50,7 @@ include('../includes/header.php');
                                     <label class="form-label" for="title" style="color:#212B5E;">Title</label>
                                     <input type="text" id="title" name="title"
                                         class="form-control form-control-lg shadow-lg" aria-describedby="basic-addon1"
-                                        style="border-radius: 15px" />
+                                        style="border-radius: 15px" required/>
                                     <i class="bi bi-card-heading"></i>
                                 </div>
                                 <!-- Title Field end -->
@@ -88,7 +87,7 @@ include('../includes/header.php');
 
                                 <!-- Summary Field start -->
                                 <div class=" mb-3 mt-3 text-start input">
-                                    <label class="form-label" for="date" style="color:#212B5E;">Summary</label>
+                                    <label class="form-label" for="summary" style="color:#212B5E;">Summary</label>
                                     <textarea type="input" name="summary" rows="10" id="summary"
                                         class="form-control form-control-lg shadow-lg rows"
                                         style="border-radius: 15px;"></textarea>
@@ -97,7 +96,6 @@ include('../includes/header.php');
 
                             </div>
                             <!-- Form end -->
-
 
                             <?php
                             if (isset($_SESSION['book_added'])) {

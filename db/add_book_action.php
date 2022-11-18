@@ -19,6 +19,12 @@ if (isset($_POST['submit'])) {
         'summary' => $summary,
     ];
 
+    /*
+    Upload image to book_images folder here!!!
+    code goes here...
+    
+    */
+
     $ref_table = "books";
     $postRef_result = $database->getReference($ref_table)->push($postData);    
 
