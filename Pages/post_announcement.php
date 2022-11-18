@@ -16,7 +16,7 @@ if ($_SESSION['announcement_exists']) {
                         <!--start of form card-->
                         <form class="card-body p-5 text-center" method="POST"
                             action="../db/post_announcement_action.php">
-                            <h3 class="mb-5" style=" color:#212B5E; ">Post Announcement</h3>
+                            <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Post Announcement</h3>
                             <div class="mb-4 text-end">
                                 <!-- text field start -->
                                 <div class="input mb-4 text-end mt-3">
@@ -44,9 +44,9 @@ if ($_SESSION['announcement_exists']) {
                             </p>
 
                             <?php
+                                unset($_SESSION['post_announcement']);
+                                unset($_SESSION['post_announcement_flag']);
                             }
-                            unset($_SESSION['post_announcement']);
-                            unset($_SESSION['post_announcement_flag']);
                             ?>
 
                             <button class="btn btn-lg btn-block text-white w-50 display-2 mb-3 "

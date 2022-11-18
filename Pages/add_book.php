@@ -56,6 +56,16 @@ include('../includes/header.php');
                                 </div>
                                 <!-- Title Field end -->
 
+                                <!-- Image Field start -->
+                                <div class="input">
+                                    <label class="form-label" for="image" style="color:#212B5E;">Image</label>
+                                    <input type="file" id="image" name="image"
+                                        class="form-control form-control-lg shadow-lg" aria-describedby="basic-addon1"
+                                        style="border-radius: 15px" />
+                                    <i class="bi bi-card-image"></i>
+                                </div>
+                                <!-- Image Field end -->
+
                                 <!-- Author Field start -->
                                 <div class=" mb-3 mt-3 text-start input">
                                     <label class="form-label" for="author" style="color:#212B5E;">Author</label>
@@ -106,9 +116,9 @@ include('../includes/header.php');
                             </p>
 
                             <?php
+                                unset($_SESSION['book_added']);
+                                unset($_SESSION['book_added_flag']);
                             }
-                            unset($_SESSION['book_added']);
-                            unset($_SESSION['book_added_flag']);
                             ?>
 
                             <button class="btn btn-lg btn-block text-white w-50 display-2 mb-3 "
