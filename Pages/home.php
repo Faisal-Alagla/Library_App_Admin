@@ -1,7 +1,7 @@
 <?php
-  include('../includes/header.php');
+include('../includes/header.php');
 
-  session_start();
+session_start();
 ?>
 <div class="container-fluid">
   <!--Welcome Messsage start-->
@@ -49,7 +49,13 @@
           <hr class="text-light w-50" />
         </div>
         <div class="bg-secondary" style="border-radius: 5px">
-          <p class="m-2" style="font-size: 20px;">Some announcements here</p>
+          <p class="m-2" style="font-size: 20px;">
+
+            <?php
+
+            ?>
+
+          </p>
         </div>
       </div>
     </div>
@@ -58,5 +64,5 @@
 </div>
 
 <?php
-  include('../includes/footer.php');
+include('../includes/footer.php');
 ?>
