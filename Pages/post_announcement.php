@@ -29,9 +29,9 @@ if ($_SESSION['announcement_exists']) {
 
                             <?php
                             if (isset($_SESSION['post_announcement'])) {
-                                $post_msg = $_SESSION['post_announcement'];
+                                $msg = $_SESSION['post_announcement'];
 
-                                if ($post_msg == 'Announcement updated!' || $post_msg == 'Announcement added!') {
+                                if ($_SESSION['post_announcement_flag']) {
                                     $msg_color = "text-success";
                                 } else {
                                     $msg_color = "text-danger";
@@ -40,12 +40,13 @@ if ($_SESSION['announcement_exists']) {
                             ?>
 
                             <p class="<?php echo $msg_color ?> ">
-                                <?php echo $_SESSION['post_announcement'] ?>
+                                <?php echo $msg; ?>
                             </p>
 
                             <?php
                             }
                             unset($_SESSION['post_announcement']);
+                            unset($_SESSION['post_announcement_flag']);
                             ?>
 
                             <button class="btn btn-lg btn-block text-white w-50 display-2 mb-3 "

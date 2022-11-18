@@ -20,9 +20,12 @@ if (isset($_POST['submit'])) {
     $ref_table = "books";
     $postRef_result = $database->getReference($ref_table)->push($postData);
 
+    
+    $_SESSION['book_added_flag'] = true;
     $_SESSION['book_added'] = "Book added successfully!";
 
 } else {
+    $_SESSION['book_added_flag'] = false;
     $_SESSION['book_added'] = "Something went wrong, please validate your inputs!";
 }
 

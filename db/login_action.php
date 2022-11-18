@@ -32,15 +32,18 @@ if (isset($_POST['login'])) {
                 exit();
             } catch (FailedToVerifyToken $e) {
                 echo 'The token is invalid: ' . $e->getMessage();
+                $_SESSION['invalid_login'] = "Invalid login";
+                header('location: ../pages/login.php');
+                exit();
             }
-
+            
         } catch (Exception $e) {
             $_SESSION['invalid_login'] = "Invalid login";
             header('location: ../pages/login.php');
             exit();
         }
-
-    } catch (\Kreait\Firebase\Exception\Auth\UserNotFound $e) {
+        
+    } catch (Exception $e) {
         $_SESSION['invalid_login'] = "Invalid login";
         header('location: ../pages/login.php');
         exit();

@@ -40,7 +40,8 @@ include('../includes/header.php');
                                     <label class="form-label" for="isbn" style="color:#212B5E;">ISBN</label>
                                     <input type="text" id="isbn" name="isbn"
                                         class="form-control form-control-lg shadow-lg "
-                                        style="border-radius: 15px; padding-right: 40px;" minlength="10" maxlength="10" required />
+                                        style="border-radius: 15px; padding-right: 40px;" minlength="10" maxlength="10"
+                                        required />
                                     <i class="bi bi-upc-scan"></i>
                                 </div>
                                 <!-- ISBN Field end -->
@@ -86,13 +87,13 @@ include('../includes/header.php');
 
                             </div>
                             <!-- Form end -->
-                            
-                            
+
+
                             <?php
                             if (isset($_SESSION['book_added'])) {
                                 $msg = $_SESSION['book_added'];
 
-                                if ($msg == 'Book added successfully!' || $msg == 'Something went wrong, please validate your inputs!') {
+                                if ($_SESSION['book_added_flag']) {
                                     $msg_color = "text-success";
                                 } else {
                                     $msg_color = "text-danger";
@@ -101,12 +102,13 @@ include('../includes/header.php');
                             ?>
 
                             <p class="<?php echo $msg_color ?> ">
-                                <?php echo $_SESSION['book_added'] ?>
+                                <?php echo $msg; ?>
                             </p>
 
                             <?php
                             }
                             unset($_SESSION['book_added']);
+                            unset($_SESSION['book_added_flag']);
                             ?>
 
                             <button class="btn btn-lg btn-block text-white w-50 display-2 mb-3 "

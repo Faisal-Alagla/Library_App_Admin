@@ -10,6 +10,7 @@ if (isset($_POST['submit'])) {
     if ($fetch_announcement > 0) {
         //update
 
+        $_SESSION['post_announcement_flag'] = true;
         $_SESSION['post_announcement'] = 'Announcement updated!';
     } else {
         $announcement = $_POST['announcement'];
@@ -20,10 +21,12 @@ if (isset($_POST['submit'])) {
 
         $ref_table = "announcements";
         $postRef_result = $database->getReference($ref_table)->push($postData);
-
+        
+        $_SESSION['post_announcement_flag'] = true;
         $_SESSION['post_announcement'] = 'Announcement added!';
     }
 }else{
+    $_SESSION['post_announcement_flag'] = false;
     $_SESSION['post_announcement'] = 'Something went wrong';
 }
 
