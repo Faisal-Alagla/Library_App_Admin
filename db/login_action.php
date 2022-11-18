@@ -26,10 +26,10 @@ if (isset($_POST['login'])) {
                 // $fetch_user = $database->getReference($ref_table)->getValue();
                 // $username = $fetch_user[$uid]['fname'];
 
+                $_SESSION['coming_from'] = 'login';
                 $_SESSION['user'] = $user->displayName;
-                header('location: ../pages/home.php');
+                header('location: fetch_announcement.php');
                 exit();
-
             } catch (FailedToVerifyToken $e) {
                 echo 'The token is invalid: ' . $e->getMessage();
             }

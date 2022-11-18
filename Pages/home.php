@@ -51,7 +51,7 @@ include('../includes/header.php');
           <p class="m-2" style="font-size: 20px;">
 
             <?php
-              
+                echo $_SESSION['announcement'];
             ?>
 
           </p>

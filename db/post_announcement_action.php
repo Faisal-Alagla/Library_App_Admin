@@ -3,6 +3,7 @@ session_start();
 include("config.php");
 
 if (isset($_POST['submit'])) {
+    $_SESSION['coming_from'] = 'post_announcement';
     $ref_table = "announcements";
     $fetch_announcement = $database->getReference($ref_table)->getValue();
 
@@ -26,5 +27,5 @@ if (isset($_POST['submit'])) {
     $_SESSION['post_announcement'] = 'Something went wrong';
 }
 
-header('location: ../pages/Post_Announcement.php')
+header('location: fetch_announcement.php')
 ?>
