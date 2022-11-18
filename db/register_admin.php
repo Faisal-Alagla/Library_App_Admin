@@ -10,6 +10,7 @@
 // $userProperties = [
 //     'fname' => $fname,
 //     'lname' => $lname,
+//     'displayName' => $fname ." ". $lname,
 //     'email' => $email,
 //     'password' => $password,
 // ];

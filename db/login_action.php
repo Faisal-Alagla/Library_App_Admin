@@ -21,7 +21,12 @@ if (isset($_POST['login'])) {
                 $_SESSION['verified_user_id'] = $uid;
                 $_SESSION['idTokenString'] = $idTokenString;
 
-                $_SESSION['success_login'] = "Welcome";
+                // echo get_object_vars($user)['userProperties'];
+                // $ref_table = "users";
+                // $fetch_user = $database->getReference($ref_table)->getValue();
+                // $username = $fetch_user[$uid]['fname'];
+
+                $_SESSION['user'] = $user->displayName;
                 header('location: ../pages/home.php');
                 exit();
 

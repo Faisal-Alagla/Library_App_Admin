@@ -1,12 +1,11 @@
 <?php
 include('../includes/header.php');
 
-session_start();
 ?>
 <div class="container-fluid">
   <!--Welcome Messsage start-->
   <div class="d-flex justify-content-center align-items-center" style="height: 10vw">
-    <h1 class="text-light fw-bold">Welcome to the Admin Dashboard</h1>
+    <h1 class="text-light fw-bold">Welcome, <?php echo $_SESSION['user'] ?>!</h1>
   </div>
   <!--Welcome Messsage end-->
 

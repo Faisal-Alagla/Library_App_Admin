@@ -73,6 +73,7 @@
                                     </div>
                                     <!-- Form end -->
 
+                                    <?php if(isset($_SESSION['user'])) echo $_SESSION['user'];?>
                                     <button class="btn btn-lg btn-block text-white w-50 display-2 mb-3 "
                                     style="background-color: #212B5E; border-radius: 15px" type="login" name="login">Login</button>
                                 </div>

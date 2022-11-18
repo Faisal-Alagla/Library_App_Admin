@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if (!isset($_SESSION['success_login'])){
+    if (!isset($_SESSION['user'])){
         header("location: pages/login.php");
     }else {
         header("location: pages/home.php");

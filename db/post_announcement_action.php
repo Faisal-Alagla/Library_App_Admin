@@ -26,5 +26,5 @@ if (isset($_POST['submit'])) {
     $_SESSION['post_announcement'] = 'Something went wrong';
 }
 
-header('location: ../pages/actions/Post_Announcement.php')
+header('location: ../pages/Post_Announcement.php')
 ?>
