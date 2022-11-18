@@ -44,7 +44,7 @@ session_start();
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
               <li><a class="dropdown-item" href="post_announcement.php">Post Announcement</a></li>
-              <li><a class="dropdown-item" href="#">Add book</a></li>
+              <li><a class="dropdown-item" href="../pages/add_book.php">Add book</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
