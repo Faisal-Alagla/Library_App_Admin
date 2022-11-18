@@ -41,10 +41,9 @@
                 <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Book Requests</a>
               </li>
             </ul>
-            <!-- <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-light" type="submit">Search</button>
-            </form> -->
+            <form class="d-flex" method="post" action="../db/logout_action.php">
+              <button class="btn btn-outline-light" type="logout" name="logout">Logout</button>
+            </form>
           </div>
         </div>
       </nav>
