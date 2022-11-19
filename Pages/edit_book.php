@@ -3,7 +3,6 @@ include('../includes/header.php');
 
 ?>
 
-
 <style>
     .input input {
         padding-left: 40px;

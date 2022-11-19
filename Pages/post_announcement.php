@@ -63,7 +63,7 @@ $fetch_announcement = "";
                             <div class="col-sm-12 row justify-content-center align-self-center">
                                 <div class="col-sm-6 px-1">
 
-                                    <button class="btn btn-lg btn-block text-white w-100 display-2 mb-3" style="background-color: #212B5E; border-radius: 15px" name="submit" type="submit">
+                                    <button class="btn btn-lg btn-block text-white w-100 display-2 mb-3" style="background-color: #212B5E; border-radius: 15px" name="post" type="post">
 
                                         <?php
                                         if ($_SESSION['announcement_exists']) {
@@ -80,7 +80,7 @@ $fetch_announcement = "";
                                 if ($_SESSION['announcement_exists']) {
                                 ?>
                                     <div class="col-sm-6 px-1">
-                                        <button class="btn btn-lg btn-block text-white w-100 display-2 mb-3 " style="background-color: #98030e; border-radius: 15px" name="submit" type="submit">
+                                        <button class="btn btn-lg btn-block text-white w-100 display-2 mb-3 " style="background-color: #98030e; border-radius: 15px" name="delete" type="delete">
                                             Delete
                                         </button>
                                     </div>

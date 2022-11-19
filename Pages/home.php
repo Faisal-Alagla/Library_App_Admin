@@ -55,9 +55,13 @@ include('../includes/header.php');
             <?php
             $ref_table = "announcements";
             $fetch_announcement = $database->getReference($ref_table)->getValue();
-
+            // echo implode("   ",$fetch_announcement);
+            // echo '<hr/>';
+            
             if ($fetch_announcement > 0) {
               $announcement_key = $database->getReference($ref_table)->getChildKeys()[0];
+              // echo $announcement_key;
+              // echo '<hr/>';
               $announcement = $fetch_announcement[$announcement_key]['announcement'];
 
               echo $announcement;
