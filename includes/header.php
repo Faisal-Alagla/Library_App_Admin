@@ -42,7 +42,7 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
             <a class="nav-link <?php if ($cur_page == 'home.php') echo $active; ?>" aria-current="page" href="home.php">Home</a>
           </li>
           <li class="nav-item px-2">
-            <a class="nav-link <?php if ($cur_page == 'borrowers.php') echo $active; ?>" href="#">Borrowers</a>
+            <a class="nav-link <?php if ($cur_page == 'borrowers.php') echo $active; ?>" href="borrowers.php">Borrowers</a>
           </li>
           <li class="nav-item dropdown px-2">
             <a class="nav-link dropdown-toggle <?php echo $actions_active ?> " href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -80,13 +80,13 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
             </ul>
           </li>
           <li class="nav-item px-2">
-            <a class="nav-link  <?php if ($cur_page == 'book_requests.php') echo $active; ?>" href="#" tabindex="-1" aria-disabled="true">Book Requests</a>
+            <a class="nav-link <?php if ($cur_page == 'book_requests.php') echo $active; ?>" href="book_requests.php" tabindex="-1" aria-disabled="true">Book Requests</a>
           </li>
         </ul>
         <div class="d-flex flex-row">
-          <form class="d-flex mx-2" method="post" action="#">
-            <button class="btn btn-outline-light" type="logout" name="logout">Profile</button>
-          </form>
+          <div class="d-flex mx-2" method="post" action="#">
+            <a class="btn btn-outline-light <?php if ($cur_page == 'profile.php') echo $active; ?>" href="profile.php">Profile</a>
+          </div>
           <form class="d-flex mx-2" method="post" action="../db/logout_action.php">
             <button class="btn btn-outline-light" type="logout" name="logout">Logout</button>
           </form>

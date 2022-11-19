@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(!isset($_SESSION['user'])){
+    header('location: ../pages/login.php');
+}
 include("config.php");
 
 if (isset($_POST['update_book'])) {
@@ -14,6 +17,7 @@ if (isset($_POST['update_book'])) {
     $ref_table = "books/" . $key;
 
     if ($image != Null) {
+        //new image is uploaded
         $image_name = $database->getReference($ref_table)->getValue()['image'];
         if ($image_name > 0) {
             unlink('../images/book_images/' . $image_name);
@@ -22,7 +26,10 @@ if (isset($_POST['update_book'])) {
         $image_name = $isbn . $image;
         move_uploaded_file($_FILES['image']['tmp_name'], '../images/book_images/' . $image_name);
     } else {
+        //no uploaded image
         $image_name = $database->getReference($ref_table)->getValue()['image'];
+
+        //if there was an image in DB
         if ($image_name > 0) {
             $no_isbn_name = substr($image_name, 10);
             $new_image_name = $isbn . $no_isbn_name;

@@ -67,7 +67,7 @@ include('../includes/header.php');
                             <div class="mb-4 mx-5">
                                 <!-- Table start -->
                                 <div class="mb-4 table-responsive">
-                                    <table class="table table-dark table-hover text-center">
+                                    <table class="table table-dark table-hover text-center align-items-center">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
@@ -105,7 +105,7 @@ include('../includes/header.php');
                                                             <?php echo $row['title'] ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo $row['image'] ?>
+                                                            <img src="../images/book_images/<?php echo $row['image'] ?>" alt="" style="max-width: 45px;">
                                                         </td>
                                                         <td>
                                                             <?php echo $row['author'] ?>
@@ -123,7 +123,7 @@ include('../includes/header.php');
                                                             </a>
                                                         </td>
                                                         <td>
-                                                            <a class="btn btn-danger btn-sm" href="../db/delete_book_action.php?id=<?php echo $key ?>">
+                                                            <a class="btn btn-sm text-white w-100" style="background-color: #98030e; border-radius: 5px" href="../db/delete_book_action.php?id=<?php echo $key ?>">
                                                                 Delete
                                                             </a>
                                                         </td>

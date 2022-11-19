@@ -18,7 +18,7 @@ include('../includes/header.php');
 
   <!--Book requests card start-->
   <div class="d-flex justify-content-center">
-    <div class="card bg-dark w-50" style="border-radius: 20px">
+    <div class="card bg-dark" style="border-radius: 20px; width: 60%; min-width: 200px;">
       <div class="card-body d-flex justify-content-center">
         <div class="col-sm-5 text-center">
           <h3 class="text-light">Book Requests</h3>
@@ -41,7 +41,7 @@ include('../includes/header.php');
 
   <!--Current Announcement card start-->
   <div class="d-flex justify-content-center">
-    <div class="card bg-dark w-50" style="border-radius: 20px">
+    <div class="card bg-dark" style="border-radius: 20px; width: 60%; min-width: 200px;">
       <div class="card-body d-flex flex-column justify-content-center">
         <div class="text-center">
           <h3 class="text-light">Current Announcement</h3>
@@ -50,7 +50,7 @@ include('../includes/header.php');
           <hr class="text-light w-50" />
         </div>
         <div class="bg-secondary" style="border-radius: 5px">
-          <p class="m-2 text-white" style="font-size: 20px;">
+          <p class="m-2 text-white" style="font-size: 18px;">
 
             <?php
             $ref_table = "announcements";
@@ -67,8 +67,10 @@ include('../includes/header.php');
               // $_SESSION['announcement_exists'] = false;
             }
 
+
             $ref_table = "";
             $fetch_announcement = "";
+
             ?>
 
           </p>
