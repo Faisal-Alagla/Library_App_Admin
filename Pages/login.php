@@ -61,16 +61,16 @@ session_start();
                                 <!-- Form start -->
                                 <div class="mb-4 text-start">
                                     <div class="input">
-                                        <!-- user/email Field start -->
+                                        <!-- user/email field start -->
                                         <label class="form-label" for="email" style="color:#212B5E;">Email</label>
                                         <input type="text" id="email" name="email"
                                             class="form-control form-control-lg shadow-lg"
                                             aria-describedby="basic-addon1" style="border-radius: 15px" />
                                         <img src="../images/User_icon.png" alt="">
                                     </div>
-                                    <!-- user/email Field end -->
+                                    <!-- user/email field end -->
 
-                                    <!-- Password Field start -->
+                                    <!-- Password field start -->
                                     <div class=" mb-3 mt-3 text-start input">
                                         <label class="form-label" for="password" style="color:#212B5E;">Password</label>
                                         <input type="password" id="password" name="password"
@@ -78,7 +78,7 @@ session_start();
                                             style="border-radius: 15px; padding-right: 40px;" />
                                         <img src="../images/Lock_icon.png" alt="">
                                     </div>
-                                    <!-- Password Field end -->
+                                    <!-- Password field end -->
 
                                 </div>
                                 <!-- Form end -->

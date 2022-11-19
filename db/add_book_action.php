@@ -5,25 +5,27 @@ include("config.php");
 if (isset($_POST['submit'])) {
     $isbn = $_POST['isbn'];
     $title = $_POST['title'];
-    $image = $_POST['image'];
+    $image = $_FILES['image']['name'];
     $author = $_POST['author'];
     $date = $_POST['date'];
     $summary = $_POST['summary'];
 
+    if($image != Null) {
+        $image_name = $isbn.$image;
+        
+        move_uploaded_file($_FILES['image']['tmp_name'], '../images/book_images/'.$image_name);
+    }else{
+        $image_name = Null;
+    }
+    
     $postData = [
         'isbn' => $isbn,
         'title' => $title,
-        'image' => $image,
+        'image' => $image_name,
         'author' => $author,
         'date' => $date,
         'summary' => $summary,
     ];
-
-    /*
-    Upload image to book_images folder here!!!
-    code goes here...
-    
-    */
 
     $ref_table = "books";
     $postRef_result = $database->getReference($ref_table)->push($postData);    
