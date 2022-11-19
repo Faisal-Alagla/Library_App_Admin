@@ -50,7 +50,7 @@ include('../includes/header.php');
           <hr class="text-light w-50" />
         </div>
         <div class="bg-secondary" style="border-radius: 5px">
-          <p class="m-2" style="font-size: 20px;">
+          <p class="m-2 text-white" style="font-size: 20px;">
 
             <?php
             $ref_table = "announcements";
@@ -66,7 +66,9 @@ include('../includes/header.php');
               echo "There are currently no accouncement(s)";
               // $_SESSION['announcement_exists'] = false;
             }
-            
+
+            $ref_table = "";
+            $fetch_announcement = "";
             ?>
 
           </p>

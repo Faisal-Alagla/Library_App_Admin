@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(!isset($_SESSION['user'])){
+  header('location: login.php');
+}
 include("../db/config.php");
 $cur_page = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
 $active = "active";
@@ -50,6 +53,7 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
               <?php
               $ref_table = "announcements";
               $fetch_announcement = $database->getReference($ref_table)->getValue();
+
               if($fetch_announcement > 0){
                 $_SESSION['announcement_exists'] = true;
               }else{
@@ -60,7 +64,11 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
                 $announcement_action = "Update";
               } else {
                 $announcement_action = "Post";
-              } ?>
+              } 
+
+              $ref_table = "";
+              $fetch_announcement = "";
+              ?>
 
               <li><a class="dropdown-item" href="post_announcement.php"><?php echo $announcement_action ?> Announcement</a></li>
               <li><a class="dropdown-item" href="add_book.php">Add book</a></li>
