@@ -53,7 +53,20 @@ include('../includes/header.php');
           <p class="m-2" style="font-size: 20px;">
 
             <?php
-            echo $_SESSION['announcement'];
+            $ref_table = "announcements";
+            $fetch_announcement = $database->getReference($ref_table)->getValue();
+
+            if ($fetch_announcement > 0) {
+              $announcement_key = $database->getReference($ref_table)->getChildKeys()[0];
+              $announcement = $fetch_announcement[$announcement_key]['announcement'];
+
+              echo $announcement;
+              // $_SESSION['announcement_exists'] = true;
+            } else {
+              echo "There are currently no accouncement(s)";
+              // $_SESSION['announcement_exists'] = false;
+            }
+            
             ?>
 
           </p>

@@ -1,5 +1,4 @@
 <?php
-include("../db/config.php");
 include('../includes/header.php');
 
 ?>
@@ -25,26 +24,45 @@ include('../includes/header.php');
                             </div>
 
                             <?php
-                                if (isset($_SESSION['book_deleted'])) {
-                                    $msg = $_SESSION['book_deleted'];
+                            //feedback message after book deletion
+                            if (isset($_SESSION['book_deleted'])) {
+                                $msg = $_SESSION['book_deleted'];
 
-                                    if ($_SESSION['book_deleted_flag']) {
-                                        $msg_color = "text-success";
-                                    } else {
-                                        $msg_color = "text-danger";
-                                    }
-
-                                ?>
-
-                                    <p class="mx-5 <?php echo $msg_color ?> ">
-                                        <?php echo $msg; ?>
-                                    </p>
-
-                                <?php
-                                    unset($_SESSION['book_deleted']);
-                                    unset($_SESSION['book_deleted_flag']);
+                                //message color changes wether deletion is successful or failed
+                                if ($_SESSION['book_deleted_flag']) {
+                                    $msg_color = "text-success";
+                                } else {
+                                    $msg_color = "text-danger";
                                 }
-                                ?>
+
+                            ?>
+
+                                <p class="mx-5 <?php echo $msg_color ?> ">
+                                    <?php echo $msg; ?>
+                                </p>
+
+                            <?php
+                                //clearing session variables
+                                unset($_SESSION['book_deleted']);
+                                unset($_SESSION['book_deleted_flag']);
+                            }
+
+                            //error message if can't edit book
+                            if (isset($_SESSION['edit_book_error'])) {
+                                $msg = $_SESSION['edit_book_error'];
+                                $msg_color = "text-danger";
+
+                            ?>
+
+                                <p class="mx-5 <?php echo $msg_color ?> ">
+                                    <?php echo $msg; ?>
+                                </p>
+
+                            <?php
+                                //clearing session variables
+                                unset($_SESSION['edit_book_error']);
+                            }
+                            ?>
 
                             <div class="mb-4 mx-5">
                                 <!-- Table start -->
@@ -66,9 +84,11 @@ include('../includes/header.php');
                                         <tbody>
 
                                             <?php
+                                            //fetching data from the books table
                                             $ref_table = 'books';
                                             $fetch_books = $database->getReference($ref_table)->getValue();
 
+                                            //displaying table rows
                                             if ($fetch_books > 0) {
                                                 $num = 1;
                                                 foreach ($fetch_books as $key => $row) {

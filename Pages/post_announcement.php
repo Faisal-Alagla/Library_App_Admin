@@ -1,10 +1,22 @@
 <?php
 include('../includes/header.php');
 
-$current_announcement = "";
-if ($_SESSION['announcement_exists']) {
-    $current_announcement = $_SESSION['announcement'];
+$ref_table = "announcements";
+$fetch_announcement = $database->getReference($ref_table)->getValue();
+
+if ($fetch_announcement > 0) {
+    $announcement_key = $database->getReference($ref_table)->getChildKeys()[0];
+    $announcement = $fetch_announcement[$announcement_key]['announcement'];
+    
+    $current_announcement =  $announcement;
+    $card_title = "Update";
+    // $_SESSION['announcement_exists'] = true;
+} else {
+    $current_announcement = "";
+    $card_title = "Post";
+    // $_SESSION['announcement_exists'] = false;
 }
+
 ?>
 
 <div class="row container-fluid p-0 m-0">
@@ -14,15 +26,12 @@ if ($_SESSION['announcement_exists']) {
                 <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
                     <div class="card shadow-lg" style=" border-radius: 20px">
                         <!--start of form card-->
-                        <form class="card-body p-5 text-center" method="POST"
-                            action="../db/post_announcement_action.php">
-                            <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Post Announcement</h3>
+                        <form class="card-body p-5 text-center" method="POST" action="../db/post_announcement_action.php">
+                            <h3 class="mb-5 fw-bold" style=" color:#212B5E; "><?php echo $card_title ?> Announcement</h3>
                             <div class="mb-4 text-end">
                                 <!-- text field start -->
                                 <div class="input mb-4 text-end mt-3">
-                                    <textarea type="input" name="announcement" rows="10" id="announcement"
-                                        class="form-control form-control-lg shadow-lg rows"
-                                        style="border-radius: 15px;"><?php echo $current_announcement ?></textarea>
+                                    <textarea type="input" name="announcement" rows="10" id="announcement" class="form-control form-control-lg shadow-lg rows" style="border-radius: 15px;"><?php echo $current_announcement ?></textarea>
                                 </div>
                                 <!-- text field end -->
                             </div>
@@ -39,9 +48,9 @@ if ($_SESSION['announcement_exists']) {
 
                             ?>
 
-                            <p class="<?php echo $msg_color ?> ">
-                                <?php echo $msg; ?>
-                            </p>
+                                <p class="<?php echo $msg_color ?> ">
+                                    <?php echo $msg; ?>
+                                </p>
 
                             <?php
                                 unset($_SESSION['post_announcement']);
@@ -49,8 +58,7 @@ if ($_SESSION['announcement_exists']) {
                             }
                             ?>
 
-                            <button class="btn btn-lg btn-block text-white w-50 display-2 mb-3 "
-                                style="background-color: #212B5E; border-radius: 15px" name="submit" type="submit">
+                            <button class="btn btn-lg btn-block text-white w-50 display-2 mb-3 " style="background-color: #212B5E; border-radius: 15px" name="submit" type="submit">
 
                                 <?php
                                 if ($_SESSION['announcement_exists']) {

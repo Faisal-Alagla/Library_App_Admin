@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("../db/config.php");
 $cur_page = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
 $active = "active";
 
@@ -38,7 +39,7 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
             <a class="nav-link <?php if ($cur_page == 'home.php') echo $active; ?>" aria-current="page" href="home.php">Home</a>
           </li>
           <li class="nav-item px-2">
-            <a class="nav-link <?php if ($cur_page == 'borrowrs.php') echo $active; ?>" href="#">Borrowers</a>
+            <a class="nav-link <?php if ($cur_page == 'borrowers.php') echo $active; ?>" href="#">Borrowers</a>
           </li>
           <li class="nav-item dropdown px-2">
             <a class="nav-link dropdown-toggle <?php echo $actions_active ?> " href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -46,15 +47,24 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
 
-              <?php if ($_SESSION['announcement_exists']) {
+              <?php
+              $ref_table = "announcements";
+              $fetch_announcement = $database->getReference($ref_table)->getValue();
+              if($fetch_announcement > 0){
+                $_SESSION['announcement_exists'] = true;
+              }else{
+                $_SESSION['announcement_exists'] = false;
+              }
+              
+              if ($_SESSION['announcement_exists']) {
                 $announcement_action = "Update";
               } else {
                 $announcement_action = "Post";
               } ?>
 
               <li><a class="dropdown-item" href="post_announcement.php"><?php echo $announcement_action ?> Announcement</a></li>
-              <li><a class="dropdown-item" href="../pages/add_book.php">Add book</a></li>
-              <li><a class="dropdown-item" href="../pages/book_list.php">Edit books</a></li>
+              <li><a class="dropdown-item" href="add_book.php">Add book</a></li>
+              <li><a class="dropdown-item" href="book_list.php">Edit books</a></li>
               <!-- <li>
                 <hr class="dropdown-divider">
               </li>
