@@ -4,10 +4,16 @@ include("config.php");
 
 if (isset($_GET['id'])) {
     $key = $_GET['id'];
-
     $ref_table = "books/" . $key;
-    $delete_query_result =  $database->getReference($ref_table)->remove();
+    
+    $image_name = $database->getReference($ref_table)->getValue()['image'];
 
+    if($image_name > 0) {
+        unlink('../images/book_images/'.$image_name);
+    }
+
+    $delete_query_result =  $database->getReference($ref_table)->remove();
+    
     if ($delete_query_result) {
         $_SESSION['book_deleted_flag'] = true;
         $_SESSION['book_deleted'] = "Book deleted successfully!";
