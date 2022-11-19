@@ -33,7 +33,7 @@ $fetch_announcement = "";
                             <div class="mb-4 text-end">
                                 <!-- text field start -->
                                 <div class="input mb-4 text-end mt-3">
-                                    <textarea type="input" name="announcement" rows="10" id="announcement" class="form-control form-control-lg shadow-lg rows" style="border-radius: 15px;"><?php echo $current_announcement ?></textarea>
+                                    <textarea type="text" name="announcement" rows="10" id="announcement" class="form-control form-control-lg shadow-lg rows" style="border-radius: 15px;"><?php echo $current_announcement ?></textarea>
                                 </div>
                                 <!-- text field end -->
                             </div>

@@ -55,26 +55,19 @@ include('../includes/header.php');
             <?php
             $ref_table = "announcements";
             $fetch_announcement = $database->getReference($ref_table)->getValue();
-            // echo implode("   ",$fetch_announcement);
-            // echo '<hr/>';
             
             if ($fetch_announcement > 0) {
               $announcement_key = $database->getReference($ref_table)->getChildKeys()[0];
-              // echo $announcement_key;
-              // echo '<hr/>';
-              $announcement = $fetch_announcement[$announcement_key]['announcement'];
+              $announcement = $database->getReference($ref_table)->getValue()[$announcement_key]['announcement'];
 
+              $announcement_key = "";
               echo $announcement;
-              // $_SESSION['announcement_exists'] = true;
             } else {
               echo "There are currently no accouncement(s)";
-              // $_SESSION['announcement_exists'] = false;
             }
-
 
             $ref_table = "";
             $fetch_announcement = "";
-
             ?>
 
           </p>
