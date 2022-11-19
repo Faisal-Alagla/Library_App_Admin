@@ -27,7 +27,7 @@ include('../includes/header.php');
         <div class="container p-0">
             <div class="row d-flex justify-content-center align-items-center h-100 p-0">
                 <div class="col-12 col-md-10 col-lg-8 col-xl-6">
-                    <form class="card shadow-lg" style="border-radius: 20px" method="post" action="../db/edit_book_action.php">
+                    <form class="card shadow-lg" style="border-radius: 20px" method="post" action="../db/edit_book_action.php" enctype="multipart/form-data">
                         <div class="card-body p-5 text-center">
                             <h3 class="mb-5 fw-bold" style="color:#212B5E;">Edit Book Information</h3>
 
