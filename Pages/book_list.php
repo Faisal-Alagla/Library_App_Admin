@@ -3,6 +3,11 @@ include('../includes/header.php');
 
 ?>
 
+<style>
+    td {
+        vertical-align: middle;
+    }
+</style>
 
 <div class="row container-fluid p-0 m-0">
     <div class="col-sm-12 p-0 my-5">
