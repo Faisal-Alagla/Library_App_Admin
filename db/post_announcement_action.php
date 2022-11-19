@@ -9,52 +9,48 @@ if (isset($_POST['post'])) {
     $ref_table = "announcements";
     $fetch_announcement = $database->getReference($ref_table)->getValue();
 
+    //update
     if ($fetch_announcement > 0) {
-        //update
         $announcement = $_POST['announcement'];
 
+        //if empty -> remove the post
         if (strlen($announcement) < 1) {
             $key = $database->getReference($ref_table)->getChildKeys()[0];
             $delete_query_result =  $database->getReference($ref_table)->remove();
 
             $_SESSION['post_announcement_flag'] = true;
             $_SESSION['post_announcement'] = "Announcement removed!";
-
-            header('location: ../pages/post_announcement.php');
+        }else{
+            $updateData = [
+                'announcement' => $announcement,
+            ];
+            
+            $key = $database->getReference($ref_table)->getChildKeys()[0];
+            $ref_table = "announcements/" . $key;
+            $update_query_result =  $database->getReference($ref_table)->update($updateData);
+            
+            $_SESSION['post_announcement_flag'] = true;
+            $_SESSION['post_announcement'] = 'Announcement updated!';
         }
-
-        $updateData = [
-            'announcement' => $announcement,
-        ];
-
-        $key = $database->getReference($ref_table)->getChildKeys()[0];
-        $ref_table = "announcements/" . $key;
-        $update_query_result =  $database->getReference($ref_table)->update($updateData);
-
-        $_SESSION['post_announcement_flag'] = true;
-        $_SESSION['post_announcement'] = 'Announcement updated!';
     } else {
         //post
         $announcement = $_POST['announcement'];
 
+        //if empty -> do nothing and show msg to fill the post
         if (strlen($announcement) < 1) {
-            $key = $database->getReference($ref_table)->getChildKeys()[0];
-            $delete_query_result =  $database->getReference($ref_table)->remove();
-
             $_SESSION['post_announcement_flag'] = true;
-            $_SESSION['post_announcement'] = "Announcement removed!";
+            $_SESSION['post_announcement'] = "Announcement field must be filled!";
 
-            header('location: ../pages/post_announcement.php');
+        }else{
+            $postData = [
+                'announcement' => $announcement,
+            ];
+            
+            $postRef_result = $database->getReference($ref_table)->push($postData);
+            
+            $_SESSION['post_announcement_flag'] = true;
+            $_SESSION['post_announcement'] = 'Announcement posted!';
         }
-
-        $postData = [
-            'announcement' => $announcement,
-        ];
-
-        $postRef_result = $database->getReference($ref_table)->push($postData);
-
-        $_SESSION['post_announcement_flag'] = true;
-        $_SESSION['post_announcement'] = 'Announcement posted!';
     }
     //delete
 } else if (isset($_POST['delete'])) {
