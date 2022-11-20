@@ -7,7 +7,7 @@ include("../db/config.php");
 $cur_page = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
 $active = "active";
 
-if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_page == "edit_book.php") || ($cur_page == "post_announcement.php")) {
+if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_page == "edit_book.php") || ($cur_page == "post_announcement.php") || ($cur_page == "manage_categories.php")) {
   $actions_active = $active;
 } else {
   $actions_active = "";
@@ -22,12 +22,32 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href=" https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css " rel="stylesheet " integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi " crossorigin="anonymous " />
-  <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   <title>Library Admin</title>
   <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
+
+<style>
+    .input input {
+        padding-left: 40px;
+    }
+
+    .input {
+        position: relative;
+    }
+
+    .input i {
+        position: absolute;
+        left: 0;
+        top: 38px;
+        padding: 9px 8px;
+    }
+
+    td {
+        vertical-align: middle;
+    }
+</style>
 
 <body style="background-color: #1b1b1b">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -71,8 +91,9 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
               ?>
 
               <li><a class="dropdown-item" href="post_announcement.php"><?php echo $announcement_action ?> Announcement</a></li>
-              <li><a class="dropdown-item" href="add_book.php">Add book</a></li>
-              <li><a class="dropdown-item" href="book_list.php">Edit books</a></li>
+              <li><a class="dropdown-item" href="add_book.php">Add a book</a></li>
+              <li><a class="dropdown-item" href="book_list.php">Manage books</a></li>
+              <li><a class="dropdown-item" href="manage_categories.php">Manage categories</a></li>
               <!-- <li>
                 <hr class="dropdown-divider">
               </li>

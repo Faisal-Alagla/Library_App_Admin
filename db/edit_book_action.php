@@ -9,8 +9,9 @@ if (isset($_POST['update_book'])) {
     $key = $_POST['key'];
     $isbn = $_POST['isbn'];
     $title = $_POST['title'];
-    $image = $_FILES['image']['name'];
     $author = $_POST['author'];
+    $category = $_POST['category'];
+    $image = $_FILES['image']['name'];
     $date = $_POST['date'];
     $summary = $_POST['summary'];
 
@@ -43,8 +44,9 @@ if (isset($_POST['update_book'])) {
     $updateData = [
         'isbn' => $isbn,
         'title' => $title,
-        'image' => $image_name,
         'author' => $author,
+        'category' => $category,
+        'image' => $image_name,
         'date' => $date,
         'summary' => $summary,
     ];
@@ -57,7 +59,7 @@ if (isset($_POST['update_book'])) {
         $_SESSION['book_updated'] = "Book updated successfully!";
     } else {
         $_SESSION['book_updated_flag'] = false;
-        $_SESSION['book_updated'] = "Something went wrong, please validate your inputs!";
+        $_SESSION['book_updated'] = "Something went wrong, please try again later!";
     }
 } else {
     $_SESSION['book_key'] = false;

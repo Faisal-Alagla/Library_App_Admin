@@ -8,24 +8,26 @@ include("config.php");
 if (isset($_POST['submit'])) {
     $isbn = $_POST['isbn'];
     $title = $_POST['title'];
-    $image = $_FILES['image']['name'];
     $author = $_POST['author'];
+    $category = $_POST['category'];
+    $image = $_FILES['image']['name'];
     $date = $_POST['date'];
     $summary = $_POST['summary'];
 
     if($image != Null) {
         $image_name = $isbn.$image;
-        
+
         move_uploaded_file($_FILES['image']['tmp_name'], '../images/book_images/'.$image_name);
     }else{
-        $image_name = Null;
+        $image_name = "";
     }
     
     $postData = [
         'isbn' => $isbn,
         'title' => $title,
-        'image' => $image_name,
         'author' => $author,
+        'category' => $category,
+        'image' => $image_name,
         'date' => $date,
         'summary' => $summary,
     ];

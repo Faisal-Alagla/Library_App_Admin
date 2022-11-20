@@ -3,23 +3,6 @@ include('../includes/header.php');
 
 ?>
 
-<style>
-    .input input {
-        padding-left: 40px;
-    }
-
-    .input {
-        position: relative;
-    }
-
-    .input i {
-        position: absolute;
-        left: 0;
-        top: 38px;
-        padding: 9px 8px;
-    }
-</style>
-
 <div class="container-fluid p-0 m-0">
 
     <div class="my-5">
@@ -49,14 +32,6 @@ include('../includes/header.php');
                                 </div>
                                 <!-- Title Field end -->
 
-                                <!-- Image Field start -->
-                                <div class="input">
-                                    <label class="form-label" for="image" style="color:#212B5E;">Image</label>
-                                    <input type="file" id="image" name="image" class="form-control form-control-lg shadow-lg" aria-describedby="basic-addon1" style="border-radius: 15px" />
-                                    <i class="bi bi-card-image"></i>
-                                </div>
-                                <!-- Image Field end -->
-
                                 <!-- Author Field start -->
                                 <div class=" mb-3 mt-3 text-start input">
                                     <label class="form-label" for="author" style="color:#212B5E;">Author</label>
@@ -64,6 +39,43 @@ include('../includes/header.php');
                                     <i class="bi bi-vector-pen"></i>
                                 </div>
                                 <!-- Author Field end -->
+
+                                <!-- Category Field start -->
+                                <div class=" mb-3 mt-3 text-start input">
+                                    <label class="form-label" for="category" style="color:#212B5E;">Category</label>
+                                    <select id="category" name="category" data-live-search="true" class="form-control form-control-lg shadow-lg form-select <?php //echo 'selectpicker'?>" style="border-radius: 15px; padding-right: 40px; padding-left: 40px;">
+                                        <option value="">Select Category</option>
+
+                                        <?php
+                                        //fetching data from the books table
+                                        $ref_table = 'categories';
+                                        $fetch_category = $database->getReference($ref_table)->getValue();
+
+                                        //displaying table rows
+                                        if ($fetch_category > 0) {
+                                            $num = 1;
+                                            foreach ($fetch_category as $key => $row) {
+                                        ?>
+
+                                                <option value="<?php echo $row['value'] ?>"><?php echo $row['label'] ?></option>
+
+                                        <?php
+                                            }
+                                        }
+                                        ?>
+
+                                    </select>
+                                    <i class="bi bi-tag"></i>
+                                </div>
+                                <!-- Category Field end -->
+
+                                <!-- Image Field start -->
+                                <div class="input">
+                                    <label class="form-label" for="image" style="color:#212B5E;">Image</label>
+                                    <input type="file" id="image" name="image" class="form-control form-control-lg shadow-lg" aria-describedby="basic-addon1" style="border-radius: 15px" />
+                                    <i class="bi bi-card-image"></i>
+                                </div>
+                                <!-- Image Field end -->
 
                                 <!-- Publish date Field start -->
                                 <div class=" mb-3 mt-3 text-start input">
@@ -113,7 +125,3 @@ include('../includes/header.php');
         </div>
     </div>
 </div>
-
-<?php
-include('../includes/footer.php');
-?>

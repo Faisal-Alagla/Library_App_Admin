@@ -3,12 +3,6 @@ include('../includes/header.php');
 
 ?>
 
-<style>
-    td {
-        vertical-align: middle;
-    }
-</style>
-
 <div class="row container-fluid p-0 m-0">
     <div class="col-sm-12 p-0 my-5">
         <div class="container p-0 h-100">
@@ -18,15 +12,17 @@ include('../includes/header.php');
                         <!--start of card-->
                         <form class="card-body p-5 pb-2 text-center" method="" action="">
                             <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Library Books</h3>
-                            <div class="col-sm-4 d-flex flex-column justify-content-center align-self-center">
+
+                            <!--############ FOR SEARCH CONSIDER DATALIST! ###############-->
+                            <!-- <div class="col-sm-4 d-flex flex-column justify-content-center align-self-center">
                                 <form>
                                     <label class="text-start" for="search">Search by Book Title</label>
                                     <div class="d-flex flex-row">
-                                        <input class="form-control me-2 border-dark" type="search" placeholder="Search title..." aria-label="Search">
+                                        <input class="form-control me-2 border-dark" type="search" placeholder="Search..." aria-label="Search">
                                         <button class="btn btn-outline-dark" type="submit">Search</button>
                                     </div>
                                 </form>
-                            </div>
+                            </div> -->
 
                             <?php
                             //feedback message after book deletion
@@ -69,7 +65,7 @@ include('../includes/header.php');
                             }
                             ?>
 
-                            <div class="mb-4 mx-5">
+                            <div class="mb-4 mx-2">
                                 <!-- Table start -->
                                 <div class="mb-4 table-responsive">
                                     <table class="table table-dark table-hover text-center align-items-center">
@@ -78,12 +74,13 @@ include('../includes/header.php');
                                                 <th scope="col">#</th>
                                                 <th scope="col">ISBN</th>
                                                 <th scope="col">Title</th>
-                                                <th scope="col">Image</th>
                                                 <th scope="col">Author</th>
+                                                <th scope="col">Category</th>
+                                                <th scope="col">Image</th>
                                                 <th scope="col">Publish Date</th>
                                                 <!-- <th scope="col">Summary</th> -->
-                                                <th scope="col">Edit</th>
-                                                <th scope="col">Delete</th>
+                                                <th scope="col" style="width: 7%;">Edit</th>
+                                                <th scope="col" style="width: 7%;">Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -110,10 +107,13 @@ include('../includes/header.php');
                                                             <?php echo $row['title'] ?>
                                                         </td>
                                                         <td>
-                                                            <img src="../images/book_images/<?php echo $row['image'] ?>" alt="" style="max-width: 45px;">
+                                                            <?php echo $row['author'] ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo $row['author'] ?>
+                                                            <?php echo $row['category'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <img src="../images/book_images/<?php echo $row['image'] ?>" alt="" style="max-width: 45px;">
                                                         </td>
                                                         <td>
                                                             <?php echo $row['date'] ?>
