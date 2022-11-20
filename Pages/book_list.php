@@ -11,7 +11,7 @@ include('../includes/header.php');
                     <div class="card shadow-lg" style=" border-radius: 20px">
                         <!--start of card-->
                         <form class="card-body p-5 pb-2 text-center" method="" action="">
-                            <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Library Books</h3>
+                            <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Manage Books</h3>
 
                             <!--############ FOR SEARCH CONSIDER DATALIST! ###############-->
                             <!-- <div class="col-sm-4 d-flex flex-column justify-content-center align-self-center">
