@@ -5,8 +5,8 @@ if (!isset($_SESSION['user'])) {
 }
 include("config.php");
 
+//update
 if (isset($_POST['update_category'])) {
-    //update
     $category_key = $_POST['key'];
     $label = $_POST['label'];
     $value = $_POST['value'];
@@ -26,7 +26,8 @@ if (isset($_POST['update_category'])) {
         $_SESSION['cateogry_updated_flag'] = false;
         $_SESSION['cateogry_updated'] = "Something went wrong, please try again later!";
     }
-} else if (isset($_POST['add_category'])){
+    //add
+} else if (isset($_POST['add_category'])) {
     $label = $_POST['label'];
     $value = $_POST['value'];
 
@@ -36,11 +37,12 @@ if (isset($_POST['update_category'])) {
     ];
 
     $ref_table = "categories";
-    $postRef_result = $database->getReference($ref_table)->push($postData);    
+    $database->getReference($ref_table)->push($postData);
 
     $_SESSION['category_added_flag'] = true;
     $_SESSION['category_added'] = "Category added successfully!";
 }
+//delete
 else if (isset($_GET['delete_id'])) {
     $key = $_GET['delete_id'];
     $ref_table = "categories/" . $key;

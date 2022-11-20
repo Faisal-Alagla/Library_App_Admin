@@ -46,7 +46,7 @@ if (isset($_POST['post'])) {
                 'announcement' => $announcement,
             ];
             
-            $postRef_result = $database->getReference($ref_table)->push($postData);
+            $database->getReference($ref_table)->push($postData);
             
             $_SESSION['post_announcement_flag'] = true;
             $_SESSION['post_announcement'] = 'Announcement posted!';
