@@ -31,16 +31,16 @@ include('../includes/header.php');
 
                                 //message color changes wether deletion is successful or failed
                                 if ($_SESSION['book_deleted_flag']) {
-                                    $msg_color = "text-success";
+                                    $msg_color = "alert-success";
                                 } else {
-                                    $msg_color = "text-danger";
+                                    $msg_color = "alert-danger";
                                 }
 
                             ?>
 
-                                <p class="mx-5 <?php echo $msg_color ?> ">
-                                    <?php echo $msg; ?>
-                                </p>
+                                <div class="alert <?php echo $msg_color ?>" role="alert">
+                                    <?php echo $msg ?>
+                                </div>
 
                             <?php
                                 //clearing session variables
@@ -51,13 +51,13 @@ include('../includes/header.php');
                             //error message if can't edit book
                             if (isset($_SESSION['edit_book_error'])) {
                                 $msg = $_SESSION['edit_book_error'];
-                                $msg_color = "text-danger";
+                                $msg_color = "alert-danger";
 
                             ?>
 
-                                <p class="mx-5 <?php echo $msg_color ?> ">
-                                    <?php echo $msg; ?>
-                                </p>
+                                <div class="alert <?php echo $msg_color ?>" role="alert">
+                                    <?php echo $msg ?>
+                                </div>
 
                             <?php
                                 //clearing session variables

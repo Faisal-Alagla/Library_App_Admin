@@ -43,16 +43,16 @@ $fetch_announcement = "";
                                 $msg = $_SESSION['post_announcement'];
 
                                 if ($_SESSION['post_announcement_flag']) {
-                                    $msg_color = "text-success";
+                                    $msg_color = "alert-success";
                                 } else {
-                                    $msg_color = "text-danger";
+                                    $msg_color = "alert-danger";
                                 }
 
                             ?>
 
-                                <p class="<?php echo $msg_color ?> ">
-                                    <?php echo $msg; ?>
-                                </p>
+                                <div class="alert <?php echo $msg_color ?>" role="alert">
+                                    <?php echo $msg ?>
+                                </div>
 
                             <?php
                                 unset($_SESSION['post_announcement']);

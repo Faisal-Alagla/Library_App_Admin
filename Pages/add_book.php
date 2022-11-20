@@ -13,6 +13,28 @@ include('../includes/header.php');
                         <div class="card-body p-5 text-center">
                             <h3 class="mb-5 fw-bold" style="color:#212B5E;">Add New Book</h3>
 
+                            <?php
+                            if (isset($_SESSION['book_added'])) {
+                                $msg = $_SESSION['book_added'];
+
+                                if ($_SESSION['book_added_flag']) {
+                                    $msg_color = "alert-success";
+                                } else {
+                                    $msg_color = "alert-danger";
+                                }
+
+                            ?>
+
+                                <div class="alert <?php echo $msg_color ?>" role="alert">
+                                    <?php echo $msg ?>
+                                </div>
+
+                            <?php
+                                unset($_SESSION['book_added']);
+                                unset($_SESSION['book_added_flag']);
+                            }
+                            ?>
+
                             <!-- Form start -->
                             <div class="mb-4 text-start">
 
@@ -43,7 +65,8 @@ include('../includes/header.php');
                                 <!-- Category Field start -->
                                 <div class=" mb-3 mt-3 text-start input">
                                     <label class="form-label" for="category" style="color:#212B5E;">Category</label>
-                                    <select id="category" name="category" data-live-search="true" class="form-control form-control-lg shadow-lg form-select <?php //echo 'selectpicker'?>" style="border-radius: 15px; padding-right: 40px; padding-left: 40px;">
+                                    <select id="category" name="category" data-live-search="true" class="form-control form-control-lg shadow-lg form-select <?php //echo 'selectpicker'
+                                                                                                                                                            ?>" style="border-radius: 15px; padding-right: 40px; padding-left: 40px;">
                                         <option value="">Select Category</option>
 
                                         <?php
@@ -95,27 +118,6 @@ include('../includes/header.php');
                             </div>
                             <!-- Form end -->
 
-                            <?php
-                            if (isset($_SESSION['book_added'])) {
-                                $msg = $_SESSION['book_added'];
-
-                                if ($_SESSION['book_added_flag']) {
-                                    $msg_color = "text-success";
-                                } else {
-                                    $msg_color = "text-danger";
-                                }
-
-                            ?>
-
-                                <p class="<?php echo $msg_color ?> ">
-                                    <?php echo $msg; ?>
-                                </p>
-
-                            <?php
-                                unset($_SESSION['book_added']);
-                                unset($_SESSION['book_added_flag']);
-                            }
-                            ?>
 
                             <button class="btn btn-lg btn-block text-white w-50 display-2 mb-3 " style="background-color: #212B5E; border-radius: 15px" type="submit" name="submit">Add</button>
                         </div>

@@ -26,8 +26,23 @@ if (isset($_POST['update_category'])) {
         $_SESSION['cateogry_updated_flag'] = false;
         $_SESSION['cateogry_updated'] = "Something went wrong, please try again later!";
     }
-} else if (isset($_GET['id'])) {
-    $key = $_GET['id'];
+} else if (isset($_POST['add_category'])){
+    $label = $_POST['label'];
+    $value = $_POST['value'];
+
+    $postData = [
+        'label' => $label,
+        'value' => $value,
+    ];
+
+    $ref_table = "categories";
+    $postRef_result = $database->getReference($ref_table)->push($postData);    
+
+    $_SESSION['category_added_flag'] = true;
+    $_SESSION['category_added'] = "Category added successfully!";
+}
+else if (isset($_GET['delete_id'])) {
+    $key = $_GET['delete_id'];
     $ref_table = "categories/" . $key;
 
     $delete_query_result =  $database->getReference($ref_table)->remove();

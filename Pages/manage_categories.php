@@ -11,6 +11,52 @@ include('../includes/header.php');
                     <div class="card shadow-lg" style=" border-radius: 20px">
                         <!--start of card-->
                         <div class="card-body p-5 pb-2 text-center">
+
+                            <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Add a Category</h3>
+
+                            <?php
+                            if (isset($_SESSION['category_added'])) {
+                                $msg = $_SESSION['category_added'];
+
+                                if ($_SESSION['category_added_flag']) {
+                                    $msg_color = "alert-success";
+                                } else {
+                                    $msg_color = "alert-danger";
+                                }
+
+                            ?>
+
+                                <div class="alert <?php echo $msg_color ?>" role="alert">
+                                    <?php echo $msg ?>
+                                </div>
+
+                            <?php
+                                unset($_SESSION['category_added']);
+                                unset($_SESSION['category_added_flag']);
+                            }
+                            ?>
+
+                            <!-- Add Category Field start -->
+                            <form class="col-sm-12 d-flex flex-row justify-content-center align-items-center mb-3" method="post" action="../db/manage_categories_action.php">
+                                <div class="col-sm-4 d-flex flex-row justify-content-evenly align-items-center input text-start">
+                                    <label class="form-label mb-0" for="label" style="color:#212B5E;">Label</label>
+                                    <input type="text" id="label" name="label" class="form-control form-control-lg shadow-lg w-75" aria-describedby="basic-addon1" value="" style="border-radius: 15px; padding-left: 5px; padding-right: 5px;" required />
+                                </div>
+                                <div class="col-sm-4 d-flex flex-row justify-content-evenly align-items-center input text-start">
+                                    <label class="form-label mb-0" for="value" style="color:#212B5E;">Value</label>
+                                    <input type="text" id="value" name="value" class="form-control form-control-lg shadow-lg w-75" aria-describedby="basic-addon1" value="" style="border-radius: 15px; padding-left: 5px; padding-right: 5px;" required />
+                                </div>
+                                <div class="col-sm-4 d-flex flex-row justify-content-evenly align-items-center">
+                                    <button class="btn btn-lg btn-block text-white display-2 w-75" style="background-color: #212B5E; border-radius: 15px" type="add_category" name="add_category">Add</button>
+                                </div>
+                            </form>
+                            <!-- Add Category Field end -->
+
+                            <!--horizontal line-->
+                            <div class="d-flex justify-content-center align-items-center" style="height: 5vw">
+                                <hr class="w-50" style="border: 2px solid #212B5E; border-radius: 4px;" />
+                            </div>
+
                             <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Manage Categories</h3>
 
                             <!--############ FOR SEARCH CONSIDER DATALIST! ###############-->
@@ -32,8 +78,6 @@ include('../includes/header.php');
                                 $category = $database->getReference($ref_table)->getChild($category_key)->getValue();
 
                                 if ($category > 0) {
-
-
                             ?>
 
                                     <!-- Edit Category Field start -->
@@ -41,7 +85,7 @@ include('../includes/header.php');
                                         <input type="hidden" name="key" value="<?php echo $category_key ?>" />
                                         <div class="col-sm-4 d-flex flex-row justify-content-evenly align-items-center input text-start">
                                             <label class="form-label mb-0" for="label" style="color:#212B5E;">Label</label>
-                                            <input type="text" id="label" name="label" class="form-control form-control-lg shadow-lg w-75" aria-describedby="basic-addon1" value="<?php echo $category['label'] ?>" style="border-radius: 15px; padding-left: 5px; padding-right: 5px;" required/>
+                                            <input type="text" id="label" name="label" class="form-control form-control-lg shadow-lg w-75" aria-describedby="basic-addon1" value="<?php echo $category['label'] ?>" style="border-radius: 15px; padding-left: 5px; padding-right: 5px;" required />
                                         </div>
                                         <div class="col-sm-4 d-flex flex-row justify-content-evenly align-items-center input text-start">
                                             <label class="form-label mb-0" for="value" style="color:#212B5E;">Value</label>
@@ -57,9 +101,9 @@ include('../includes/header.php');
                                 } else {
                                 ?>
 
-                                    <p class="mx-5 text-danger">
+                                    <div class="alert mx-5 alert-danger" role="alert">
                                         Something went wrong, try again later!
-                                    </p>
+                                    </div>
 
                                 <?php
                                 }
@@ -71,16 +115,16 @@ include('../includes/header.php');
 
                                 //message color changes wether update is successful or failed
                                 if ($_SESSION['cateogry_updated_flag']) {
-                                    $msg_color = "text-success";
+                                    $msg_color = "alert-success";
                                 } else {
-                                    $msg_color = "text-danger";
+                                    $msg_color = "alert-danger";
                                 }
 
                                 ?>
 
-                                <p class="mx-5 <?php echo $msg_color ?> ">
-                                    <?php echo $msg; ?>
-                                </p>
+                                <div class="alert <?php echo $msg_color ?>" role="alert">
+                                    <?php echo $msg ?>
+                                </div>
 
                             <?php
                                 //clearing session variables
@@ -91,17 +135,17 @@ include('../includes/header.php');
                             //message after category deletion
                             if (isset($_SESSION['cateogry_deleted'])) {
                                 $msg = $_SESSION['cateogry_deleted'];
-                                if($_SESSION['cateogry_deleted_flag']){
-                                    $msg_color = "text-success";
-                                }else{
-                                    $msg_color = "text-danger";
+                                if ($_SESSION['cateogry_deleted_flag']) {
+                                    $msg_color = "alert-success";
+                                } else {
+                                    $msg_color = "alert-danger";
                                 }
 
                             ?>
 
-                                <p class="mx-5 <?php echo $msg_color ?> ">
-                                    <?php echo $msg; ?>
-                                </p>
+                                <div class="alert <?php echo $msg_color ?>" role="alert">
+                                    <?php echo $msg ?>
+                                </div>
 
                             <?php
                                 //clearing session variables
@@ -152,7 +196,7 @@ include('../includes/header.php');
                                                             </a>
                                                         </td>
                                                         <td>
-                                                            <a class="btn btn-sm text-white w-100" style="background-color: #98030e; border-radius: 5px" href="../db/manage_categories_action.php?id=<?php echo $key ?>">
+                                                            <a class="btn btn-sm text-white w-100" style="background-color: #98030e; border-radius: 5px" href="../db/manage_categories_action.php?delete_id=<?php echo $key ?>">
                                                                 Delete
                                                             </a>
                                                         </td>
@@ -177,13 +221,6 @@ include('../includes/header.php');
         </div>
     </div>
 </div>
-
-
-<!-- <div class="container-fluid">
-    <div class="d-flex justify-content-center align-items-center" style="height: 40vw;">
-        <img src="../images/page_construction.jpg" alt="">
-    </div>
-</div> -->
 
 <?php
 include('../includes/footer.php');

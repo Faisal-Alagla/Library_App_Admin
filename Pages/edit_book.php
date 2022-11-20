@@ -18,16 +18,16 @@ include('../includes/header.php');
                                 $msg = $_SESSION['book_updated'];
 
                                 if ($_SESSION['book_updated_flag']) {
-                                    $msg_color = "text-success";
+                                    $msg_color = "alert-success";
                                 } else {
-                                    $msg_color = "text-danger";
+                                    $msg_color = "alert-danger";
                                 }
 
                             ?>
 
-                                <p class="<?php echo $msg_color ?> ">
-                                    <?php echo $msg; ?>
-                                </p>
+                                <div class="alert <?php echo $msg_color ?>" role="alert">
+                                    <?php echo $msg ?>
+                                </div>
 
                                 <?php
                                 unset($_SESSION['book_updated']);
@@ -77,7 +77,7 @@ include('../includes/header.php');
                                                 <i class="bi bi-card-image"></i>
                                             </div>
                                             <div class="col-sm-3 d-flex justify-content-center">
-                                                <img class="pt-2" src="../images/book_images/<?php echo $book['image']?>" alt="" style="max-width: 45px;">
+                                                <img class="pt-2" src="../images/book_images/<?php echo $book['image'] ?>" alt="" style="max-width: 45px;">
                                             </div>
                                         </div>
                                         <!-- Image Field end -->
