@@ -27,7 +27,7 @@ include('../includes/header.php');
           <p class="text-light mx-2">|</p>
         </div>
         <div class="col-sm-5 text-center">
-          <h3 class="text-light">366</h3>
+          <h3 class="text-light"><?php echo $num_requests; ?></h3>
         </div>
       </div>
     </div>

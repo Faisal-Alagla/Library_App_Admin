@@ -59,7 +59,7 @@ if (isset($_POST['update_category'])) {
     $_SESSION['category_added'] = "Category added successfully!";
 }
 //delete category
-else if (isset($_GET['delete_id'])) {
+else if (isset($_GET['delete_id']) && $_GET['delete_id'] != '') {
     $key = $_GET['delete_id'];
     $ref_table = "categories/" . $key;
 
@@ -91,7 +91,7 @@ else if (isset($_GET['delete_id'])) {
 } else {
     //error
     $_SESSION['cateogry_updated_flag'] = false;
-    $_SESSION['cateogry_updated'] = "Something went wrong, please validate your inputs!";
+    $_SESSION['cateogry_updated'] = "Something went wrong, please try again later!";
 }
 
 header('location: ../pages/manage_categories.php');

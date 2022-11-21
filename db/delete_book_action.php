@@ -5,7 +5,7 @@ if(!isset($_SESSION['user'])){
 }
 include("config.php");
 
-if (isset($_GET['id'])) {
+if (isset($_GET['id']) && $_GET['id'] != '') {
     $key = $_GET['id'];
     $ref_table = "books/" . $key;
     

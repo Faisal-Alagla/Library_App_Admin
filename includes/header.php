@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['user'])){
+if (!isset($_SESSION['user'])) {
   header('location: login.php');
 }
 include("../db/config.php");
@@ -29,24 +29,24 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
 </head>
 
 <style>
-    .input input {
-        padding-left: 40px;
-    }
+  .input input {
+    padding-left: 40px;
+  }
 
-    .input {
-        position: relative;
-    }
+  .input {
+    position: relative;
+  }
 
-    .input i {
-        position: absolute;
-        left: 0;
-        top: 38px;
-        padding: 9px 8px;
-    }
+  .input i {
+    position: absolute;
+    left: 0;
+    top: 38px;
+    padding: 9px 8px;
+  }
 
-    td {
-        vertical-align: middle;
-    }
+  td {
+    vertical-align: middle;
+  }
 </style>
 
 <body style="background-color: #1b1b1b">
@@ -74,17 +74,17 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
               $ref_table = "announcements";
               $fetch_announcement = $database->getReference($ref_table)->getValue();
 
-              if($fetch_announcement > 0){
+              if ($fetch_announcement > 0) {
                 $_SESSION['announcement_exists'] = true;
-              }else{
+              } else {
                 $_SESSION['announcement_exists'] = false;
               }
-              
+
               if ($_SESSION['announcement_exists']) {
                 $announcement_action = "Update";
               } else {
                 $announcement_action = "Post";
-              } 
+              }
 
               $ref_table = "";
               $fetch_announcement = "";
@@ -101,7 +101,29 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
             </ul>
           </li>
           <li class="nav-item px-2">
-            <a class="nav-link <?php if ($cur_page == 'book_requests.php') echo $active; ?>" href="book_requests.php" tabindex="-1" aria-disabled="true">Book Requests</a>
+            <a  class="position-relative nav-link <?php if ($cur_page == 'book_requests.php') echo $active; ?>" href="book_requests.php" tabindex="-1" aria-disabled="true">
+              Book Requests
+
+              <?php
+              $ref_table = "book_requests";
+              $num_requests = $database->getReference($ref_table)->getSnapshot()->numChildren();
+
+              if( $num_requests > 0) {
+
+              ?>
+
+              <span class="position-absolute top-25 start-100 translate-middle badge rounded-pill bg-danger">
+                <?php echo $num_requests ?>
+              </span>
+
+              <?php
+
+              }
+
+              $ref_table = "";
+              ?>
+
+            </a>
           </li>
         </ul>
         <div class="d-flex flex-row">

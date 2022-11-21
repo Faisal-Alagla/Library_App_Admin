@@ -30,13 +30,6 @@ $fetch_announcement = "";
                         <!--start of form card-->
                         <form class="card-body d-flex flex-column p-5 text-center" method="POST" action="../db/post_announcement_action.php">
                             <h3 class="mb-5 fw-bold" style=" color:#212B5E; "><?php echo $card_title ?> Announcement</h3>
-                            <div class="mb-4 text-end">
-                                <!-- text field start -->
-                                <div class="input mb-4 text-end mt-3">
-                                    <textarea type="text" name="announcement" rows="10" id="announcement" class="form-control form-control-lg shadow-lg rows" style="border-radius: 15px;"><?php echo $current_announcement ?></textarea>
-                                </div>
-                                <!-- text field end -->
-                            </div>
 
                             <?php
                             if (isset($_SESSION['post_announcement'])) {
@@ -59,6 +52,14 @@ $fetch_announcement = "";
                                 unset($_SESSION['post_announcement_flag']);
                             }
                             ?>
+
+                            <div class="mb-4 text-end">
+                                <!-- text field start -->
+                                <div class="input mb-4 text-end mt-3">
+                                    <textarea type="text" name="announcement" rows="10" id="announcement" class="form-control form-control-lg shadow-lg rows" style="border-radius: 15px;"><?php echo $current_announcement ?></textarea>
+                                </div>
+                                <!-- text field end -->
+                            </div>
 
                             <div class="col-sm-12 row justify-content-center align-self-center">
                                 <div class="col-sm-6 px-1">
