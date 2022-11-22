@@ -106,13 +106,14 @@ include('../includes/header.php');
                                                     $num = 1;
                                                     foreach ($fetch_category as $key => $row) {
                                                         $selected = '';
-                                                        if($row['value'] == $book['category']) {
+                                                        $category = $row['category'];
+                                                        if($category == $book['category']) {
                                                             $selected = 'selected';
                                                         }
                                                 ?>
 
-                                                        <option value="<?php echo $row['value']; ?>" <?php echo $selected; ?>>
-                                                            <?php echo $row['label'] ?>
+                                                        <option value="<?php echo $category; ?>" <?php echo $selected; ?>>
+                                                            <?php echo $category ?>
                                                         </option>
 
                                                 <?php

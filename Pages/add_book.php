@@ -77,9 +77,10 @@ include('../includes/header.php');
                                         if ($fetch_category > 0) {
                                             $num = 1;
                                             foreach ($fetch_category as $key => $row) {
+                                                $category = $row['category'];
                                         ?>
 
-                                                <option value="<?php echo $row['value']; ?>" ><?php echo $row['label'] ?></option>
+                                                <option value="<?php echo $category; ?>" ><?php echo $category ?></option>
 
                                         <?php
                                             }
