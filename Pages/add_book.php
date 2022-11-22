@@ -85,6 +85,9 @@ include('../includes/header.php');
                                         <?php
                                             }
                                         }
+
+                                        unset($ref_table);
+                                        unset($fetch_category);
                                         ?>
 
                                     </select>

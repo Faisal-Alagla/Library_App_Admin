@@ -107,7 +107,7 @@ include('../includes/header.php');
                                                     foreach ($fetch_category as $key => $row) {
                                                         $selected = '';
                                                         $category = $row['category'];
-                                                        if($category == $book['category']) {
+                                                        if ($category == $book['category']) {
                                                             $selected = 'selected';
                                                         }
                                                 ?>
@@ -145,6 +145,9 @@ include('../includes/header.php');
                                     <!-- Form end -->
 
                             <?php
+                                    unset($ref_table);
+                                    unset($fetch_category);
+                                    unset($book);
                                 } else {
                                     $_SESSION['edit_book_error'] = "Book wasn't found, try again later";
                                     header('location: book_list.php');

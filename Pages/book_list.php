@@ -138,6 +138,8 @@ include('../includes/header.php');
                                                 }
                                             }
 
+                                            unset($ref_table);
+                                            unset($fetch_books);
                                             ?>
 
 

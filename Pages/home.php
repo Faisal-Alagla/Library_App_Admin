@@ -66,8 +66,8 @@ include('../includes/header.php');
               echo "There are currently no accouncement(s)";
             }
 
-            $ref_table = "";
-            $fetch_announcement = "";
+            unset($ref_table);
+            unset($fetch_announcement);
             ?>
 
           </p>

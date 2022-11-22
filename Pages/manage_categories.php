@@ -101,6 +101,7 @@ include('../includes/header.php');
                                     <!-- Edit Category Field end -->
 
                                 <?php
+
                                 } else {
                                 ?>
 
@@ -110,6 +111,9 @@ include('../includes/header.php');
 
                                 <?php
                                 }
+                                unset($category_key);
+                                unset($ref_table);
+                                unset($category);
                             }
 
                             //message after category update
@@ -227,7 +231,8 @@ include('../includes/header.php');
                                             <?php
                                                 }
                                             }
-
+                                            unset($ref_table);
+                                            unset($fetch_categories);
                                             ?>
 
                                         </tbody>

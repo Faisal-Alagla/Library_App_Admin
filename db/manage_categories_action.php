@@ -106,7 +106,7 @@ else if (isset($_GET['delete_id']) && $_GET['delete_id'] != '') {
 }
 
 /*
-category_exists(): function to check if a category already exists
+category_exists(): function to check if a category already exists in the database
 parameters:   $cat: the category to check for
               $db: to pass $database for querying
 returns true if the passed category already exists, false otherwise
