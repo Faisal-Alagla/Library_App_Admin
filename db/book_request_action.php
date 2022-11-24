@@ -29,12 +29,8 @@ if (isset($_POST['accept_request'])) {
         $summary = $_POST['summary'];
 
         if (strlen($image) > 0) {
-            $image_name = $isbn . $image;
-
             //moving the image from requests_images to book_images
-            rename('../images/requests_images/' . $image, '../images/book_images/' . $image_name);
-        } else {
-            $image_name = "";
+            rename('../images/requests_images/' . $image, '../images/book_images/' . $image);
         }
 
         $postData = [
@@ -42,7 +38,7 @@ if (isset($_POST['accept_request'])) {
             'title' => $title,
             'author' => $author,
             'category' => $category,
-            'image' => $image_name,
+            'image' => $image,
             'date' => $date,
             'summary' => $summary,
         ];

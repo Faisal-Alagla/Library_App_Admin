@@ -65,7 +65,7 @@ session_start();
                                         <label class="form-label" for="email" style="color:#212B5E;">Email</label>
                                         <input type="text" id="email" name="email"
                                             class="form-control form-control-lg shadow-lg"
-                                            aria-describedby="basic-addon1" style="border-radius: 15px" />
+                                            aria-describedby="basic-addon1" style="border-radius: 15px" required/>
                                         <img src="../images/User_icon.png" alt="">
                                     </div>
                                     <!-- user/email field end -->
@@ -75,7 +75,7 @@ session_start();
                                         <label class="form-label" for="password" style="color:#212B5E;">Password</label>
                                         <input type="password" id="password" name="password"
                                             class="form-control form-control-lg shadow-lg "
-                                            style="border-radius: 15px; padding-right: 40px;" />
+                                            style="border-radius: 15px; padding-right: 40px;" required/>
                                         <img src="../images/Lock_icon.png" alt="">
                                     </div>
                                     <!-- Password field end -->
