@@ -24,8 +24,7 @@ if (isset($_POST['accept_request'])) {
         $title = $_POST['title'];
         $author = $_POST['author'];
         $category = $_POST['category'];
-        // $image = $_POST['image'];
-        $image = $_FILES['image']['name'];
+        $image = $_POST['image'];
         $date = $_POST['date'];
         $summary = $_POST['summary'];
 
@@ -63,13 +62,13 @@ if (isset($_POST['accept_request'])) {
 //decline request
 else if (isset($_POST['decline_request'])) {
     $key = $_POST['key'];
-    $requests_table = "book_requests/" . $key;
-
-    $image_name = $database->getReference($requests_table)->getValue()['image'];
-    if ($image_name > 0) {
-        unlink('../images/requests_images/' . $image_name);
+    $image = $_POST['image'];
+    
+    if (strlen($image) > 0) {
+        unlink('../images/requests_images/' . $image);
     }
-
+    
+    $requests_table = "book_requests/" . $key;
     $database->getReference($requests_table)->remove();
 
     if (isset($_SESSION['book_key'])) {
@@ -85,5 +84,6 @@ else if (isset($_POST['decline_request'])) {
 if (!isset($send_to_view)) {
     header('location: ../pages/book_requests.php');
 } else {
+    unset($send_to_view);
     header('location: ../pages/view_request.php');
 }
