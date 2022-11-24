@@ -24,14 +24,16 @@ if (isset($_POST['accept_request'])) {
         $title = $_POST['title'];
         $author = $_POST['author'];
         $category = $_POST['category'];
+        // $image = $_POST['image'];
         $image = $_FILES['image']['name'];
         $date = $_POST['date'];
         $summary = $_POST['summary'];
 
-        if ($image != Null) {
+        if (strlen($image) > 0) {
             $image_name = $isbn . $image;
 
-            move_uploaded_file($_FILES['image']['tmp_name'], '../images/book_images/' . $image_name);
+            //moving the image from requests_images to book_images
+            rename('../images/requests_images/' . $image, '../images/book_images/' . $image_name);
         } else {
             $image_name = "";
         }
@@ -51,12 +53,8 @@ if (isset($_POST['accept_request'])) {
 
         //remove from requests
         $requests_table = "book_requests/" . $key;
-        
-        $image_name = $database->getReference($requests_table)->getValue()['image'];
-        if ($image_name > 0) {
-            unlink('../images/book_images/' . $image_name);
-        }
-        $delete_query_result =  $database->getReference($requests_table)->remove();
+
+        $database->getReference($requests_table)->remove();
 
         $_SESSION['book_accepted_flag'] = true;
         $_SESSION['book_accepted'] = "Book added successfully!";
@@ -69,13 +67,12 @@ else if (isset($_POST['decline_request'])) {
 
     $image_name = $database->getReference($requests_table)->getValue()['image'];
     if ($image_name > 0) {
-        unlink('../images/book_images/' . $image_name);
+        unlink('../images/requests_images/' . $image_name);
     }
 
-    $delete_query_result =  $database->getReference($requests_table)->remove();
+    $database->getReference($requests_table)->remove();
 
-
-    if ($_SESSION['book_key']) {
+    if (isset($_SESSION['book_key'])) {
         unset($_SESSION['book_key']);
     }
     $_SESSION['book_declined_flag'] = true;

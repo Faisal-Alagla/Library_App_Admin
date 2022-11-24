@@ -61,8 +61,8 @@ include('../includes/header.php');
                             }
 
                             //error message if can't view request
-                            if (isset($_SESSION['view_rquest_error'])) {
-                                $msg = $_SESSION['view_rquest_error'];
+                            if (isset($_SESSION['view_request_error'])) {
+                                $msg = $_SESSION['view_request_error'];
                                 $msg_color = "alert-danger";
 
                             ?>
@@ -73,7 +73,7 @@ include('../includes/header.php');
 
                             <?php
                                 //clearing session variables
-                                unset($_SESSION['view_rquest_error']);
+                                unset($_SESSION['view_request_error']);
                             }
                             ?>
 

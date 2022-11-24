@@ -38,6 +38,7 @@ include('../includes/header.php');
                             if (isset($_GET['id']) || isset($_SESSION['book_key'])) {
                                 if (isset($_SESSION['book_key'])) {
                                     $book_key = $_SESSION['book_key'];
+                                    unset($_SESSION['book_key']);
                                 } else {
                                     $book_key = $_GET['id'];
                                 }
@@ -79,14 +80,14 @@ include('../includes/header.php');
                                 <div class="col-sm-12 d-flex flex-row justify-content-center align-items-center">
                                     <div class="input col-sm-9">
                                         <label class="form-label" for="image" style="color:#212B5E;">Image</label>
-                                        <input type="file" id="image" name="image"
+                                        <input type="text" id="image" name="image"
                                             class="form-control form-control-lg shadow-lg"
                                             aria-describedby="basic-addon1" value="<?php echo $book['image'] ?>"
                                             style="border-radius: 15px" />
                                         <i class="bi bi-card-image"></i>
                                     </div>
                                     <div class="col-sm-3 d-flex justify-content-center">
-                                        <img class="pt-2" src="../images/book_images/<?php echo $book['image'] ?>"
+                                        <img class="pt-2" src="../images/requests_images/<?php echo $book['image'] ?>"
                                             alt="" style="max-width: 45px;">
                                     </div>
                                 </div>
@@ -125,7 +126,7 @@ include('../includes/header.php');
                                                         if ($category == $book['category']) {
                                                             $selected = 'selected';
                                                         }
-                                                ?>
+                                        ?>
 
                                         <option value="<?php echo $category; ?>" <?php echo $selected; ?>>
                                             <?php echo $category ?>
@@ -134,7 +135,7 @@ include('../includes/header.php');
                                         <?php
                                                     }
                                                 }
-                                                ?>
+                                        ?>
 
                                     </select>
                                     <i class="bi bi-tag"></i>
@@ -169,12 +170,12 @@ include('../includes/header.php');
                                     unset($fetch_category);
                                     unset($book);
                                 } else {
-                                    $_SESSION['view_rquest_error'] = "request wasn't found, try again later";
+                                    $_SESSION['view_request_error'] = "request wasn't found, try again later";
                                     header('location: book_requests.php');
                                     exit();
                                 }
                             } else {
-                                $_SESSION['view_rquest_error'] = "Something went wrong, try again later";
+                                $_SESSION['view_request_error'] = "Something went wrong, try again later";
                                 header('location: book_requests.php');
                                 exit();
                             }
