@@ -71,9 +71,9 @@ else if (isset($_POST['decline_request'])) {
     $requests_table = "book_requests/" . $key;
     $database->getReference($requests_table)->remove();
 
-    if (isset($_SESSION['book_key'])) {
-        unset($_SESSION['book_key']);
-    }
+    // if (isset($_SESSION['book_key'])) {
+    //     unset($_SESSION['book_key']);
+    // }
     $_SESSION['book_declined_flag'] = true;
     $_SESSION['book_declined'] = "Request declined successfully!";
 } else {

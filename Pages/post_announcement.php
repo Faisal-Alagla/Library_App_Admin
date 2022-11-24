@@ -76,7 +76,7 @@ unset($fetch_announcement);
                                         if ($_SESSION['announcement_exists']) {
                                             echo "Update";
                                         } else {
-                                            echo "Submit";
+                                            echo "Post";
                                         }
                                         ?>
 

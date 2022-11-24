@@ -7,7 +7,7 @@ include('../includes/header.php');
     <div class="col-sm-12 p-0 my-5">
         <div class="container p-0 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100 p-0">
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="col-sm-12 col-md-11 col-lg-10 col-xl-9">
                     <div class="card shadow-lg" style=" border-radius: 20px">
                         <!--start of card-->
                         <div class="card-body p-5 pb-2 text-center">
@@ -41,7 +41,7 @@ include('../includes/header.php');
                                 method="post" action="../db/manage_categories_action.php">
                                 <div
                                     class="col-sm-4 d-flex flex-row justify-content-evenly align-items-center input text-start">
-                                    <label class="form-label" for="category" style="color:#212B5E;">Category</label>
+                                    <!-- <label class="form-label" for="category" style="color:#212B5E;">Category</label> -->
                                     <input type="text" id="category" name="category"
                                         class="form-control form-control-lg shadow-lg w-75"
                                         aria-describedby="basic-addon1" value=""
@@ -52,7 +52,7 @@ include('../includes/header.php');
                                     <input type="text" id="value" name="value" class="form-control form-control-lg shadow-lg w-75" aria-describedby="basic-addon1" value="" style="border-radius: 15px; padding-left: 5px; padding-right: 5px;" required />
                                 </div> -->
                                 <div class="col-sm-4 d-flex flex-row justify-content-evenly align-items-center">
-                                    <button class="btn btn-lg btn-block text-white display-2 w-75"
+                                    <button class="btn btn-lg btn-block text-white display-2 w-100 ms-2"
                                         style="background-color: #212B5E; border-radius: 15px" type="add_category"
                                         name="add_category">Add</button>
                                 </div>
