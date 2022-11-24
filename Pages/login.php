@@ -13,31 +13,31 @@ session_start();
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi " crossorigin="anonymous " />
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+    </script>
     <title>Login</title>
     <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <style>
-        body {
-            font-family: 'Cairo';
-            font-weight: bold;
-        }
+    body {
+        font-family: 'Cairo';
+        font-weight: bold;
+    }
 
-        .input input {
-            padding-left: 40px;
-        }
+    .input input {
+        padding-left: 40px;
+    }
 
-        .input {
-            position: relative;
-        }
+    .input {
+        position: relative;
+    }
 
-        .input img {
-            position: absolute;
-            left: 0;
-            top: 38px;
-            padding: 9px 8px;
-        }
+    .input img {
+        position: absolute;
+        left: 0;
+        top: 38px;
+        padding: 9px 8px;
+    }
     </style>
 </head>
 

@@ -1,7 +1,5 @@
 <?php
 include('../includes/header.php');
-include('../util/functions.php');
-
 ?>
 
 <?php

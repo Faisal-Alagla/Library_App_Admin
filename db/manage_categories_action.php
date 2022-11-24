@@ -4,13 +4,14 @@ if (!isset($_SESSION['user'])) {
     header('location: ../pages/login.php');
 }
 include("config.php");
+include("functions.php");
 
 //update category
 if (isset($_POST['update_category'])) {
     $category_key = $_POST['key'];
     $category = $_POST['category'];
 
-    $category_exists = category_exists($category, $database);
+    $category_exists = item_exists($category, $database, 'categories', 'category');
     if ($category_exists) {
         //category already exists -> don't update to new one & display error message
         $_SESSION['cateogry_updated_flag'] = false;
@@ -51,7 +52,7 @@ if (isset($_POST['update_category'])) {
 } else if (isset($_POST['add_category'])) {
     $category = $_POST['category'];
 
-    $category_exists = category_exists($category, $database);
+    $category_exists = item_exists($category, $database, 'categories', 'category');
     if ($category_exists) {
         //category already exists -> don't update to new one & display error message
         $_SESSION['category_added_flag'] = false;
@@ -103,25 +104,6 @@ else if (isset($_GET['delete_id']) && $_GET['delete_id'] != '') {
     //error
     $_SESSION['cateogry_updated_flag'] = false;
     $_SESSION['cateogry_updated'] = "Something went wrong, please try again later!";
-}
-
-/*
-category_exists(): function to check if a category already exists in the database
-parameters:   $cat: the category to check for
-              $db: to pass $database for querying
-returns true if the passed category already exists, false otherwise
-*/
-function category_exists($cat, $db)
-{
-    $categories_table = 'categories';
-    $fetch_categories = $db->getReference($categories_table)->getValue();
-
-    foreach ($fetch_categories as $category_key => $row) {
-        if ($row['category'] == $cat) {
-            return true;
-        }
-    }
-    return false;
 }
 
 header('location: ../pages/manage_categories.php');
