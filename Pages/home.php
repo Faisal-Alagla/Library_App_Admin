@@ -1,12 +1,14 @@
 <?php
 include('../includes/header.php');
+
+$user = $auth->getUser($_SESSION['verified_user_id']);
 ?>
 
 <div class="container-fluid">
     <!--Welcome Messsage start-->
     <div class="d-flex justify-content-center align-items-center" style="height: 10vw">
         <h1 class="text-light fw-bold">Welcome,
-            <?php echo $_SESSION['user'] ?>!
+            <?php echo $user->displayName ?>!
         </h1>
     </div>
     <!--Welcome Messsage end-->

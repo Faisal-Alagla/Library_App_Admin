@@ -24,7 +24,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['verified_user_id'] = $uid;
                 // $_SESSION['idTokenString'] = $idTokenString;
 
-                $_SESSION['user'] = $user->displayName;
+                // $_SESSION['user'] = $user->displayName;
                 header('location: ../pages/home.php');
                 exit();
             } catch (FailedToVerifyToken $e) {
