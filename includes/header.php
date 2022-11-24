@@ -130,7 +130,7 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
         </ul>
         <div class="d-flex flex-row">
           <div class="d-flex mx-2" method="post" action="#">
-            <a class="btn btn-outline-light <?php if ($cur_page == 'profile.php') echo $active; ?>" href="profile.php">Profile</a>
+            <a class="btn btn-outline-light <?php if ($cur_page == 'profile.php') echo $active; ?>" href="profile.php?id=<?php echo $_SESSION['verified_user_id'] ?>">Profile</a>
           </div>
           <form class="d-flex mx-2" method="post" action="../db/logout_action.php">
             <button class="btn btn-outline-light" type="logout" name="logout">Logout</button>

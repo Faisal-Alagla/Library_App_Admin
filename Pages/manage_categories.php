@@ -40,7 +40,7 @@ include('../includes/header.php');
                             <form class="col-sm-12 d-flex flex-row justify-content-center align-items-center mb-3"
                                 method="post" action="../db/manage_categories_action.php">
                                 <div
-                                    class="col-sm-4 d-flex flex-row justify-content-evenly align-items-center input text-start">
+                                    class="col-sm-7 d-flex flex-row justify-content-evenly align-items-center input text-start">
                                     <!-- <label class="form-label" for="category" style="color:#212B5E;">Category</label> -->
                                     <input type="text" id="category" name="category"
                                         class="form-control form-control-lg shadow-lg w-75"
@@ -51,7 +51,7 @@ include('../includes/header.php');
                                     <label class="form-label mb-0" for="value" style="color:#212B5E;">Value</label>
                                     <input type="text" id="value" name="value" class="form-control form-control-lg shadow-lg w-75" aria-describedby="basic-addon1" value="" style="border-radius: 15px; padding-left: 5px; padding-right: 5px;" required />
                                 </div> -->
-                                <div class="col-sm-4 d-flex flex-row justify-content-evenly align-items-center">
+                                <div class="col-sm-5 d-flex flex-row justify-content-evenly align-items-center">
                                     <button class="btn btn-lg btn-block text-white display-2 w-100 ms-2"
                                         style="background-color: #212B5E; border-radius: 15px" type="add_category"
                                         name="add_category">Add</button>

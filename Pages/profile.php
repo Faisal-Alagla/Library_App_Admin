@@ -1,6 +1,7 @@
 <?php
 include('../includes/header.php');
 
+// $user = $auth->getUser($_SESSION['verified_user_id']);
 ?>
 
 <div class="container-fluid">

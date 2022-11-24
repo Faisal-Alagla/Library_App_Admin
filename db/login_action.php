@@ -22,12 +22,7 @@ if (isset($_POST['login'])) {
                 $uid = $verifiedIdToken->claims()->get('sub');
 
                 $_SESSION['verified_user_id'] = $uid;
-                $_SESSION['idTokenString'] = $idTokenString;
-
-                // echo get_object_vars($user)['userProperties'];
-                // $ref_table = "users";
-                // $fetch_user = $database->getReference($ref_table)->getValue();
-                // $username = $fetch_user[$uid]['fname'];
+                // $_SESSION['idTokenString'] = $idTokenString;
 
                 $_SESSION['user'] = $user->displayName;
                 header('location: ../pages/home.php');
