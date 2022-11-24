@@ -32,7 +32,7 @@ include('../includes/header.php');
                             </div>
 
                             <?php
-                            //clearing session variables
+                                //clearing session variables
                                 unset($_SESSION['book_accepted']);
                                 unset($_SESSION['book_accepted_flag']);
                             }
@@ -55,11 +55,11 @@ include('../includes/header.php');
                             </div>
 
                             <?php
-                            //clearing session variables
+                                //clearing session variables
                                 unset($_SESSION['book_declined']);
                                 unset($_SESSION['book_declined_flag']);
                             }
-                            
+
                             //error message if can't view request
                             if (isset($_SESSION['view_rquest_error'])) {
                                 $msg = $_SESSION['view_rquest_error'];
@@ -78,6 +78,17 @@ include('../includes/header.php');
                             ?>
 
                             <div class="mb-4 mx-2">
+
+                                <?php
+                                //fetching data from the requests table
+                                $ref_table = 'book_requests';
+                                $fetch_rquests = $database->getReference($ref_table)->getValue();
+
+                                //displaying requests table, if exists any
+                                if ($fetch_rquests > 0) {
+                                    $num = 1;
+                                ?>
+
                                 <!-- Table start -->
                                 <div class="mb-4 table-responsive">
                                     <table class="table table-dark table-hover text-center align-items-center">
@@ -92,15 +103,8 @@ include('../includes/header.php');
                                         <tbody>
 
                                             <?php
-                                            //fetching data from the books table
-                                            $ref_table = 'book_requests';
-                                            $fetch_books = $database->getReference($ref_table)->getValue();
-
-                                            //displaying table rows
-                                            if ($fetch_books > 0) {
-                                                $num = 1;
-                                                foreach ($fetch_books as $key => $row) {
-                                            ?>
+                                                foreach ($fetch_rquests as $key => $row) {
+                                                ?>
 
                                             <tr>
                                                 <td>
@@ -113,8 +117,7 @@ include('../includes/header.php');
                                                     <?php echo $row['title'] ?>
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-sm btn-success w-100"
-                                                        style="border-radius: 5px"
+                                                    <a class="btn btn-sm btn-success w-100" style="border-radius: 5px"
                                                         href="view_request.php?id=<?php echo $key ?>">
                                                         View
                                                     </a>
@@ -123,17 +126,33 @@ include('../includes/header.php');
 
                                             <?php
                                                 }
-                                            }
-
-                                            unset($ref_table);
-                                            unset($fetch_books);
-                                            ?>
-
+                                                ?>
 
                                         </tbody>
                                     </table>
                                 </div>
                                 <!-- Table end -->
+
+                                <?php
+                                } else {
+                                ?>
+
+                                <!--No requests card-->
+                                <div class="card shadow-lg" style=" border-radius: 20px">
+                                    <div class="card-body p-5 pb-2 text-center">
+                                        <h3 class="mb-5 fw-bold text-success" style=" color:#212B5E; ">
+                                            There are currently no book requests
+                                        </h3>
+                                    </div>
+                                </div>
+
+                                <?php
+                                }
+
+                                unset($ref_table);
+                                unset($fetch_rquests);
+                                ?>
+
                             </div>
                         </div>
                         <!--end of card-->
