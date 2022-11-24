@@ -17,6 +17,7 @@ if(isset($_POST['update_dName'])){
     $auth->updateUser($uid, $properties);
     $_SESSION['profile_update'] = "Display name has been updated";
 
+    header('location: ../pages/profile.php');
 }
 //update password
 else if(isset($_POST['update_pwd'])) {
@@ -33,16 +34,18 @@ else if(isset($_POST['update_pwd'])) {
         }else{
             $_SESSION['profile_error'] = "Couldn't update password!";
         }
-
+        
+        header('location: ../pages/profile.php');
     }else{
         //passwords don't match or less than 8
         $_SESSION['profile_error'] = "Password and Re-password must match!";
+        header('location: ../pages/profile.php?changepwd=changepwd');
     }
 }
 //error
 else{
     $_SESSION['profile_error'] = "Something went wrong!";
+    header('location: ../pages/profile.php');
 }
 
-header('location: ../pages/profile.php');
 ?>
