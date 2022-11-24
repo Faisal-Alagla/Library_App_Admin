@@ -27,7 +27,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['user'] = '';
                 header('location: ../pages/home.php');
                 exit();
-            } catch (FailedToVerifyToken $e) {
+            } catch (Exception $e) {
                 echo 'The token is invalid: ' . $e->getMessage();
                 $_SESSION['invalid_login'] = "Invalid login";
                 header('location: ../pages/login.php');
