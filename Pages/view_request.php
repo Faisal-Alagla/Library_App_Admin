@@ -10,15 +10,15 @@ include('../includes/header.php');
             <div class="row d-flex justify-content-center align-items-center h-100 p-0">
                 <div class="col-12 col-md-10 col-lg-8 col-xl-6">
                     <form class="card shadow-lg" style="border-radius: 20px" method="post"
-                        action="../db/edit_book_action.php" enctype="multipart/form-data">
-                        <div class="card-body p-5 text-center">
-                            <h3 class="mb-5 fw-bold" style="color:#212B5E;">Edit Book Information</h3>
+                        action="../db/book_request_action.php" enctype="multipart/form-data">
+                        <div class="card-body p-5 d-flex flex-column text-center align-items-center">
+                            <h3 class="mb-5 fw-bold" style="color:#212B5E;">Requested Book Information</h3>
 
                             <?php
-                            if (isset($_SESSION['book_updated'])) {
-                                $msg = $_SESSION['book_updated'];
+                            if (isset($_SESSION['book_accepted'])) {
+                                $msg = $_SESSION['book_accepted'];
 
-                                if ($_SESSION['book_updated_flag']) {
+                                if ($_SESSION['book_accepted_flag']) {
                                     $msg_color = "alert-success";
                                 } else {
                                     $msg_color = "alert-danger";
@@ -31,27 +31,27 @@ include('../includes/header.php');
                             </div>
 
                             <?php
-                                unset($_SESSION['book_updated']);
-                                unset($_SESSION['book_updated_flag']);
+                                unset($_SESSION['book_accepted']);
+                                unset($_SESSION['book_accepted_flag']);
                             }
 
                             if (isset($_GET['id']) || isset($_SESSION['book_key'])) {
                                 if (isset($_SESSION['book_key'])) {
                                     $book_key = $_SESSION['book_key'];
-                                    unset($_SESSION['book_key']);
                                 } else {
                                     $book_key = $_GET['id'];
                                 }
 
-                                $ref_table = 'books';
+                                $ref_table = 'book_requests';
                                 $book = $database->getReference($ref_table)->getChild($book_key)->getValue();
 
                                 if ($book > 0) {
 
                                 ?>
+                                
 
                             <!-- Form start -->
-                            <div class="mb-4 text-start">
+                            <div class="mb-4 text-start w-100">
 
                                 <input type="hidden" name="key" value="<?php echo $book_key ?>" />
                                 <!-- ISBN Field start -->
@@ -169,21 +169,33 @@ include('../includes/header.php');
                                     unset($fetch_category);
                                     unset($book);
                                 } else {
-                                    $_SESSION['edit_book_error'] = "Book wasn't found, try again later";
-                                    header('location: book_list.php');
+                                    $_SESSION['view_rquest_error'] = "request wasn't found, try again later";
+                                    header('location: book_requests.php');
                                     exit();
                                 }
                             } else {
-                                $_SESSION['edit_book_error'] = "Something went wrong, try again later";
-                                header('location: book_list.php');
+                                $_SESSION['view_rquest_error'] = "Something went wrong, try again later";
+                                header('location: book_requests.php');
                                 exit();
                             }
 
                             ?>
 
-                            <button class="btn btn-lg btn-block text-white w-50 display-2 mb-3 "
-                                style="background-color: #212B5E; border-radius: 15px" type="update_book"
-                                name="update_book">Update</button>
+                            <div class="col-sm-12 row justify-content-center align-self-center">
+                                <div class="col-sm-6 px-1">
+                                    <button class="btn btn-lg btn-block text-white w-100 display-2 mb-3"
+                                        style="background-color: #212B5E; border-radius: 15px" name="accept_request" type="accept_request">
+                                        Accept
+                                    </button>
+                                </div>
+                                <div class="col-sm-6 px-1">
+                                    <button class="btn btn-lg btn-block text-white w-100 display-2 mb-3 "
+                                        style="background-color: #98030e; border-radius: 15px" name="decline_request"
+                                        type="decline_request">
+                                        Decline
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>

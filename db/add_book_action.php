@@ -6,7 +6,7 @@ if (!isset($_SESSION['user'])) {
 include("config.php");
 include("functions.php");
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['add_book'])) {
     $isbn = $_POST['isbn'];
 
     //check if this book already exists in the database
@@ -54,4 +54,3 @@ if (isset($_POST['submit'])) {
 }
 
 header('location: ../pages/add_book.php');
-?>

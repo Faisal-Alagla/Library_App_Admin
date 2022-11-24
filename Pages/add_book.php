@@ -139,8 +139,8 @@ include('../includes/header.php');
 
 
                             <button class="btn btn-lg btn-block text-white w-50 display-2 mb-3 "
-                                style="background-color: #212B5E; border-radius: 15px" type="submit"
-                                name="submit">Add</button>
+                                style="background-color: #212B5E; border-radius: 15px" type="add_book"
+                                name="add_book">Add</button>
                         </div>
                     </form>
                 </div>

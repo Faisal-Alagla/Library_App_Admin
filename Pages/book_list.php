@@ -10,7 +10,7 @@ include('../includes/header.php');
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card shadow-lg" style=" border-radius: 20px">
                         <!--start of card-->
-                        <form class="card-body p-5 pb-2 text-center" method="" action="">
+                        <div class="card-body p-5 pb-2 text-center">
                             <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Manage Books</h3>
 
                             <!--############ FOR SEARCH CONSIDER DATALIST! ###############-->
@@ -153,7 +153,7 @@ include('../includes/header.php');
                                 </div>
                                 <!-- Table end -->
                             </div>
-                        </form>
+                        </div>
                         <!--end of card-->
                     </div>
                 </div>
