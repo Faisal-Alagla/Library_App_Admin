@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION['user'])){
+    header('location: ../pages/login.php');
+}
 
 /*
 item_exists(): function to check if an item already exists in the database
@@ -10,9 +14,9 @@ returns true if the passed item already exists, false otherwise
 */
 function item_exists($item, $db, $ref_table, $col_name)
 {
-    $fetch_categories = $db->getReference($ref_table)->getValue();
+    $fetch_item = $db->getReference($ref_table)->getValue();
 
-    foreach ($fetch_categories as $category_key => $row) {
+    foreach ($fetch_item as $row) {
         if ($row[$col_name] == $item) {
             return true;
         }

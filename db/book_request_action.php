@@ -77,6 +77,8 @@ else if (isset($_POST['decline_request'])) {
     $_SESSION['book_accepted'] = "Something went wrong, please validate your inputs!";
 }
 
+
+
 if (!isset($send_to_view)) {
     header('location: ../pages/book_requests.php');
 } else {
