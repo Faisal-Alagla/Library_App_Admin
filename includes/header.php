@@ -27,6 +27,12 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
   <title>Library Admin</title>
   <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js" ></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js" ></script>
 </head>
 
 <style>
@@ -53,6 +59,14 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
 
   td {
     vertical-align: middle;
+  }
+
+  th.sorting::before, th.sorting::after {
+    visibility: hidden;
+  }
+
+  #paginated_length, #paginated_filter{
+    text-align: center;
   }
 </style>
 

@@ -13,16 +13,17 @@ include('../includes/header.php');
                         <div class="card-body p-5 pb-2 text-center">
                             <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Manage Books</h3>
 
-                            <!--############ FOR SEARCH CONSIDER DATALIST! ###############-->
-                            <!-- <div class="col-sm-4 d-flex flex-column justify-content-center align-self-center">
-                                <form>
-                                    <label class="text-start" for="search">Search by Book Title</label>
-                                    <div class="d-flex flex-row">
-                                        <input class="form-control me-2 border-dark" type="search" placeholder="Search..." aria-label="Search">
-                                        <button class="btn btn-outline-dark" type="submit">Search</button>
-                                    </div>
-                                </form>
+                            <!-- Search bar start -->
+                            <!-- <div class="col-sm-4 d-flex flex-column justify-content-center align-self-center m-2">
+                                <label class="text-start" for="search">Search Book</label>
+                                <div class="d-flex flex-row">
+                                    <form role="search" class="border-dark">
+                                        <input type="text" placeholder="Search..." id="myInput"
+                                            class="form-control mt-0">
+                                    </form>
+                                </div>
                             </div> -->
+                            <!-- Search bar end -->
 
                             <?php
                             //feedback message after book deletion
@@ -68,7 +69,7 @@ include('../includes/header.php');
                             <div class="mb-4 mx-2">
                                 <!-- Table start -->
                                 <div class="mb-4 table-responsive">
-                                    <table class="table table-dark table-hover text-center align-items-center">
+                                    <table class="table table-dark table-hover text-center align-items-center" id="paginated">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
@@ -83,7 +84,7 @@ include('../includes/header.php');
                                                 <th scope="col" style="width: 7%;">Delete</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="myTable">
 
                                             <?php
                                             //fetching data from the books table
@@ -103,7 +104,7 @@ include('../includes/header.php');
                                                 <td>
                                                     <?php echo $row['isbn'] ?>
                                                 </td>
-                                                <td>
+                                                <td id="title">
                                                     <?php echo $row['title'] ?>
                                                 </td>
                                                 <td>

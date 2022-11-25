@@ -66,16 +66,17 @@ include('../includes/header.php');
 
                             <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Manage Categories</h3>
 
-                            <!--############ FOR SEARCH CONSIDER DATALIST! ###############-->
-                            <!-- <div class="col-sm-4 d-flex flex-column justify-content-center align-self-center">
-                                <form>
-                                    <label class="text-start" for="search">Search by Book Title</label>
-                                    <div class="d-flex flex-row">
-                                        <input class="form-control me-2 border-dark" type="search" placeholder="Search..." aria-label="Search">
-                                        <button class="btn btn-outline-dark" type="submit">Search</button>
-                                    </div>
-                                </form>
+                            <!-- Search bar start -->
+                            <!-- <div class="col-sm-4 d-flex flex-column justify-content-center align-self-center m-2">
+                                <label class="text-start" for="search">Search Book</label>
+                                <div class="d-flex flex-row">
+                                    <form role="search" class="border-dark">
+                                        <input type="text" placeholder="Search..." id="myInput"
+                                            class="form-control mt-0">
+                                    </form>
+                                </div>
                             </div> -->
+                            <!-- Search bar end -->
 
                             <?php
                             if (isset($_GET['id'])) {
@@ -100,10 +101,6 @@ include('../includes/header.php');
                                         value="<?php echo $category['category'] ?>"
                                         style="border-radius: 15px; padding-left: 5px; padding-right: 5px;" required />
                                 </div>
-                                <!-- <div class="col-sm-4 d-flex flex-row justify-content-evenly align-items-center input text-start">
-                                            <label class="form-label mb-0" for="value" style="color:#212B5E;">Value</label>
-                                            <input type="text" id="value" name="value" class="form-control form-control-lg shadow-lg w-75" aria-describedby="basic-addon1" value="<?php //echo $category['value'] ?>" style="border-radius: 15px; padding-left: 5px; padding-right: 5px;" required />
-                                        </div> -->
                                 <div
                                     class="col-sm-3 d-flex flex-row justify-content-center align-items-center align-self-end mx-1">
                                     <button class="btn btn-lg btn-block text-white display-2 w-100"
@@ -182,17 +179,17 @@ include('../includes/header.php');
                             <div class="mb-4 mx-2">
                                 <!-- Table start -->
                                 <div class="mb-4 table-responsive">
-                                    <table class="table table-dark table-hover text-center align-items-center">
+                                    <table class="table table-dark table-hover text-center align-items-center" id="paginated">
                                         <thead>
                                             <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Category</th>
+                                                <th scope="col" class="text-center">#</th>
+                                                <th scope="col" class="text-center">Category</th>
                                                 <!-- <th scope="col">Value</th> -->
-                                                <th scope="col" style="width: 7%;">Edit</th>
-                                                <th scope="col" style="width: 7%;">Delete</th>
+                                                <th scope="col" class="text-center" style="width: 7%;">Edit</th>
+                                                <th scope="col" class="text-center" style="width: 7%;">Delete</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="myTable">
 
                                             <?php
                                             //fetching data from the books table
@@ -225,14 +222,14 @@ include('../includes/header.php');
                                                 <td>
                                                     <button class="btn btn-sm text-white w-100"
                                                         style="background-color: #98030e; border-radius: 5px"
-                                                        data-bs-toggle="modal" data-bs-target="#<?php echo $key ?>">
+                                                        data-bs-toggle="modal" data-bs-target="#<?php echo 'cat' . $num; ?>">
                                                         Delete
                                                     </button>
                                                 </td>
                                             </tr>
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="<?php echo $key ?>" tabindex="-1"
+                                            <div class="modal fade" id="<?php echo 'cat' . $num; ?>" tabindex="-1"
                                                 aria-labelledby="ModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">

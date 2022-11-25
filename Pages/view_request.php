@@ -1,10 +1,8 @@
 <?php
 include('../includes/header.php');
-
 ?>
 
 <div class="container-fluid p-0 m-0">
-
     <div class="my-5">
         <div class="container p-0">
             <div class="row d-flex justify-content-center align-items-center h-100 p-0">
@@ -49,7 +47,7 @@ include('../includes/header.php');
                                 if ($book > 0) {
 
                                 ?>
-                                
+
 
                             <!-- Form start -->
                             <div class="mb-4 text-start w-100">
@@ -83,7 +81,7 @@ include('../includes/header.php');
                                         <input type="text" id="image" name="image"
                                             class="form-control form-control-lg shadow-lg"
                                             aria-describedby="basic-addon1" value="<?php echo $book['image'] ?>"
-                                            style="border-radius: 15px" disabled/>
+                                            style="border-radius: 15px" disabled />
                                         <i class="bi bi-card-image"></i>
                                     </div>
                                     <div class="col-sm-3 d-flex justify-content-center">
@@ -126,7 +124,7 @@ include('../includes/header.php');
                                                         if ($category == $book['category']) {
                                                             $selected = 'selected';
                                                         }
-                                        ?>
+                                                ?>
 
                                         <option value="<?php echo $category; ?>" <?php echo $selected; ?>>
                                             <?php echo $category ?>
@@ -135,7 +133,7 @@ include('../includes/header.php');
                                         <?php
                                                     }
                                                 }
-                                        ?>
+                                                ?>
 
                                     </select>
                                     <i class="bi bi-tag"></i>
@@ -158,7 +156,8 @@ include('../includes/header.php');
                                     <label class="form-label" for="summary" style="color:#212B5E;">Summary</label>
                                     <textarea type="input" name="summary" rows="10" id="summary"
                                         class="form-control form-control-lg shadow-lg rows"
-                                        value="<?php echo $book['summary'] ?>" style="border-radius: 15px;"><?php echo $book['summary'] ?></textarea>
+                                        value="<?php echo $book['summary'] ?>"
+                                        style="border-radius: 15px;"><?php echo $book['summary'] ?></textarea>
                                 </div>
                                 <!-- Summary Field end -->
 
@@ -185,7 +184,8 @@ include('../includes/header.php');
                             <div class="col-sm-12 row justify-content-center align-self-center">
                                 <div class="col-sm-6 px-1">
                                     <button class="btn btn-lg btn-block text-white w-100 display-2 mb-3"
-                                        style="background-color: #212B5E; border-radius: 15px" name="accept_request" type="accept_request">
+                                        style="background-color: #212B5E; border-radius: 15px" name="accept_request"
+                                        type="accept_request">
                                         Accept
                                     </button>
                                 </div>
