@@ -83,7 +83,7 @@ include('../includes/header.php');
                                         <input type="text" id="image" name="image"
                                             class="form-control form-control-lg shadow-lg"
                                             aria-describedby="basic-addon1" value="<?php echo $book['image'] ?>"
-                                            style="border-radius: 15px" />
+                                            style="border-radius: 15px" disabled/>
                                         <i class="bi bi-card-image"></i>
                                     </div>
                                     <div class="col-sm-3 d-flex justify-content-center">
