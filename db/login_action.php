@@ -22,7 +22,7 @@ if (isset($_POST['login'])) {
                 $uid = $verifiedIdToken->claims()->get('sub');
 
                 $_SESSION['verified_user_id'] = $uid;
-                // $_SESSION['idTokenString'] = $idTokenString;
+                $_SESSION['idTokenString'] = $idTokenString;
 
                 $_SESSION['user'] = '';
                 header('location: ../pages/home.php');
