@@ -19,8 +19,9 @@ $auth = $factory->createAuth();
 //Storage bucket for images
 $storage = (new Factory)
     ->withServiceAccount('react-native-course-fa387-firebase-adminsdk-gapwx-c3c9bd5a12.json')
-    ->withDefaultStorageBucket('gs://react-native-course-fa387.appspot.com')
+    ->withDefaultStorageBucket('react-native-course-fa387.appspot.com')
     ->createStorage();
 
 $bucket = $storage->getBucket();
+$bucket_name = $bucket->name();
 ?>
