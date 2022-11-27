@@ -95,6 +95,11 @@ include('../includes/header.php');
                                             if ($fetch_books > 0) {
                                                 $num = 1;
                                                 foreach ($fetch_books as $key => $row) {
+                                                    if($row['image'] > 0){
+                                                        $book_img_url = "https://firebasestorage.googleapis.com/v0/b/".$bucket_name."/o/images%2F".$row['image']."?alt=media";
+                                                    } else{
+                                                        $book_img_url = "";
+                                                    }
                                             ?>
 
                                             <tr>
@@ -114,7 +119,7 @@ include('../includes/header.php');
                                                     <?php echo $row['category'] ?>
                                                 </td>
                                                 <td>
-                                                    <img src="../images/book_images/<?php echo $row['image'] ?>" alt=""
+                                                    <img src="<?php echo $book_img_url ?>" alt=""
                                                         style="max-width: 45px;">
                                                 </td>
                                                 <td>

@@ -25,8 +25,11 @@ if (isset($_POST['accept_request'])) {
         $summary = $_POST['summary'];
 
         if (strlen($image) > 0) {
-            //moving the image from requests_images to book_images
-            rename('../images/requests_images/' . $image, '../images/book_images/' . $image);
+            //moving the image from requests_images to images
+            // rename('../images/requests_images/' . $image, '../images/book_images/' . $image);
+            $object = $bucket->object('requests_images/'.$image);
+            $object->copy($bucket, ['name' => 'images/'.$image]);
+            $object->delete();
         }
 
         $postData = [
@@ -44,7 +47,6 @@ if (isset($_POST['accept_request'])) {
 
         //remove from requests
         $requests_table = "book_requests/" . $key;
-
         $database->getReference($requests_table)->remove();
 
         $_SESSION['book_accepted_flag'] = true;
@@ -57,7 +59,8 @@ else if (isset($_POST['decline_request'])) {
     $image = $_POST['image'];
     
     if (strlen($image) > 0) {
-        unlink('../images/requests_images/' . $image);
+        // unlink('../images/requests_images/' . $image);
+        $bucket->object('requests_images/'.$image)->delete();
     }
     
     $requests_table = "book_requests/" . $key;
@@ -72,7 +75,6 @@ else if (isset($_POST['decline_request'])) {
     $_SESSION['book_accepted_flag'] = false;
     $_SESSION['book_accepted'] = "Something went wrong, please validate your inputs!";
 }
-
 
 
 if (!isset($send_to_view)) {

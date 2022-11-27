@@ -10,7 +10,7 @@ if (isset($_POST['add_book'])) {
     if ($book_exists) {
         $_SESSION['book_added_flag'] = false;
         $_SESSION['book_added'] = "This book already exists in the database!";
-    
+
     //doesn't exist -> add it
     } else {
         $title = $_POST['title'];
@@ -23,7 +23,9 @@ if (isset($_POST['add_book'])) {
         if ($image != Null) {
             $image_name = $isbn . $image;
 
-            move_uploaded_file($_FILES['image']['tmp_name'], '../images/book_images/' . $image_name);
+            // move_uploaded_file($_FILES['image']['tmp_name'], '../images/book_images/' . $image_name);
+            $file_contents = file_get_contents($_FILES['image']['tmp_name']);
+            $bucket->upload($file_contents, ['name' => 'images/' . $image_name]);
         } else {
             $image_name = "";
         }

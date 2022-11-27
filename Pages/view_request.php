@@ -45,6 +45,11 @@ include('../includes/header.php');
                                 $book = $database->getReference($ref_table)->getChild($book_key)->getValue();
 
                                 if ($book > 0) {
+                                    if ($book['image'] > 0) {
+                                        $book_img_url = "https://firebasestorage.googleapis.com/v0/b/".$bucket_name."/o/requests_images%2F".$book['image']."?alt=media";
+                                    }else{
+                                        $book_img_url = "";
+                                    }
 
                                 ?>
 
@@ -75,20 +80,20 @@ include('../includes/header.php');
                                 <!-- Title Field end -->
 
                                 <!-- Image Field start -->
-                                <div class="col-sm-12 d-flex flex-row justify-content-center align-items-center">
+                                <!-- <div class="col-sm-12 d-flex flex-row justify-content-center align-items-center">
                                     <div class="input col-sm-9">
-                                        <label class="form-label" for="image" style="color:#212B5E;">Image</label>
-                                        <input type="text" id="image" name="image"
+                                        <label class="form-label" for="image" style="color:#212B5E;">Image</label> -->
+                                        <input type="hidden" id="image" name="image"
                                             class="form-control form-control-lg shadow-lg"
                                             aria-describedby="basic-addon1" value="<?php echo $book['image'] ?>"
-                                            style="border-radius: 15px" disabled />
-                                        <i class="bi bi-card-image"></i>
+                                            style="border-radius: 15px"/>
+                                        <!-- <i class="bi bi-card-image"></i>
                                     </div>
                                     <div class="col-sm-3 d-flex justify-content-center">
-                                        <img class="pt-2" src="../images/requests_images/<?php echo $book['image'] ?>"
-                                            alt="" style="max-width: 45px;">
+                                        <img class="pt-2" src="<?php echo $book_img_url ?>"
+                                            alt="No img" style="max-width: 45px;">
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- Image Field end -->
 
                                 <!-- Author Field start -->

@@ -1,9 +1,4 @@
 <?php
-session_start();
-if(!isset($_SESSION['user'])){
-    header('location: ../pages/login.php');
-}
-
 /*
 item_exists(): function to check if an item already exists in the database
 parameters:   $cat: the category to check for
@@ -23,5 +18,4 @@ function item_exists($item, $db, $ref_table, $col_name)
     }
     return false;
 }
-
 ?>

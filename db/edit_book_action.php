@@ -17,11 +17,16 @@ if (isset($_POST['update_book'])) {
         //new image is uploaded
         $image_name = $database->getReference($ref_table)->getValue()['image'];
         if ($image_name > 0) {
-            unlink('../images/book_images/' . $image_name);
+            //deleting the old img
+            // unlink('../images/book_images/' . $image_name);
+            $bucket->object('images/'.$image_name)->delete();
         }
 
+        //uploading the new image
         $image_name = $isbn . $image;
-        move_uploaded_file($_FILES['image']['tmp_name'], '../images/book_images/' . $image_name);
+        // move_uploaded_file($_FILES['image']['tmp_name'], '../images/book_images/' . $image_name);
+        $file_contents = file_get_contents($_FILES['image']['tmp_name']);
+        $bucket->upload($file_contents, ['name' => 'images/' . $image_name]);
     } else {
         //no uploaded image
         $image_name = $database->getReference($ref_table)->getValue()['image'];
@@ -31,7 +36,13 @@ if (isset($_POST['update_book'])) {
             $no_isbn_name = substr($image_name, 10);
             $new_image_name = $isbn . $no_isbn_name;
 
-            rename('../images/book_images/' . $image_name, '../images/book_images/' . $new_image_name);
+            // rename('../images/book_images/' . $image_name, '../images/book_images/' . $new_image_name);
+            if($image_name != $new_image_name) {
+                //if image name / isbn changed -> change image name in db storage
+                $object = $bucket->object('images/'.$image_name);
+                $object->copy($bucket, ['name' => 'images/'.$new_image_name]);
+                $object->delete();
+            }
 
             $image_name = $new_image_name;
         }
