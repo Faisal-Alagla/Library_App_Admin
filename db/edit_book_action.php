@@ -46,7 +46,7 @@ if (isset($_POST['update_book'])) {
 
                 // rename('../images/book_images/' . $image_name, '../images/book_images/' . $new_image_name);
                 if ($image_name != $new_image_name) {
-                    //if image name / isbn changed -> change image name in db storage
+                    //if image or its isbn changed -> change image in db storage
                     $object = $bucket->object('images/' . $image_name);
                     $object->copy($bucket, ['name' => 'images/' . $new_image_name]);
                     $object->delete();
