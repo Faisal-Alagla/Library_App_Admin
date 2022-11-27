@@ -91,13 +91,13 @@ include('../includes/header.php');
 
                                 <!-- Table start -->
                                 <div class="mb-4 table-responsive">
-                                    <table class="table table-dark table-hover text-center align-items-center">
+                                    <table class="table table-dark table-hover text-center align-items-center" id="paginated">
                                         <thead>
                                             <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">ISBN</th>
-                                                <th scope="col">Title</th>
-                                                <th scope="col" style="width: 10%;">View</th>
+                                                <th scope="col" class="text-center pe-1">#</th>
+                                                <th scope="col" class="text-center pe-1">ISBN</th>
+                                                <th scope="col" class="text-center pe-1">Title</th>
+                                                <th scope="col" class="text-center pe-1" style="width: 10%;">View</th>
                                             </tr>
                                         </thead>
                                         <tbody>

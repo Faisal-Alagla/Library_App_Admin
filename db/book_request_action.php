@@ -25,11 +25,18 @@ if (isset($_POST['accept_request'])) {
         $summary = $_POST['summary'];
 
         if (strlen($image) > 0) {
-            //moving the image from requests_images to images
             // rename('../images/requests_images/' . $image, '../images/book_images/' . $image);
+            
+            //moving the image from requests_images to images
+            //removing the initial isbn then adding the POSTed isbn just incase it was changed
+            $no_isbn_name = substr($image, 10);
+            $image_name = $isbn . $no_isbn_name;
+
             $object = $bucket->object('requests_images/'.$image);
-            $object->copy($bucket, ['name' => 'images/'.$image]);
+            $object->copy($bucket, ['name' => 'images/'.$image_name]);
             $object->delete();
+        }else{
+            $image_name = "";
         }
 
         $postData = [
@@ -37,7 +44,7 @@ if (isset($_POST['accept_request'])) {
             'title' => $title,
             'author' => $author,
             'category' => $category,
-            'image' => $image,
+            'image' => $image_name,
             'date' => $date,
             'summary' => $summary,
         ];

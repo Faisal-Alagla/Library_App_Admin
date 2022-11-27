@@ -72,16 +72,16 @@ include('../includes/header.php');
                                     <table class="table table-dark table-hover text-center align-items-center" id="paginated">
                                         <thead>
                                             <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">ISBN</th>
-                                                <th scope="col">Title</th>
-                                                <th scope="col">Author</th>
-                                                <th scope="col">Category</th>
-                                                <th scope="col">Image</th>
-                                                <th scope="col">Publish Date</th>
+                                                <th scope="col" class="text-center pe-1">#</th>
+                                                <th scope="col" class="text-center pe-1">ISBN</th>
+                                                <th scope="col" class="text-center pe-1">Title</th>
+                                                <th scope="col" class="text-center pe-1">Author</th>
+                                                <th scope="col" class="text-center pe-1">Category</th>
+                                                <th scope="col" class="text-center pe-1">Image</th>
+                                                <th scope="col" class="text-center pe-1">Publish Date</th>
                                                 <!-- <th scope="col">Summary</th> -->
-                                                <th scope="col" style="width: 7%;">Edit</th>
-                                                <th scope="col" style="width: 7%;">Delete</th>
+                                                <th scope="col" class="text-center pe-1" style="width: 7%;">Edit</th>
+                                                <th scope="col" class="text-center pe-1" style="width: 7%;">Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody id="myTable">

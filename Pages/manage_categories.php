@@ -182,11 +182,11 @@ include('../includes/header.php');
                                     <table class="table table-dark table-hover text-center align-items-center" id="paginated">
                                         <thead>
                                             <tr>
-                                                <th scope="col" class="text-center">#</th>
-                                                <th scope="col" class="text-center">Category</th>
+                                                <th scope="col" class="text-center pe-1">#</th>
+                                                <th scope="col" class="text-center pe-1">Category</th>
                                                 <!-- <th scope="col">Value</th> -->
-                                                <th scope="col" class="text-center" style="width: 7%;">Edit</th>
-                                                <th scope="col" class="text-center" style="width: 7%;">Delete</th>
+                                                <th scope="col" class="text-center pe-1" style="width: 7%;">Edit</th>
+                                                <th scope="col" class="text-center pe-1" style="width: 7%;">Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody id="myTable">

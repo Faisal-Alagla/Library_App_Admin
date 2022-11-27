@@ -5,10 +5,8 @@ This File has nothing to do with the project
 Its purpose is only for tesing stuff during development!
 */
 ########################################
-// namespace Google\Cloud\Samples\Storage;
-// use Google\Cloud\Storage\StorageClient;
 
-// include("config.php");
+include("config.php");
 ?>
 
 <!-- <form action="" method="POST" enctype="multipart/form-data" name="ex_card" class="forms-sample">
