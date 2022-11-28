@@ -90,7 +90,7 @@ include('../includes/header.php');
                                         <!-- <i class="bi bi-card-image"></i>
                                     </div>
                                     <div class="col-sm-3 d-flex justify-content-center">
-                                        <img class="pt-2" src="<?php echo $book_img_url ?>"
+                                        <img class="pt-2" src="<?php //echo $book_img_url ?>"
                                             alt="No img" style="max-width: 45px;">
                                     </div>
                                 </div> -->

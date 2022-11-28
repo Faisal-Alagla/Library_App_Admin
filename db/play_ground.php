@@ -1,9 +1,11 @@
 <?php
 ########################################
+########################################
 /* 
 This File has nothing to do with the project
 Its purpose is only for tesing stuff during development!
 */
+########################################
 ########################################
 
 include("config.php");

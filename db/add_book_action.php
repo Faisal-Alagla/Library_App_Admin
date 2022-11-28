@@ -19,6 +19,8 @@ if (isset($_POST['add_book'])) {
         $image = $_FILES['image']['name'];
         $date = $_POST['date'];
         $summary = $_POST['summary'];
+        $times_borrowed = 0;
+        // $ratings = array();
 
         if ($image != Null) {
             $image_name = $isbn . $image;
@@ -38,6 +40,8 @@ if (isset($_POST['add_book'])) {
             'image' => $image_name,
             'date' => $date,
             'summary' => $summary,
+            'timesBorrowed' => $times_borrowed,
+            // 'ratings' => $ratings
         ];
 
         $ref_table = "books";
