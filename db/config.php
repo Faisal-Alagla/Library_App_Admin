@@ -10,16 +10,16 @@ use Kreait\Firebase\Auth;
 
 //Realtime database connection
 $factory = (new Factory)
-    ->withServiceAccount('react-native-course-fa387-firebase-adminsdk-gapwx-c3c9bd5a12.json')
-    ->withDatabaseUri('https://react-native-course-fa387-default-rtdb.firebaseio.com/');
+    ->withServiceAccount('psu-library-app-firebase-adminsdk-cxqx6-545b38558c.json')
+    ->withDatabaseUri('https://psu-library-app-default-rtdb.europe-west1.firebasedatabase.app/');
 
 $database = $factory->createDatabase();
 $auth = $factory->createAuth();
 
 //Storage bucket for images
 $storage = (new Factory)
-    ->withServiceAccount('react-native-course-fa387-firebase-adminsdk-gapwx-c3c9bd5a12.json')
-    ->withDefaultStorageBucket('react-native-course-fa387.appspot.com')
+    ->withServiceAccount('psu-library-app-firebase-adminsdk-cxqx6-545b38558c.json')
+    ->withDefaultStorageBucket('psu-library-app.appspot.com')
     ->createStorage();
 
 $bucket = $storage->getBucket();
