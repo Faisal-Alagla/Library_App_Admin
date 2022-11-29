@@ -16,7 +16,7 @@ $factory = (new Factory)
 $database = $factory->createDatabase();
 $auth = $factory->createAuth();
 
-//Storage bucket for images
+//Storage for images
 $storage = (new Factory)
     ->withServiceAccount('psu-library-app-firebase-adminsdk-cxqx6-545b38558c.json')
     ->withDefaultStorageBucket('psu-library-app.appspot.com')

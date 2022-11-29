@@ -50,12 +50,14 @@ include("config.php");
 
 
 ###
-// $user_email = '218110087@psu.edu.sa';
-// $isbn = '2222222222';
+// $user_email = '219211287@psu.edu.sa';
+// $isbn = '5345345345';
 
 // $postData = [
 //     'userEmail' => $user_email,
 //     'isbn' => $isbn,
+//     'title' => 'calculus 2',
+//     'userKey' => '-NGuXMKMnOa4_ME8tspI'
 // ];
 
 // $ref_table = "borrow_requests";

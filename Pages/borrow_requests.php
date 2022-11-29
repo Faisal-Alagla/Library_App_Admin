@@ -14,6 +14,31 @@ include('../includes/header.php');
                         <div class="card-body p-5 pb-2 text-center">
                             <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Borrow Requests</h3>
 
+                            <?php
+                            //feedback message after action is done
+                            if (isset($_SESSION['borrow_reuqest_accepted'])) {
+                                $msg = $_SESSION['borrow_reuqest_accepted'];
+
+                                //message color changes wether action is successful or failed
+                                if ($_SESSION['borrow_request_flag']) {
+                                    $msg_color = "alert-success";
+                                } else {
+                                    $msg_color = "alert-danger";
+                                }
+
+                            ?>
+
+                            <div class="alert <?php echo $msg_color ?>" role="alert">
+                                <?php echo $msg ?>
+                            </div>
+
+                            <?php
+                                //clearing session variables
+                                unset($_SESSION['borrow_reuqest_accepted']);
+                                unset($_SESSION['borrow_request_flag']);
+                            }
+                            ?>
+
                             <div class="mb-4 mx-2">
                                 <?php
                                 //fetching data from the requests table

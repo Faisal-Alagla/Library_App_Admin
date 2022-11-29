@@ -43,14 +43,40 @@ if (isset($_GET['accept'])){
                 break;
             }
         }
-        //###set success message to go back here!!!
+        
+        $_SESSION['borrow_request_flag'] = true;
+        $_SESSION['borrow_reuqest_accepted'] = "Borrow request accepted, the due-date for this request is $due_date";
     }else{
-        //###set error msg!!!
+        $_SESSION['borrow_request_flag'] = false;
+        $_SESSION['borrow_reuqest_accepted'] = "Something went wrong, the request couldn't be accepted!";
     }
 //decline
 }else if (isset($_GET['decline'])) {
+    $key = $_GET['decline'];
+  
+    $ref_table = "borrow_requests/$key";
+    $borrow_request = $database->getReference($ref_table)->getValue();
 
+    if ($borrow_request > 0) {
+        //remove the request from the user's table (pending request in borrowedBooks)
+        $user_key = $borrow_request["userKey"];
+        $book_isbn = $borrow_request['isbn'];
+
+        $ref_student_update = "students/$user_key/borrowedBooks/$book_isbn";
+        $request_delete_query = $database->getReference($ref_student_update)->remove();
+
+        //removing the request
+        $request_delete_query = $database->getReference($ref_table)->remove();
+
+        $_SESSION['borrow_request_flag'] = true;
+        $_SESSION['borrow_reuqest_accepted'] = "Borrow request declined successfully";
+    }else{
+        $_SESSION['borrow_request_flag'] = false;
+        $_SESSION['borrow_reuqest_accepted'] = "Something went wrong, the request couldn't be declined!";
+    }
 } else{
-
+    $_SESSION['borrow_request_flag'] = false;
+    $_SESSION['borrow_reuqest_accepted'] = "Something went wrong, try again later!";
 }
 
+header('location: ../pages/borrow_requests.php');
