@@ -32,8 +32,8 @@ if (isset($_POST['accept_request'])) {
             $no_isbn_name = substr($image, 10);
             $image_name = $isbn . $no_isbn_name;
 
-            $object = $bucket->object('requests_images/'.$image);
-            $object->copy($bucket, ['name' => 'images/'.$image_name]);
+            $object = $bucket->object("requests_images/$image");
+            $object->copy($bucket, ['name' => "images/$image_name"]);
             $object->delete();
         }else{
             $image_name = "";
@@ -53,7 +53,7 @@ if (isset($_POST['accept_request'])) {
         $database->getReference($books_table)->push($postData);
 
         //remove from requests
-        $requests_table = "book_requests/" . $key;
+        $requests_table = "book_requests/$key";
         $database->getReference($requests_table)->remove();
 
         $_SESSION['book_accepted_flag'] = true;
@@ -67,10 +67,10 @@ else if (isset($_POST['decline_request'])) {
     
     if (strlen($image) > 0) {
         // unlink('../images/requests_images/' . $image);
-        $bucket->object('requests_images/'.$image)->delete();
+        $bucket->object("requests_images/$image")->delete();
     }
     
-    $requests_table = "book_requests/" . $key;
+    $requests_table = "book_requests/$key";
     $database->getReference($requests_table)->remove();
 
     // if (isset($_SESSION['book_key'])) {

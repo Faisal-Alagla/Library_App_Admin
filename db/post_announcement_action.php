@@ -22,7 +22,7 @@ if (isset($_POST['post'])) {
             ];
             
             $key = $database->getReference($ref_table)->getChildKeys()[0];
-            $ref_table = "announcements/" . $key;
+            $ref_table = "announcements/$key";
             $update_query_result =  $database->getReference($ref_table)->update($updateData);
             
             $_SESSION['post_announcement_flag'] = true;

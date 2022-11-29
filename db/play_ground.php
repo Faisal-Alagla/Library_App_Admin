@@ -60,4 +60,15 @@ include("config.php");
 
 // $ref_table = "borrow_requests";
 // $database->getReference($ref_table)->push($postData);
+
+
+###
+// $today = date("Y-m-d");
+// $borrowdays = 5;
+// echo '<hr/>';
+
+// echo date( "Y-m-d", strtotime("$today +$borrowdays day"));
+// echo '<hr/>';
+
+// echo date( "Y-m-d", strtotime( "$today +2 month" ) );
 ?>

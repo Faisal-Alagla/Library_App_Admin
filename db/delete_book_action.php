@@ -3,12 +3,12 @@ include("config.php");
 
 if (isset($_GET['id']) && $_GET['id'] != '') {
     $key = $_GET['id'];
-    $ref_table = "books/" . $key;
+    $ref_table = "books/$key";
     
     $image_name = $database->getReference($ref_table)->getValue()['image'];
     if($image_name > 0) {
         // unlink('../images/book_images/'.$image_name);
-        $bucket->object('images/'.$image_name)->delete();
+        $bucket->object("images/$image_name")->delete();
     }
 
     $delete_query_result =  $database->getReference($ref_table)->remove();

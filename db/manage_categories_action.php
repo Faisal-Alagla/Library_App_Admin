@@ -17,7 +17,7 @@ if (isset($_POST['update_category'])) {
             'category' => $category,
         ];
 
-        $ref_table = 'categories/' . $category_key;
+        $ref_table = "categories/$category_key";
         $old_category = $database->getReference($ref_table)->getValue()['category'];
         $update_query_result = $database->getReference($ref_table)->update($updateData);
 
@@ -32,7 +32,7 @@ if (isset($_POST['update_category'])) {
                         'category' => $category,
                     ];
 
-                    $new_book_table = $books_table . '/' . $book_key;
+                    $new_book_table = "$books_table/$book_key";
                     $update_query_result =  $database->getReference($new_book_table)->update($updateCategory);
                 }
             }
@@ -69,7 +69,7 @@ if (isset($_POST['update_category'])) {
 //delete category
 else if (isset($_GET['delete_id']) && $_GET['delete_id'] != '') {
     $key = $_GET['delete_id'];
-    $ref_table = "categories/" . $key;
+    $ref_table = "categories/$key";
 
     $old_category = $database->getReference($ref_table)->getValue()['category'];
     $delete_query_result = $database->getReference($ref_table)->remove();

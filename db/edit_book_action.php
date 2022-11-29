@@ -20,21 +20,21 @@ if (isset($_POST['update_book'])) {
         $date = $_POST['date'];
         $summary = $_POST['summary'];
 
-        $ref_table = "books/" . $key;
+        $ref_table = "books/$key";
         if ($image != Null) {
             //new image is uploaded
             $image_name = $database->getReference($ref_table)->getValue()['image'];
             if ($image_name > 0) {
                 //deleting the old img
                 // unlink('../images/book_images/' . $image_name);
-                $bucket->object('images/' . $image_name)->delete();
+                $bucket->object("images/$image_name")->delete();
             }
 
             //uploading the new image
             $image_name = $isbn . $image;
             // move_uploaded_file($_FILES['image']['tmp_name'], '../images/book_images/' . $image_name);
             $file_contents = file_get_contents($_FILES['image']['tmp_name']);
-            $bucket->upload($file_contents, ['name' => 'images/' . $image_name]);
+            $bucket->upload($file_contents, ['name' => "images/$image_name"]);
         } else {
             //no uploaded image
             $image_name = $database->getReference($ref_table)->getValue()['image'];
@@ -47,8 +47,8 @@ if (isset($_POST['update_book'])) {
                 // rename('../images/book_images/' . $image_name, '../images/book_images/' . $new_image_name);
                 if ($image_name != $new_image_name) {
                     //if image or its isbn changed -> change image in db storage
-                    $object = $bucket->object('images/' . $image_name);
-                    $object->copy($bucket, ['name' => 'images/' . $new_image_name]);
+                    $object = $bucket->object("images/$image_name");
+                    $object->copy($bucket, ['name' => "images/$new_image_name"]);
                     $object->delete();
                 }
 
@@ -66,7 +66,42 @@ if (isset($_POST['update_book'])) {
             'summary' => $summary,
         ];
 
+        //This old isbn will be used for updating borrow requests and borrowers tables (check below)
+        $old_isbn = $database->getReference($ref_table)->getValue()['isbn'];
+
         $update_query_result =  $database->getReference($ref_table)->update($updateData);
+
+        //update borrow requests that had the old isbn / title with the new ones
+        $borrow_requests_table = 'borrow_requests';
+        $fetch_borrow_requests = $database->getReference($borrow_requests_table)->getValue();
+        foreach ($fetch_borrow_requests as $borrow_key => $row) {
+            if ($row['isbn'] == $old_isbn) {
+                $updateCategory = [
+                    'isbn' => $isbn,
+                    'title' => $title
+                ];
+
+                $new_requests_table = "$borrow_requests_table/$borrow_key";
+                $update_query_result =  $database->getReference($new_requests_table)->update($updateCategory);
+            }
+        }
+
+        //update borrowed books in students tables
+        $students_table = 'students';
+        $fetch_students = $database->getReference($students_table)->getValue();
+        foreach ($fetch_students as $student_key => $row) {
+            //checking if the student has borrowed books and the isbn matches the edited book -> update it with the new isbn
+            if (isset($row['borrowedBooks']) && array_key_exists($old_isbn, $row['borrowedBooks'])) {
+                $prev_value = $row['borrowedBooks']["$old_isbn"];
+                $updateCategory = [
+                    "borrowedBooks/$old_isbn" => null,
+                    "borrowedBooks/$isbn" => $prev_value,
+                ];
+
+                $new_book_table = "$students_table/$student_key/";
+                $update_query_result =  $database->getReference($new_book_table)->update($updateCategory);
+            }
+        }
 
         $_SESSION['book_key'] = $key;
         if ($update_query_result) {
