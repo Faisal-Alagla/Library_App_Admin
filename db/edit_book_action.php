@@ -74,15 +74,19 @@ if (isset($_POST['update_book'])) {
         //update borrow requests that had the old isbn / title with the new ones
         $borrow_requests_table = 'borrow_requests';
         $fetch_borrow_requests = $database->getReference($borrow_requests_table)->getValue();
-        foreach ($fetch_borrow_requests as $borrow_key => $row) {
-            if ($row['isbn'] == $old_isbn) {
-                $updateCategory = [
-                    'isbn' => $isbn,
-                    'title' => $title
-                ];
 
-                $new_requests_table = "$borrow_requests_table/$borrow_key";
-                $update_query_result =  $database->getReference($new_requests_table)->update($updateCategory);
+        if($fetch_borrow_requests > 0) {
+            //loop through borrow requests to update the isbn / title in them too
+            foreach ($fetch_borrow_requests as $borrow_key => $row) {
+                if ($row['isbn'] == $old_isbn) {
+                    $updateCategory = [
+                        'isbn' => $isbn,
+                        'title' => $title
+                    ];
+
+                    $new_requests_table = "$borrow_requests_table/$borrow_key";
+                    $update_query_result =  $database->getReference($new_requests_table)->update($updateCategory);
+                }
             }
         }
 
