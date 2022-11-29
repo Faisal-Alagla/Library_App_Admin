@@ -1,10 +1,11 @@
 <?php
 include("config.php");
 
-//accept
+//accept request case
 if (isset($_GET['accept'])){
     $key = $_GET['accept'];
   
+    //fetching the borrow request
     $ref_table = "borrow_requests/$key";
     $borrow_request = $database->getReference($ref_table)->getValue();
 
@@ -33,6 +34,7 @@ if (isset($_GET['accept'])){
         $fetch_books = $database->getReference($books_table)->getValue();
 
         foreach ($fetch_books as $book_key => $row) {
+            //when book is found (matching isbn) -> increment timesBorrowed by 1 and break the loop
             if ($row['isbn'] == $book_isbn) {
                 $updateCategory = [
                     'timesBorrowed' => $row['timesBorrowed'] + 1,
@@ -40,20 +42,23 @@ if (isset($_GET['accept'])){
 
                 $book = "$books_table/$book_key";
                 $update_query_result =  $database->getReference($book)->update($updateCategory);
+                unset($fetch_books);
                 break;
             }
         }
         
+        //session variables for feedback messages
         $_SESSION['borrow_request_flag'] = true;
         $_SESSION['borrow_reuqest_accepted'] = "Borrow request accepted, the due-date for this request is $due_date";
     }else{
         $_SESSION['borrow_request_flag'] = false;
         $_SESSION['borrow_reuqest_accepted'] = "Something went wrong, the request couldn't be accepted!";
     }
-//decline
+//decline request case
 }else if (isset($_GET['decline'])) {
     $key = $_GET['decline'];
   
+    //fetching the borrow request
     $ref_table = "borrow_requests/$key";
     $borrow_request = $database->getReference($ref_table)->getValue();
 
@@ -68,12 +73,14 @@ if (isset($_GET['accept'])){
         //removing the request
         $request_delete_query = $database->getReference($ref_table)->remove();
 
+        //session variables for feedback messages
         $_SESSION['borrow_request_flag'] = true;
         $_SESSION['borrow_reuqest_accepted'] = "Borrow request declined successfully";
     }else{
         $_SESSION['borrow_request_flag'] = false;
         $_SESSION['borrow_reuqest_accepted'] = "Something went wrong, the request couldn't be declined!";
     }
+//error with GET
 } else{
     $_SESSION['borrow_request_flag'] = false;
     $_SESSION['borrow_reuqest_accepted'] = "Something went wrong, try again later!";
