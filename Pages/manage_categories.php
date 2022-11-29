@@ -213,14 +213,14 @@ include('../includes/header.php');
                                                     <?php echo $row['category'] ?>
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-sm text-white w-100"
+                                                    <a class="btn text-white"
                                                         style="background-color: #3e51b1; border-radius: 5px"
                                                         href="manage_categories.php?id=<?php echo $key ?>">
                                                         Edit
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-sm text-white w-100"
+                                                    <button class="btn text-white"
                                                         style="background-color: #98030e; border-radius: 5px"
                                                         data-bs-toggle="modal" data-bs-target="#<?php echo 'cat' . $num; ?>">
                                                         Delete

@@ -46,4 +46,18 @@ include("config.php");
 // $object = $bucket->object('requests_images/'.$myimg);
 // $object->copy($bucket, ['name' => 'images/'.$isbn.$myimg]);
 // $object->delete();
+
+
+
+###
+// $user_email = '218110087@psu.edu.sa';
+// $isbn = '2222222222';
+
+// $postData = [
+//     'userEmail' => $user_email,
+//     'isbn' => $isbn,
+// ];
+
+// $ref_table = "borrow_requests";
+// $database->getReference($ref_table)->push($postData);
 ?>

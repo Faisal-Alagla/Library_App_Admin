@@ -30,9 +30,9 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
-  <script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
-  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js" ></script>
-  <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js" ></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
 </head>
 
 <style>
@@ -61,11 +61,13 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
     vertical-align: middle;
   }
 
-  th.sorting::before, th.sorting::after {
+  th.sorting::before,
+  th.sorting::after {
     visibility: hidden;
   }
 
-  #paginated_length, #paginated_filter{
+  #paginated_length,
+  #paginated_filter {
     text-align: center;
   }
 </style>
@@ -80,10 +82,12 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
       <div class="collapse navbar-collapse" id="navbarScroll">
         <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
           <li class="nav-item px-2">
-            <a class="nav-link <?php if ($cur_page == 'home.php') echo $active; ?>" aria-current="page" href="home.php">Home</a>
+            <a class="nav-link <?php if ($cur_page == 'home.php')
+                                  echo $active; ?>" aria-current="page" href="home.php">Home</a>
           </li>
           <li class="nav-item px-2">
-            <a class="nav-link <?php if ($cur_page == 'borrowers.php') echo $active; ?>" href="borrowers.php">Borrowers</a>
+            <a class="nav-link <?php if ($cur_page == 'borrowers.php')
+                                  echo $active; ?>" href="borrowers.php">Borrowers</a>
           </li>
           <li class="nav-item dropdown px-2">
             <a class="nav-link dropdown-toggle <?php echo $actions_active ?> " href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -111,8 +115,10 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
               $fetch_announcement = "";
               ?>
 
-              <li><a class="dropdown-item" href="post_announcement.php"><?php echo $announcement_action ?>
-                  Announcement</a></li>
+              <li><a class="dropdown-item" href="post_announcement.php">
+                  <?php echo $announcement_action ?>
+                  Announcement
+                </a></li>
               <li><a class="dropdown-item" href="add_book.php">Add a book</a></li>
               <li><a class="dropdown-item" href="book_list.php">Manage books</a></li>
               <li><a class="dropdown-item" href="manage_categories.php">Manage categories</a></li>
@@ -147,10 +153,36 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
 
             </a>
           </li>
+          <li class="nav-item px-2">
+            <a class="position-relative nav-link <?php if ($cur_page == 'borrow_requests.php') echo $active; ?>" href="borrow_requests.php" tabindex="-1" aria-disabled="true">
+              Borrow Requests
+
+              <?php
+              $ref_table = "borrow_requests";
+              $borrow_requests = $database->getReference($ref_table)->getSnapshot()->numChildren();
+
+              if ($borrow_requests > 0) {
+
+              ?>
+
+                <span class="position-absolute top-25 start-100 translate-middle badge rounded-pill bg-danger">
+                  <?php echo $borrow_requests ?>
+                </span>
+
+              <?php
+
+              }
+
+              unset($ref_table);
+              ?>
+
+            </a>
+          </li>
         </ul>
         <div class="d-flex flex-row">
           <div class="d-flex mx-2" method="post" action="#">
-            <a class="btn btn-outline-light <?php if ($cur_page == 'profile.php') echo $active; ?>" href="profile.php">Profile</a>
+            <a class="btn btn-outline-light <?php if ($cur_page == 'profile.php')
+                                              echo $active; ?>" href="profile.php">Profile</a>
           </div>
           <form class="d-flex mx-2" method="post" action="../db/logout_action.php">
             <button class="btn btn-outline-light" type="logout" name="logout">Logout</button>

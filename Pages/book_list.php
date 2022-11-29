@@ -130,14 +130,14 @@ include('../includes/header.php');
                                                             ?>
                                                         </td> -->
                                                 <td>
-                                                    <a class="btn btn-sm text-white w-100"
+                                                    <a class="btn text-white"
                                                         style="background-color: #3e51b1; border-radius: 5px"
                                                         href="edit_book.php?id=<?php echo $key ?>">
                                                         Edit
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-sm text-white w-100"
+                                                    <a class="btn text-white"
                                                         style="background-color: #98030e; border-radius: 5px"
                                                         href="../db/delete_book_action.php?id=<?php echo $key ?>">
                                                         Delete
