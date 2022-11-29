@@ -85,7 +85,7 @@ else if (isset($_GET['delete_id']) && $_GET['delete_id'] != '') {
                     'category' => "",
                 ];
 
-                $new_book_table = $books_table . '/' . $book_key;
+                $new_book_table = "$books_table/$book_key";
                 $update_query_result =  $database->getReference($new_book_table)->update($updateCategory);
             }
         }
