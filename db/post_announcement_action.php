@@ -5,20 +5,23 @@ if (isset($_POST['post'])) {
     $announcement = $_POST['announcement'];
     $audience = $_POST['audience'];
     
+    //fetching the announcements
     $ref_table = "announcements";
     $fetch_announcements = $database->getReference($ref_table)->getValue();
     
-    //update
+    //if there's an announcements table -> update it
     if ($fetch_announcements > 0) {
+        //getting the key of the table entry
         $key = array_keys($fetch_announcements)[0];
 
-        //if empty -> remove the post
         if (strlen($announcement) < 1) {
+            //if empty string -> remove the announcement
             $delete_query_result =  $database->getReference("$ref_table/$key/$audience")->remove();
 
             $_SESSION['post_announcement_flag'] = true;
             $_SESSION['post_announcement'] = "Announcement for \"$audience\" is removed!";
         }else{
+            //else: update the table with the new announcement [audience => announcement]
             $updateData = [
                 $audience => $announcement,
             ];
@@ -28,13 +31,14 @@ if (isset($_POST['post'])) {
             $_SESSION['post_announcement_flag'] = true;
             $_SESSION['post_announcement'] = "Announcement for \"$audience\" is updated!";
         }
-    //post new announcement
+    //if there's no announcements at all -> post new announcement (create the table)
     } else {
-        //if empty -> do nothing and show msg to fill the post
         if (strlen($announcement) < 1) {
+            //if empty string -> do nothing and show msg to fill the post
             $_SESSION['post_announcement_flag'] = true;
             $_SESSION['post_announcement'] = "Announcement field must be filled!";
         }else{
+            //create the table with only the chosen audience as key, and annuncement as value
             $postData = [
                 $audience => $announcement,
             ];
@@ -45,17 +49,24 @@ if (isset($_POST['post'])) {
             $_SESSION['post_announcement'] = "Announcement for \"$audience\" is posted!";
         }
     }
-    //delete
+//delete the post for chosen audience
 } else if (isset($_POST['delete'])) {
     $audience = $_POST['audience'];
     $ref_table = "announcements";
-    $key = $database->getReference($ref_table)->getChildKeys()[0];
-    $delete_query_result =  $database->getReference("$ref_table/$key/$audience")->remove();
+    //fetching the key
+    try {
+        $key = $database->getReference($ref_table)->getChildKeys()[0];
 
-    if ($delete_query_result) {
-        $_SESSION['post_announcement_flag'] = true;
-        $_SESSION['post_announcement'] = "The Announcement for \"$audience\" removed!";
-    } else {
+        $delete_query_result =  $database->getReference("$ref_table/$key/$audience")->remove();
+    
+        if ($delete_query_result) {
+            $_SESSION['post_announcement_flag'] = true;
+            $_SESSION['post_announcement'] = "The Announcement for \"$audience\" removed!";
+        } else {
+            $_SESSION['post_announcement_flag'] = false;
+            $_SESSION['post_announcement'] = "couldn't remove the announcement, please try again later";
+        }
+    } catch (Exception $exception) {
         $_SESSION['post_announcement_flag'] = false;
         $_SESSION['post_announcement'] = "couldn't remove the announcement, please try again later";
     }
