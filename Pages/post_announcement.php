@@ -7,6 +7,7 @@ $fetch_announcements = $database->getReference($ref_table)->getValue();
 
 if ($fetch_announcements > 0) {
     $announcements = current($fetch_announcements);
+    $announcements_key = array_keys($fetch_announcements)[0];
 
     //everyone announcement
     if(isset($announcements['everyone'])){
@@ -115,7 +116,9 @@ unset($fetch_announcements);
                             <!--Announcement audience choices end-->
 
                             <!--Form start-->
-                            <form method="POST" action="../db/post_announcement_action.php?audience=<?php echo $post_audience ?>">
+                            <form method="POST" action="../db/post_announcement_action.php">
+                                <input type="hidden" name="audience" value="<?php echo $post_audience ?>" />
+                                
                                 <div class="mb-4 text-end">
                                     <!-- text field start -->
                                     <div class="input mb-4 text-end mt-3">
@@ -131,12 +134,12 @@ unset($fetch_announcements);
                                         
                                         <button class="btn btn-lg btn-block text-white w-100 display-2 mb-3"
                                         style="background-color: #212B5E; border-radius: 15px" name="post" type="post">
-                                        Post
-                                    </button>
+                                            <?php (strlen(trim($cur_announcement, " ")) > 0) ? print "Update" : print "Post" ?>
+                                        </button>
                                 </div>
                                 
                                 <?php
-                                    if (strlen(trim($cur_announcement, " ")) > 0 ) {
+                                    if (strlen(trim($cur_announcement, " ")) > 0) {
                                         ?>
                                     <div class="col-sm-6 px-1">
                                         <button class="btn btn-lg btn-block text-white w-100 display-2 mb-3 "

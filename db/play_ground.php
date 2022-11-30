@@ -90,12 +90,19 @@ include("config.php");
 
 ###
 
-$fetch_books = $database->getReference('books')->getValue();
+// $fetch_books = $database->getReference('books')->getValue();
 
-foreach($fetch_books as $row){
-    if($row['isbn'] == $isbn){
-        $title = $row['title'];
-        break;
-    }
-}
+// foreach($fetch_books as $row){
+//     if($row['isbn'] == $isbn){
+//         $title = $row['title'];
+//         break;
+//     }
+// }
+
+// $ref_table = "announcements";
+// $fetch_announcements = $database->getReference($ref_table)->getValue();
+
+// $announcements = $fetch_announcements;
+
+// echo array_keys($announcements)[0];
 ?>
