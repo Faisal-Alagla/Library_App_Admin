@@ -12,8 +12,8 @@ include('../includes/header.php');
                         <div class="card-body p-5 pb-2 text-center">
 
                             <?php if(isset($_GET['borrower'])) {
-                                $key = $_GET['borrower'];
-                                $ref_table = "students/$key";
+                                $borrower_key = $_GET['borrower'];
+                                $ref_table = "students/$borrower_key";
                                 $fetch_borrower = $database->getReference($ref_table)->getValue();
 
                                 if($fetch_borrower > 0) {
@@ -23,8 +23,33 @@ include('../includes/header.php');
 
                             <!--First name & last name of the borrower in header-->
                             <h2 class="mb-5 fw-bold" style=" color:#212B5E; "><?php echo "$first_name $last_name" ?></h2>
-                            <hr class="mt-0 mb-1">
 
+                            <?php
+                            //feedback message after action is done
+                            if (isset($_SESSION['book_return_msg'])) {
+                                $msg = $_SESSION['book_return_msg'];
+
+                                //message color changes wether action is successful or failed
+                                if ($_SESSION['book_return_flag']) {
+                                    $msg_color = "alert-success";
+                                } else {
+                                    $msg_color = "alert-danger";
+                                }
+
+                            ?>
+
+                            <div class="alert <?php echo $msg_color ?>" role="alert">
+                                <?php echo $msg ?>
+                            </div>
+
+                            <?php
+                                //clearing session variables
+                                unset($_SESSION['book_return_msg']);
+                                unset($_SESSION['book_return_flag']);
+                            }
+                            ?>
+
+                            <hr class="mt-0 mb-1">
                             <!--Borrower Email-->
                             <div class=" mb-3 mt-3 text-center mx-2">
                                 <h5 style="color:#212B5E; text-decoration: underline;">Email</h5>
@@ -60,7 +85,7 @@ include('../includes/header.php');
                                                     $title ="";
                                                     $fetch_books = $database->getReference('books')->getValue();
                                                     if($fetch_books > 0) {
-                                                        foreach($fetch_books as $row){
+                                                        foreach($fetch_books as /*$book_key =>*/ $row){
                                                             if($row['isbn'] == $isbn){
                                                                 $title = $row['title'];
                                                                 break;
@@ -102,10 +127,12 @@ include('../includes/header.php');
                                                     <p class="<?php echo $date_color ?>"><?php echo $due_date ?></p>
                                                 </td>
                                                 <td>
+                                                    <?php if($due_date != 'pending') {?>
                                                     <a class="btn btn-success" style="border-radius: 5px"
-                                                        href="">
+                                                        href="../db/return_borrowed_action.php?borrower=<?php echo $borrower_key ?>&book=<?php echo $isbn ?>">
                                                         Returned
                                                     </a>
+                                                    <?php } ?>
                                                 </td>
                                             </tr>
 

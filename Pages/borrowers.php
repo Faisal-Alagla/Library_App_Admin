@@ -13,6 +13,31 @@ include('../includes/header.php');
                         <div class="card-body p-5 pb-2 text-center">
                             <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Book Requests</h3>
 
+                            <?php
+                            //feedback message after action is done
+                            if (isset($_SESSION['book_return_msg'])) {
+                                $msg = $_SESSION['book_return_msg'];
+
+                                //message color changes wether action is successful or failed
+                                if ($_SESSION['book_return_flag']) {
+                                    $msg_color = "alert-success";
+                                } else {
+                                    $msg_color = "alert-danger";
+                                }
+
+                            ?>
+
+                            <div class="alert <?php echo $msg_color ?>" role="alert">
+                                <?php echo $msg ?>
+                            </div>
+
+                            <?php
+                                //clearing session variables
+                                unset($_SESSION['book_return_msg']);
+                                unset($_SESSION['book_return_flag']);
+                            }
+                            ?>
+
                             <div class="mb-4 mx-2">
 
                                 <?php
