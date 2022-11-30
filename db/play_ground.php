@@ -73,4 +73,18 @@ include("config.php");
 // echo '<hr/>';
 
 // echo date( "Y-m-d", strtotime( "$today +2 month" ) );
+
+
+###
+$tomorrow = strtotime('+1 days');
+$yesterday = strtotime('-1 days');
+$due_date = strtotime(date('2022-12-02'));
+
+if($due_date >= $tomorrow){
+ echo "green";
+}else if(($due_date > $yesterday) && ($due_date < $tomorrow)){
+ echo "yellow";
+}else{
+ echo "red";
+}
 ?>
