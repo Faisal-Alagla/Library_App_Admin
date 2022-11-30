@@ -24,6 +24,4 @@ if(isset($_GET['borrower']) && isset($_GET['book'])) {
     $_SESSION['book_return_flag'] = false;
     header('location: ../pages/borrowers.php');
 }
-
-
 ?>

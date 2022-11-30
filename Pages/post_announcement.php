@@ -70,19 +70,11 @@ unset($fetch_announcement);
 
                                     <button class="btn btn-lg btn-block text-white w-100 display-2 mb-3"
                                         style="background-color: #212B5E; border-radius: 15px" name="post" type="post">
-
-                                        <?php
-                                        if ($_SESSION['announcement_exists']) {
-                                            echo "Update";
-                                        } else {
-                                            echo "Post";
-                                        }
-                                        ?>
-
+                                        Post
                                     </button>
                                 </div>
 
-                                <?php
+                                <?php /*
                                 if ($_SESSION['announcement_exists']) {
                                 ?>
                                 <div class="col-sm-6 px-1">
@@ -94,7 +86,7 @@ unset($fetch_announcement);
                                 </div>
                                 <?php
                                 }
-                                ?>
+                                */?>
                             </div>
 
                         </form>
