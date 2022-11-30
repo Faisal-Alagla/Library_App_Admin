@@ -11,7 +11,7 @@ include('../includes/header.php');
                     <div class="card shadow-lg" style=" border-radius: 20px">
                         <!--start of card-->
                         <div class="card-body p-5 pb-2 text-center">
-                            <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Book Requests</h3>
+                            <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Borrowers</h3>
 
                             <?php
                             //feedback message after action is done
