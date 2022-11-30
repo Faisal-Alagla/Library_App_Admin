@@ -7,7 +7,6 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
     
     $image_name = $database->getReference($ref_table)->getValue()['image'];
     if($image_name > 0) {
-        // unlink('../images/book_images/'.$image_name);
         $bucket->object("images/$image_name")->delete();
     }
 

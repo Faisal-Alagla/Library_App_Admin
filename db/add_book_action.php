@@ -24,7 +24,6 @@ if (isset($_POST['add_book'])) {
         if ($image != Null) {
             $image_name = $isbn . $image;
 
-            // move_uploaded_file($_FILES['image']['tmp_name'], '../images/book_images/' . $image_name);
             $file_contents = file_get_contents($_FILES['image']['tmp_name']);
             $bucket->upload($file_contents, ['name' => "images/$image_name"]);
         } else {

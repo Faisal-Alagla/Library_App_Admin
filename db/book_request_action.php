@@ -24,9 +24,7 @@ if (isset($_POST['accept_request'])) {
         $date = $_POST['date'];
         $summary = $_POST['summary'];
 
-        if (strlen($image) > 0) {
-            // rename('../images/requests_images/' . $image, '../images/book_images/' . $image);
-            
+        if (strlen($image) > 0) {           
             //moving the image from requests_images to images
             //removing the initial isbn then adding the POSTed isbn just incase it was changed
             $no_isbn_name = substr($image, 10);
@@ -66,16 +64,12 @@ else if (isset($_POST['decline_request'])) {
     $image = $_POST['image'];
     
     if (strlen($image) > 0) {
-        // unlink('../images/requests_images/' . $image);
         $bucket->object("requests_images/$image")->delete();
     }
     
     $requests_table = "book_requests/$key";
     $database->getReference($requests_table)->remove();
 
-    // if (isset($_SESSION['book_key'])) {
-    //     unset($_SESSION['book_key']);
-    // }
     $_SESSION['book_reuqest_flag'] = true;
     $_SESSION['book_request_msg'] = "Request declined successfully!";
 } else {
