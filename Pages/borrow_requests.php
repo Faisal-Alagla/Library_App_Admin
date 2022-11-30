@@ -3,7 +3,6 @@ include('../includes/header.php');
 
 ?>
 
-
 <div class="row container-fluid p-0 m-0">
     <div class="col-sm-12 p-0 my-5">
         <div class="container p-0 h-100">
@@ -132,7 +131,6 @@ include('../includes/header.php');
         </div>
     </div>
 </div>
-
 
 <?php
 include('../includes/footer.php');
