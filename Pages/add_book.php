@@ -15,7 +15,8 @@ include('../includes/header.php');
                             <h3 class="mb-5 fw-bold" style="color:#212B5E;">Add New Book</h3>
 
                             <?php
-                            if (isset($_SESSION['book_added'])) {
+                            //feedback message for adding a book
+                            if (isset($_SESSION['book_added'])) :
                                 $msg = $_SESSION['book_added'];
 
                                 if ($_SESSION['book_added_flag']) {
@@ -33,7 +34,7 @@ include('../includes/header.php');
                             <?php
                                 unset($_SESSION['book_added']);
                                 unset($_SESSION['book_added_flag']);
-                            }
+                            endif;
                             ?>
 
                             <!-- Form start -->
@@ -84,17 +85,17 @@ include('../includes/header.php');
                                         $fetch_category = $database->getReference($ref_table)->getValue();
 
                                         //displaying table rows
-                                        if ($fetch_category > 0) {
+                                        if ($fetch_category > 0) :
                                             $num = 1;
-                                            foreach ($fetch_category as $key => $row) {
+                                            foreach ($fetch_category as $key => $row) :
                                                 $category = $row['category'];
                                         ?>
 
                                         <option value="<?php echo $category; ?>"><?php echo $category ?></option>
 
                                         <?php
-                                            }
-                                        }
+                                            endforeach;
+                                        endif;
 
                                         unset($ref_table);
                                         unset($fetch_category);

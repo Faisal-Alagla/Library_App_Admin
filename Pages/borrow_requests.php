@@ -15,7 +15,7 @@ include('../includes/header.php');
 
                             <?php
                             //feedback message after action is done
-                            if (isset($_SESSION['borrow_reuqest_accepted'])) {
+                            if (isset($_SESSION['borrow_reuqest_accepted'])) :
                                 $msg = $_SESSION['borrow_reuqest_accepted'];
 
                                 //message color changes wether action is successful or failed
@@ -35,7 +35,7 @@ include('../includes/header.php');
                                 //clearing session variables
                                 unset($_SESSION['borrow_reuqest_accepted']);
                                 unset($_SESSION['borrow_request_flag']);
-                            }
+                            endif;
                             ?>
 
                             <div class="mb-4 mx-2">

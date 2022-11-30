@@ -13,7 +13,7 @@ include('../includes/header.php');
                             <h3 class="mb-5 fw-bold" style="color:#212B5E;">Requested Book Information</h3>
 
                             <?php
-                            if (isset($_SESSION['book_request_msg'])) {
+                            if (isset($_SESSION['book_request_msg'])) :
                                 $msg = $_SESSION['book_request_msg'];
 
                                 if ($_SESSION['book_request_flag']) {
@@ -31,7 +31,7 @@ include('../includes/header.php');
                             <?php
                                 unset($_SESSION['book_request_msg']);
                                 unset($_SESSION['book_request_flag']);
-                            }
+                            endif;
 
                             if (isset($_GET['id']) || isset($_SESSION['book_key'])) {
                                 if (isset($_SESSION['book_key'])) {
@@ -116,29 +116,29 @@ include('../includes/header.php');
                                         <option value="">Select Category</option>
 
                                         <?php
-                                                //fetching data from the books table
-                                                $ref_table = 'categories';
-                                                $fetch_category = $database->getReference($ref_table)->getValue();
+                                            //fetching data from the books table
+                                            $ref_table = 'categories';
+                                            $fetch_category = $database->getReference($ref_table)->getValue();
 
-                                                //displaying table rows
-                                                if ($fetch_category > 0) {
-                                                    $num = 1;
-                                                    foreach ($fetch_category as $key => $row) :
-                                                        $selected = '';
-                                                        $category = $row['category'];
-                                                        if ($category == $book['category']) {
-                                                            $selected = 'selected';
-                                                        }
-                                                ?>
+                                            //displaying table rows
+                                            if ($fetch_category > 0) :
+                                                $num = 1;
+                                                foreach ($fetch_category as $key => $row) :
+                                                    $selected = '';
+                                                    $category = $row['category'];
+                                                    if ($category == $book['category']) {
+                                                        $selected = 'selected';
+                                                    }
+                                        ?>
 
                                         <option value="<?php echo $category; ?>" <?php echo $selected; ?>>
                                             <?php echo $category ?>
                                         </option>
 
                                         <?php
-                                                    endforeach;
-                                                }
-                                                ?>
+                                                endforeach;
+                                            endif;
+                                        ?>
 
                                     </select>
                                     <i class="bi bi-tag"></i>

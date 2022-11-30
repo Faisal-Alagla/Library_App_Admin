@@ -15,7 +15,7 @@ include('../includes/header.php');
                             <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Add a Category</h3>
 
                             <?php
-                            if (isset($_SESSION['category_added'])) {
+                            if (isset($_SESSION['category_added'])) :
                                 $msg = $_SESSION['category_added'];
 
                                 if ($_SESSION['category_added_flag']) {
@@ -33,7 +33,7 @@ include('../includes/header.php');
                             <?php
                                 unset($_SESSION['category_added']);
                                 unset($_SESSION['category_added_flag']);
-                            }
+                            endif;
                             ?>
 
                             <!-- Add Category Field start -->
@@ -63,7 +63,7 @@ include('../includes/header.php');
                             <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Manage Categories</h3>
 
                             <?php
-                            if (isset($_GET['id'])) {
+                            if (isset($_GET['id'])) :
                                 $category_key = $_GET['id'];
 
                                 $ref_table = 'categories';
@@ -114,10 +114,10 @@ include('../includes/header.php');
                                 unset($category_key);
                                 unset($ref_table);
                                 unset($category);
-                            }
+                            endif;
 
                             //message after category update
-                            if (isset($_SESSION['cateogry_updated'])) {
+                            if (isset($_SESSION['cateogry_updated'])) :
                                 $msg = $_SESSION['cateogry_updated'];
 
                                 //message color changes wether update is successful or failed
@@ -137,10 +137,10 @@ include('../includes/header.php');
                                 //clearing session variables
                                 unset($_SESSION['cateogry_updated']);
                                 unset($_SESSION['cateogry_updated_flag']);
-                            }
+                            endif;
 
                             //message after category deletion
-                            if (isset($_SESSION['cateogry_deleted'])) {
+                            if (isset($_SESSION['cateogry_deleted'])) :
                                 $msg = $_SESSION['cateogry_deleted'];
                                 if ($_SESSION['cateogry_deleted_flag']) {
                                     $msg_color = "alert-success";
@@ -157,7 +157,7 @@ include('../includes/header.php');
                                 //clearing session variables
                                 unset($_SESSION['cateogry_deleted']);
                                 unset($_SESSION['cateogry_deleted_flag']);
-                            }
+                            endif;
                             ?>
 
                             <div class="mb-4 mx-2">
@@ -181,7 +181,7 @@ include('../includes/header.php');
                                             $fetch_categories = $database->getReference($ref_table)->getValue();
 
                                             //displaying table rows
-                                            if ($fetch_categories > 0) {
+                                            if ($fetch_categories > 0) :
                                                 $num = 1;
                                                 foreach ($fetch_categories as $key => $row) :
                                             ?>
@@ -244,7 +244,7 @@ include('../includes/header.php');
 
                                             <?php
                                                 endforeach;
-                                            }
+                                            endif;
                                             unset($ref_table);
                                             unset($fetch_categories);
                                             ?>

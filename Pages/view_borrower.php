@@ -26,7 +26,7 @@ include('../includes/header.php');
 
                             <?php
                             //feedback message after action is done
-                            if (isset($_SESSION['book_return_msg'])) {
+                            if (isset($_SESSION['book_return_msg'])) :
                                 $msg = $_SESSION['book_return_msg'];
 
                                 //message color changes wether action is successful or failed
@@ -46,7 +46,7 @@ include('../includes/header.php');
                                 //clearing session variables
                                 unset($_SESSION['book_return_msg']);
                                 unset($_SESSION['book_return_flag']);
-                            }
+                            endif;
                             ?>
 
                             <hr class="mt-0 mb-1">

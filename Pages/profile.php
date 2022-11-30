@@ -16,7 +16,7 @@ $user = $auth->getUser($_SESSION['verified_user_id']);
 
                             <?php
                             //profile updated successfully
-                            if (isset($_SESSION['profile_update'])) {
+                            if (isset($_SESSION['profile_update'])) :
                                 $msg = $_SESSION['profile_update'];
                             ?>
 
@@ -26,10 +26,10 @@ $user = $auth->getUser($_SESSION['verified_user_id']);
 
                             <?php
                                 unset($_SESSION['profile_update']);
-                            }
+                            endif;
 
                             //some error occured
-                            if (isset($_SESSION['profile_error'])) {
+                            if (isset($_SESSION['profile_error'])) :
                                 $msg = $_SESSION['profile_error'];
                             ?>
 
@@ -39,7 +39,7 @@ $user = $auth->getUser($_SESSION['verified_user_id']);
 
                             <?php
                                 unset($_SESSION['profile_error']);
-                            }
+                            endif;
                             ?>
 
                             <!-- Display name start -->

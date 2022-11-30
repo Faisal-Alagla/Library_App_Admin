@@ -52,7 +52,7 @@ unset($fetch_announcements);
 
                             <?php
                             //feedback message after posting / updating announcements
-                            if (isset($_SESSION['post_announcement'])) {
+                            if (isset($_SESSION['post_announcement'])) :
                                 $msg = $_SESSION['post_announcement'];
 
                                 if ($_SESSION['post_announcement_flag']) {
@@ -70,7 +70,7 @@ unset($fetch_announcements);
                             <?php
                                 unset($_SESSION['post_announcement']);
                                 unset($_SESSION['post_announcement_flag']);
-                            }
+                            endif;
 
                             //when choosing target announcement audience: default is "everyone"
                             if(isset($_GET['announcement'])){
@@ -139,7 +139,7 @@ unset($fetch_announcements);
                                 </div>
                                 
                                 <?php
-                                    if (strlen(trim($cur_announcement, " ")) > 0) {
+                                    if (strlen(trim($cur_announcement, " ")) > 0) :
                                         ?>
                                     <div class="col-sm-6 px-1">
                                         <button class="btn btn-lg btn-block text-white w-100 display-2 mb-3 "
@@ -149,8 +149,8 @@ unset($fetch_announcements);
                                     </button>
                                 </div>
                                 <?php
-                                    }
-                                    ?>
+                                    endif;
+                                ?>
                                 </div>
                             </form>
                             <!--Form end-->

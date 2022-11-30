@@ -15,7 +15,7 @@ include('../includes/header.php');
 
                             <?php
                             // feedback message after the request action
-                            if (isset($_SESSION['book_request_msg'])) {
+                            if (isset($_SESSION['book_request_msg'])) :
                                 $msg = $_SESSION['book_request_msg'];
 
                                 //message color changes wether the operation is successful or not
@@ -35,10 +35,10 @@ include('../includes/header.php');
                                 //clearing session variables
                                 unset($_SESSION['book_request_msg']);
                                 unset($_SESSION['book_request_flag']);
-                            }
+                            endif;
 
                             //error message if can't view request
-                            if (isset($_SESSION['view_request_error'])) {
+                            if (isset($_SESSION['view_request_error'])) :
                                 $msg = $_SESSION['view_request_error'];
                                 $msg_color = "alert-danger";
 
@@ -51,7 +51,7 @@ include('../includes/header.php');
                             <?php
                                 //clearing session variables
                                 unset($_SESSION['view_request_error']);
-                            }
+                            endif;
                             ?>
 
                             <div class="mb-4 mx-2">

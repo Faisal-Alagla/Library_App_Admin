@@ -15,7 +15,7 @@ include('../includes/header.php');
 
                             <?php
                             //feedback message after book deletion
-                            if (isset($_SESSION['book_deleted'])) {
+                            if (isset($_SESSION['book_deleted'])) :
                                 $msg = $_SESSION['book_deleted'];
 
                                 //message color changes wether deletion is successful or failed
@@ -35,10 +35,10 @@ include('../includes/header.php');
                                 //clearing session variables
                                 unset($_SESSION['book_deleted']);
                                 unset($_SESSION['book_deleted_flag']);
-                            }
+                            endif;
 
                             //error message if can't edit book
-                            if (isset($_SESSION['edit_book_error'])) {
+                            if (isset($_SESSION['edit_book_error'])) :
                                 $msg = $_SESSION['edit_book_error'];
                                 $msg_color = "alert-danger";
 
@@ -51,7 +51,7 @@ include('../includes/header.php');
                             <?php
                                 //clearing session variables
                                 unset($_SESSION['edit_book_error']);
-                            }
+                            endif;
                             ?>
 
                             <div class="mb-4 mx-2">
@@ -80,7 +80,7 @@ include('../includes/header.php');
                                             $fetch_books = $database->getReference($ref_table)->getValue();
 
                                             //displaying table rows
-                                            if ($fetch_books > 0) {
+                                            if ($fetch_books > 0) :
                                                 $num = 1;
                                                 foreach ($fetch_books as $key => $row) :
                                                     if($row['image'] > 0){
@@ -135,7 +135,7 @@ include('../includes/header.php');
 
                                             <?php
                                                 endforeach;
-                                            }
+                                            endif;
 
                                             unset($ref_table);
                                             unset($fetch_books);
