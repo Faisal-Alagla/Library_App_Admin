@@ -13,10 +13,10 @@ include('../includes/header.php');
                             <h3 class="mb-5 fw-bold" style="color:#212B5E;">Requested Book Information</h3>
 
                             <?php
-                            if (isset($_SESSION['book_accepted'])) {
-                                $msg = $_SESSION['book_accepted'];
+                            if (isset($_SESSION['book_request_msg'])) {
+                                $msg = $_SESSION['book_request_msg'];
 
-                                if ($_SESSION['book_accepted_flag']) {
+                                if ($_SESSION['book_request_flag']) {
                                     $msg_color = "alert-success";
                                 } else {
                                     $msg_color = "alert-danger";
@@ -29,8 +29,8 @@ include('../includes/header.php');
                             </div>
 
                             <?php
-                                unset($_SESSION['book_accepted']);
-                                unset($_SESSION['book_accepted_flag']);
+                                unset($_SESSION['book_request_msg']);
+                                unset($_SESSION['book_request_flag']);
                             }
 
                             if (isset($_GET['id']) || isset($_SESSION['book_key'])) {

@@ -18,35 +18,12 @@ $user = $auth->getUser($_SESSION['verified_user_id']);
         <hr class="text-light w-50" />
     </div>
 
-    <!--Book requests card start-->
-    <div class="d-flex justify-content-center">
-        <div class="card bg-dark" style="border-radius: 20px; width: 60%; min-width: 200px;">
-            <div class="card-body d-flex justify-content-center">
-                <div class="col-sm-5 text-center">
-                    <h3 class="text-light">Book Requests</h3>
-                </div>
-                <div class="col-sm-2 text-center">
-                    <p class="text-light mx-2">|</p>
-                </div>
-                <div class="col-sm-5 text-center">
-                    <h3 class="text-light"><?php echo strval($num_requests); ?></h3>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Book requests card end-->
-
-    <!--horizontal line-->
-    <div class="d-flex justify-content-center align-items-center" style="height: 5vw">
-        <hr class="text-light w-50" />
-    </div>
-
     <!--Current Announcement card start-->
     <div class="d-flex justify-content-center">
         <div class="card bg-dark" style="border-radius: 20px; width: 60%; min-width: 200px;">
             <div class="card-body d-flex flex-column justify-content-center">
                 <div class="text-center">
-                    <h3 class="text-light">Current Announcement</h3>
+                    <h3 class="text-light">Current Announcements</h3>
                 </div>
                 <div class="d-flex justify-content-center align-items-center" style="height: 2vw">
                     <hr class="text-light w-50" />

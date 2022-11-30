@@ -14,12 +14,12 @@ include('../includes/header.php');
                             <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Book Requests</h3>
 
                             <?php
-                            // feedback message after accepting the book request
-                            if (isset($_SESSION['book_accepted'])) {
-                                $msg = $_SESSION['book_accepted'];
+                            // feedback message after the request action
+                            if (isset($_SESSION['book_request_msg'])) {
+                                $msg = $_SESSION['book_request_msg'];
 
                                 //message color changes wether the operation is successful or not
-                                if ($_SESSION['book_accepted_flag']) {
+                                if ($_SESSION['book_request_flag']) {
                                     $msg_color = "alert-success";
                                 } else {
                                     $msg_color = "alert-danger";
@@ -33,31 +33,8 @@ include('../includes/header.php');
 
                             <?php
                                 //clearing session variables
-                                unset($_SESSION['book_accepted']);
-                                unset($_SESSION['book_accepted_flag']);
-                            }
-
-                            // feedback message after request decline
-                            if (isset($_SESSION['book_declined'])) {
-                                $msg = $_SESSION['book_declined'];
-
-                                //message color changes wether the operation is successful or not
-                                if ($_SESSION['book_declined_flag']) {
-                                    $msg_color = "alert-success";
-                                } else {
-                                    $msg_color = "alert-danger";
-                                }
-
-                            ?>
-
-                            <div class="alert <?php echo $msg_color ?>" role="alert">
-                                <?php echo $msg ?>
-                            </div>
-
-                            <?php
-                                //clearing session variables
-                                unset($_SESSION['book_declined']);
-                                unset($_SESSION['book_declined_flag']);
+                                unset($_SESSION['book_request_msg']);
+                                unset($_SESSION['book_request_flag']);
                             }
 
                             //error message if can't view request
@@ -118,7 +95,7 @@ include('../includes/header.php');
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-sm btn-success w-100" style="border-radius: 5px"
-                                                        href="view_request.php?id=<?php echo $key ?>">
+                                                        href="view_book_request.php?id=<?php echo $key ?>">
                                                         View
                                                     </a>
                                                 </td>
