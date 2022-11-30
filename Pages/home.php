@@ -94,11 +94,21 @@ $user = $auth->getUser($_SESSION['verified_user_id']);
 
                         <?php
                             unset($announcements);
+                        }else{
+                            //if there's no announcements at all
+                        ?>
+
+                            <div class="bg-secondary" style="border-radius: 5px">
+                                <p class="m-2 text-white" style="font-size: 18px;">
+                                    There is currently no announcements at all
+                                </p>
+                            </div>
+
+                        <?php
                         }
                         unset($ref_table);
                         unset($fetch_announcements);
                         ?>
-
             </div>
         </div>
     </div>
