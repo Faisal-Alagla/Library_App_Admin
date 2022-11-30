@@ -31,8 +31,7 @@ unset($fetch_announcement);
                         <!--start of form card-->
                         <form class="card-body d-flex flex-column p-5 text-center" method="POST"
                             action="../db/post_announcement_action.php">
-                            <h3 class="mb-5 fw-bold" style=" color:#212B5E; "><?php echo $card_title ?> Announcement
-                            </h3>
+                            <h3 class="mb-5 fw-bold" style=" color:#212B5E; "><?php echo $card_title ?> Announcement </h3>
 
                             <?php
                             if (isset($_SESSION['post_announcement'])) {

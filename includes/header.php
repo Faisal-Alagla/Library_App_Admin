@@ -94,31 +94,7 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
               Actions
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-
-              <?php
-              $ref_table = "announcements";
-              $fetch_announcement = $database->getReference($ref_table)->getValue();
-
-              if ($fetch_announcement > 0) {
-                $_SESSION['announcement_exists'] = true;
-              } else {
-                $_SESSION['announcement_exists'] = false;
-              }
-
-              if ($_SESSION['announcement_exists']) {
-                $announcement_action = "Update";
-              } else {
-                $announcement_action = "Post";
-              }
-
-              $ref_table = "";
-              $fetch_announcement = "";
-              ?>
-
-              <li><a class="dropdown-item" href="post_announcement.php">
-                  <?php echo $announcement_action ?>
-                  Announcement
-                </a></li>
+              <li><a class="dropdown-item" href="post_announcement.php">Manage Announcements</a></li>
               <li><a class="dropdown-item" href="add_book.php">Add a book</a></li>
               <li><a class="dropdown-item" href="book_list.php">Manage books</a></li>
               <li><a class="dropdown-item" href="manage_categories.php">Manage categories</a></li>

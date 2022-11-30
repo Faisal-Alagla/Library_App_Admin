@@ -32,22 +32,22 @@ $user = $auth->getUser($_SESSION['verified_user_id']);
                     <p class="m-2 text-white" style="font-size: 18px;">
 
                         <?php
-            $ref_table = "announcements";
-            $fetch_announcement = $database->getReference($ref_table)->getValue();
-            
-            if ($fetch_announcement > 0) {
-              $announcement_key = $database->getReference($ref_table)->getChildKeys()[0];
-              $announcement = $database->getReference($ref_table)->getValue()[$announcement_key]['announcement'];
-              echo $announcement;
+                        $ref_table = "announcements";
+                        $fetch_announcement = $database->getReference($ref_table)->getValue();
+                        
+                        if ($fetch_announcement > 0) {
+                        $announcement_key = $database->getReference($ref_table)->getChildKeys()[0];
+                        $announcement = $database->getReference($ref_table)->getValue()[$announcement_key]['announcement'];
+                        echo $announcement;
 
-              unset($announcement_key);
-            } else {
-              echo "There are currently no accouncement(s)";
-            }
+                        unset($announcement_key);
+                        } else {
+                        echo "There are currently no accouncement(s)";
+                        }
 
-            unset($ref_table);
-            unset($fetch_announcement);
-            ?>
+                        unset($ref_table);
+                        unset($fetch_announcement);
+                        ?>
 
                     </p>
                 </div>

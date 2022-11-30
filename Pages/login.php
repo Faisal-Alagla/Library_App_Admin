@@ -46,7 +46,7 @@ session_start();
 
         <!-- Logo -->
         <div class="d-flex justify-content-center align-items-center">
-            <img class="py-5" style="height: 10vw;" src="../images/Pocket_Lib_Logo.png" alt=" " />
+            <img class="py-5" style="height: 15vw;" src="../images/psu-logo-lightbg.png" alt=" " />
         </div>
 
         <div class="py-5">
