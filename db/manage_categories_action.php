@@ -1,6 +1,6 @@
 <?php
 include("config.php");
-include("functions.php");
+include("../util/functions.php");
 
 //update category
 if (isset($_POST['update_category'])) {

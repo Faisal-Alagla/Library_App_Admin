@@ -1,6 +1,6 @@
 <?php
 include("config.php");
-include("functions.php");
+include("../util/functions.php");
 
 if (isset($_POST['add_book'])) {
     $isbn = $_POST['isbn'];

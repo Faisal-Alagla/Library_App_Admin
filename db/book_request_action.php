@@ -1,6 +1,6 @@
 <?php
 include("config.php");
-include("functions.php");
+include("../util/functions.php");
 
 //accept request
 if (isset($_POST['accept_request'])) {
