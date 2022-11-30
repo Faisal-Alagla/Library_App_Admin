@@ -50,6 +50,28 @@ unset($fetch_announcements);
                             <h3 class="mb-5 fw-bold" style="color:#212B5E;">Post Announcements</h3>
 
                             <?php
+                            //feedback message after posting / updating announcements
+                            if (isset($_SESSION['post_announcement'])) {
+                                $msg = $_SESSION['post_announcement'];
+
+                                if ($_SESSION['post_announcement_flag']) {
+                                    $msg_color = "alert-success";
+                                } else {
+                                    $msg_color = "alert-danger";
+                                }
+
+                            ?>
+
+                            <div class="alert <?php echo $msg_color ?>" role="alert">
+                                <?php echo $msg ?>
+                            </div>
+
+                            <?php
+                                unset($_SESSION['post_announcement']);
+                                unset($_SESSION['post_announcement_flag']);
+                            }
+
+                            //when choosing target announcement audience: default is "everyone"
                             if(isset($_GET['announcement'])){
                                 $everyone_decoration = "none";
                                 $students_decoration = "none";
@@ -57,18 +79,28 @@ unset($fetch_announcements);
 
                                 switch($_GET['announcement']){
                                     case "students":
-                                        $students_decoration = "underline fw-bold";
+                                        $students_decoration = "underline fw-bold fs-3";
+                                        $post_audience = "students";
+                                        $cur_announcement = $students_announcement;
                                         break;
                                     case "staff":
-                                        $staff_decoration = "underline fw-bold";
+                                        $staff_decoration = "underline fw-bold fs-3";
+                                        $post_audience = "staff";
+                                        $cur_announcement = $staff_announcement;
                                         break;
                                     default:
-                                        $everyone_decoration = "underline fw-bold";
+                                        $everyone_decoration = "underline fw-bold fs-3";
+                                        $post_audience = "everyone";
+                                        $cur_announcement = $everyone_announcement;
+                                    }
+                                }else{
+                                    $everyone_decoration = "underline fw-bold fs-3";
+                                    $post_audience = "everyone";
+                                    $cur_announcement = $everyone_announcement;
                                 }
-                            }
                             ?>
                             
-                            <!--Announcement choices start-->
+                            <!--Announcement audience choices start-->
                             <div class="d-flex flex-row justify-content-evenly align-items-center">
                                 <a class="text-decoration-<?php echo $everyone_decoration ?>" style="color:#212B5E;" href="post_announcement.php?announcement=everyone">
                                     Everyone
@@ -80,66 +112,45 @@ unset($fetch_announcements);
                                     Staff
                                 </a>
                             </div>
-                            <!--Announcement choices end-->
+                            <!--Announcement audience choices end-->
 
-                            <form method="POST" action="../db/post_announcement_action.php">
-
-                                <?php
-                                if (isset($_SESSION['post_announcement'])) {
-                                    $msg = $_SESSION['post_announcement'];
-
-                                    if ($_SESSION['post_announcement_flag']) {
-                                        $msg_color = "alert-success";
-                                    } else {
-                                        $msg_color = "alert-danger";
-                                    }
-
-                                ?>
-
-                                <div class="alert <?php echo $msg_color ?>" role="alert">
-                                    <?php echo $msg ?>
-                                </div>
-
-                                <?php
-                                    unset($_SESSION['post_announcement']);
-                                    unset($_SESSION['post_announcement_flag']);
-                                }
-                                ?>
-
+                            <!--Form start-->
+                            <form method="POST" action="../db/post_announcement_action.php?audience=<?php echo $post_audience ?>">
                                 <div class="mb-4 text-end">
                                     <!-- text field start -->
                                     <div class="input mb-4 text-end mt-3">
                                         <textarea type="text" name="announcement" rows="10" id="announcement"
-                                            class="form-control form-control-lg shadow-lg rows"
-                                            style="border-radius: 15px;"></textarea>
+                                        class="form-control form-control-lg shadow-lg rows"
+                                        style="border-radius: 15px;"><?php echo $cur_announcement; ?></textarea>
                                     </div>
                                     <!-- text field end -->
                                 </div>
-
-                                <div class="col-sm-12 row justify-content-center align-self-center">
+                                
+                                <div class="col-sm-12 d-flex flex-row justify-content-center align-self-center">
                                     <div class="col-sm-6 px-1">
-
+                                        
                                         <button class="btn btn-lg btn-block text-white w-100 display-2 mb-3"
-                                            style="background-color: #212B5E; border-radius: 15px" name="post" type="post">
-                                            Post
-                                        </button>
-                                    </div>
-
-                                    <?php /*
-                                    if ($_SESSION['announcement_exists']) {
-                                    ?>
+                                        style="background-color: #212B5E; border-radius: 15px" name="post" type="post">
+                                        Post
+                                    </button>
+                                </div>
+                                
+                                <?php
+                                    if (strlen(trim($cur_announcement, " ")) > 0 ) {
+                                        ?>
                                     <div class="col-sm-6 px-1">
                                         <button class="btn btn-lg btn-block text-white w-100 display-2 mb-3 "
-                                            style="background-color: #98030e; border-radius: 15px" name="delete"
-                                            type="delete">
-                                            Delete
-                                        </button>
-                                    </div>
-                                    <?php
+                                        style="background-color: #98030e; border-radius: 15px" name="delete"
+                                        type="delete">
+                                        Delete
+                                    </button>
+                                </div>
+                                <?php
                                     }
-                                    */?>
+                                    ?>
                                 </div>
                             </form>
+                            <!--Form end-->
                         </div>
                         <!--card end-->
                     </div>
