@@ -80,7 +80,7 @@ include('../includes/header.php');
 
                                                 $borrowed_books = $fetch_borrower['borrowedBooks'];
                                                 $num = 1;
-                                                foreach ($borrowed_books as $isbn => $due_date) {
+                                                foreach ($borrowed_books as $isbn => $due_date) :
                                                     //fetching the title of the book
                                                     $title ="";
                                                     $fetch_books = $database->getReference('books')->getValue();
@@ -137,7 +137,7 @@ include('../includes/header.php');
                                             </tr>
 
                                             <?php
-                                                }
+                                                endforeach;
                                             ?>
 
                                         </tbody>

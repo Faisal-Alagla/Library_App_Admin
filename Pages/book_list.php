@@ -13,18 +13,6 @@ include('../includes/header.php');
                         <div class="card-body p-5 pb-2 text-center">
                             <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Manage Books</h3>
 
-                            <!-- Search bar start -->
-                            <!-- <div class="col-sm-4 d-flex flex-column justify-content-center align-self-center m-2">
-                                <label class="text-start" for="search">Search Book</label>
-                                <div class="d-flex flex-row">
-                                    <form role="search" class="border-dark">
-                                        <input type="text" placeholder="Search..." id="myInput"
-                                            class="form-control mt-0">
-                                    </form>
-                                </div>
-                            </div> -->
-                            <!-- Search bar end -->
-
                             <?php
                             //feedback message after book deletion
                             if (isset($_SESSION['book_deleted'])) {
@@ -94,7 +82,7 @@ include('../includes/header.php');
                                             //displaying table rows
                                             if ($fetch_books > 0) {
                                                 $num = 1;
-                                                foreach ($fetch_books as $key => $row) {
+                                                foreach ($fetch_books as $key => $row) :
                                                     if($row['image'] > 0){
                                                         $book_img_url = "https://firebasestorage.googleapis.com/v0/b/".$bucket_name."/o/images%2F".$row['image']."?alt=media";
                                                     } else{
@@ -146,7 +134,7 @@ include('../includes/header.php');
                                             </tr>
 
                                             <?php
-                                                }
+                                                endforeach;
                                             }
 
                                             unset($ref_table);

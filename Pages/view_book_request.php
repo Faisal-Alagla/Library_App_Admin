@@ -123,7 +123,7 @@ include('../includes/header.php');
                                                 //displaying table rows
                                                 if ($fetch_category > 0) {
                                                     $num = 1;
-                                                    foreach ($fetch_category as $key => $row) {
+                                                    foreach ($fetch_category as $key => $row) :
                                                         $selected = '';
                                                         $category = $row['category'];
                                                         if ($category == $book['category']) {
@@ -136,7 +136,7 @@ include('../includes/header.php');
                                         </option>
 
                                         <?php
-                                                    }
+                                                    endforeach;
                                                 }
                                                 ?>
 

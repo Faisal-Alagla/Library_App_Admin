@@ -65,7 +65,7 @@ include('../includes/header.php');
                                         <tbody>
 
                                             <?php
-                                                foreach ($fetch_rquests as $key => $row) {
+                                                foreach ($fetch_rquests as $key => $row) :
                                                 ?>
 
                                             <tr>
@@ -94,8 +94,8 @@ include('../includes/header.php');
                                             </tr>
 
                                             <?php
-                                                }
-                                                ?>
+                                                endforeach;
+                                            ?>
 
                                         </tbody>
                                     </table>

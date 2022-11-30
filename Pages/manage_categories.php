@@ -47,10 +47,6 @@ include('../includes/header.php');
                                         aria-describedby="basic-addon1" value=""
                                         style="border-radius: 15px; padding-left: 5px; padding-right: 5px;" required />
                                 </div>
-                                <!-- <div class="col-sm-4 d-flex flex-row justify-content-evenly align-items-center input text-start">
-                                    <label class="form-label mb-0" for="value" style="color:#212B5E;">Value</label>
-                                    <input type="text" id="value" name="value" class="form-control form-control-lg shadow-lg w-75" aria-describedby="basic-addon1" value="" style="border-radius: 15px; padding-left: 5px; padding-right: 5px;" required />
-                                </div> -->
                                 <div class="col-sm-5 d-flex flex-row justify-content-evenly align-items-center">
                                     <button class="btn btn-lg btn-block text-white display-2 w-100 ms-2"
                                         style="background-color: #212B5E; border-radius: 15px" type="add_category"
@@ -65,18 +61,6 @@ include('../includes/header.php');
                             </div>
 
                             <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Manage Categories</h3>
-
-                            <!-- Search bar start -->
-                            <!-- <div class="col-sm-4 d-flex flex-column justify-content-center align-self-center m-2">
-                                <label class="text-start" for="search">Search Book</label>
-                                <div class="d-flex flex-row">
-                                    <form role="search" class="border-dark">
-                                        <input type="text" placeholder="Search..." id="myInput"
-                                            class="form-control mt-0">
-                                    </form>
-                                </div>
-                            </div> -->
-                            <!-- Search bar end -->
 
                             <?php
                             if (isset($_GET['id'])) {
@@ -199,7 +183,7 @@ include('../includes/header.php');
                                             //displaying table rows
                                             if ($fetch_categories > 0) {
                                                 $num = 1;
-                                                foreach ($fetch_categories as $key => $row) {
+                                                foreach ($fetch_categories as $key => $row) :
                                             ?>
 
                                             <tr>
@@ -259,7 +243,7 @@ include('../includes/header.php');
                                             </div>
 
                                             <?php
-                                                }
+                                                endforeach;
                                             }
                                             unset($ref_table);
                                             unset($fetch_categories);

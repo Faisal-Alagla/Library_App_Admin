@@ -69,7 +69,7 @@ include('../includes/header.php');
                                                 $tomorrow = strtotime('+1 days');
                                                 $yesterday = strtotime('-1 days');
 
-                                                foreach ($fetch_students as $key => $row) {
+                                                foreach ($fetch_students as $key => $row) :
                                                     if (isset($row['borrowedBooks'])){
                                                         //if user has borrowed books -> check due-dates
                                                         $status_color = "text-success";
@@ -123,8 +123,8 @@ include('../includes/header.php');
 
                                             <?php
                                                     }
-                                                }
-                                                ?>
+                                                endforeach;
+                                            ?>
 
                                         </tbody>
                                     </table>
