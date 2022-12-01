@@ -6,7 +6,7 @@ include('../includes/header.php');
     <div class="my-5">
         <div class="container p-0">
             <div class="row d-flex justify-content-center align-items-center h-100 p-0">
-                <div class="col-sm-12 col-md-11 col-lg-10 col-xl-9">
+                <div class="col-12 col-md-10 col-lg-8 col-xl-6">
                     <form class="card shadow-lg" style="border-radius: 20px" method="post"
                         action="../db/book_request_action.php" enctype="multipart/form-data">
                         <div class="card-body p-5 d-flex flex-column text-center align-items-center">
