@@ -73,6 +73,7 @@ unset($fetch_announcements);
                             endif;
 
                             //when choosing target announcement audience: default is "everyone"
+                            $selected_decoration = "underline fw-bold fs-3";
                             if(isset($_GET['announcement'])){
                                 $everyone_decoration = "none";
                                 $students_decoration = "none";
@@ -80,22 +81,22 @@ unset($fetch_announcements);
 
                                 switch($_GET['announcement']){
                                     case "students":
-                                        $students_decoration = "underline fw-bold fs-3";
+                                        $students_decoration = $selected_decoration;
                                         $post_audience = "students";
                                         $cur_announcement = $students_announcement;
                                         break;
                                     case "staff":
-                                        $staff_decoration = "underline fw-bold fs-3";
+                                        $staff_decoration = $selected_decoration;
                                         $post_audience = "staff";
                                         $cur_announcement = $staff_announcement;
                                         break;
                                     default:
-                                        $everyone_decoration = "underline fw-bold fs-3";
+                                        $everyone_decoration = $selected_decoration;
                                         $post_audience = "everyone";
                                         $cur_announcement = $everyone_announcement;
                                     }
                                 }else{
-                                    $everyone_decoration = "underline fw-bold fs-3";
+                                    $everyone_decoration = $selected_decoration;
                                     $post_audience = "everyone";
                                     $cur_announcement = $everyone_announcement;
                                 }
