@@ -24,7 +24,6 @@ include('../includes/header.php');
                                 } else {
                                     $msg_color = "alert-danger";
                                 }
-
                             ?>
 
                             <div class="alert <?php echo $msg_color ?>" role="alert">

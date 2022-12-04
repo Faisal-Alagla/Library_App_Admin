@@ -1,5 +1,6 @@
 <?php
 include("config.php");
+include("../util/functions.php");
 
 if (isset($_POST['post'])) {
     $announcement = $_POST['announcement'];
@@ -15,11 +16,22 @@ if (isset($_POST['post'])) {
         $key = array_keys($fetch_announcements)[0];
 
         if (strlen($announcement) < 1) {
-            //if empty string -> remove the announcement
-            $delete_query_result =  $database->getReference("$ref_table/$key/$audience")->remove();
+            //if empty string
 
-            $_SESSION['post_announcement_flag'] = true;
-            $_SESSION['post_announcement'] = "Announcement for \"$audience\" is removed!";
+            //check if there was an announcement for the same audience
+            $check_announcement = $database->getReference("$ref_table/$key/$audience")->getValue();
+
+            //if there was an announcement for this audiece -> remove it
+            if ($check_announcement > 0){
+                $delete_query_result =  $database->getReference("$ref_table/$key/$audience")->remove();
+    
+                $_SESSION['post_announcement_flag'] = true;
+                $_SESSION['post_announcement'] = "Announcement for \"$audience\" is removed!";
+            //else -> display field must be filled message
+            } else {
+                $_SESSION['post_announcement_flag'] = false;
+                $_SESSION['post_announcement'] = "Announcement field must be filled!";
+            }
         }else{
             //else: update the table with the new announcement [audience => announcement]
             $updateData = [
@@ -35,7 +47,7 @@ if (isset($_POST['post'])) {
     } else {
         if (strlen($announcement) < 1) {
             //if empty string -> do nothing and show msg to fill the post
-            $_SESSION['post_announcement_flag'] = true;
+            $_SESSION['post_announcement_flag'] = false;
             $_SESSION['post_announcement'] = "Announcement field must be filled!";
         }else{
             //create the table with only the chosen audience as key, and annuncement as value

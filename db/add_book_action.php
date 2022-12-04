@@ -39,6 +39,7 @@ if (isset($_POST['add_book'])) {
             'date' => $date,
             'summary' => $summary,
             'timesBorrowed' => $times_borrowed,
+            'dateRegistered' => date("Y-m-d")
         ];
 
         $ref_table = "books";

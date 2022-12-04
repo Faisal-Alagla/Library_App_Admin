@@ -45,6 +45,7 @@ if (isset($_POST['accept_request'])) {
             'image' => $image_name,
             'date' => $date,
             'summary' => $summary,
+            'dateRegistered' => date("Y-m-d")
         ];
 
         $books_table = "books";
