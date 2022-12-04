@@ -72,12 +72,14 @@ unset($fetch_announcements);
                                 unset($_SESSION['post_announcement_flag']);
                             endif;
 
-                            //when choosing target announcement audience: default is "everyone"
+                            //helper bootstrap decoration variables
+                            $everyone_decoration = "none";
+                            $students_decoration = "none";
+                            $staff_decoration = "none";
                             $selected_decoration = "underline fw-bold fs-3";
+                            
+                            //when choosing target announcement audience: default is "everyone"
                             if(isset($_GET['announcement'])){
-                                $everyone_decoration = "none";
-                                $students_decoration = "none";
-                                $staff_decoration = "none";
 
                                 switch($_GET['announcement']){
                                     case "students":

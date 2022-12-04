@@ -18,6 +18,7 @@ session_start();
     <title>Login</title>
     <link href='https://fonts.googleapis.com/css?family=Cairo' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
     <style>
     body {
         font-family: 'Cairo';
@@ -39,6 +40,7 @@ session_start();
         padding: 9px 8px;
     }
     </style>
+    
 </head>
 
 <body>

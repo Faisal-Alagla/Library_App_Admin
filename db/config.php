@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['verified_user_id'])) {
     header('location: ../pages/login.php');
 }
 require __DIR__ . '/vendor/autoload.php';

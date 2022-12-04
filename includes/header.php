@@ -1,7 +1,7 @@
 <?php
 // session_start();
 include("../db/config.php");
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['verified_user_id'])) {
   header('location: login.php');
 }
 $cur_page = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);

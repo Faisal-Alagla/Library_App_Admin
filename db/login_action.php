@@ -20,7 +20,6 @@ if (isset($_POST['login'])) {
                 $_SESSION['verified_user_id'] = $uid;
                 $_SESSION['idTokenString'] = $idTokenString;
 
-                $_SESSION['user'] = '';
                 header('location: ../pages/home.php');
                 exit();
             } catch (Exception $e) {

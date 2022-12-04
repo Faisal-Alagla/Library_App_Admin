@@ -5,6 +5,7 @@ if (isset($_GET['id']) && $_GET['id'] != '') {
     $key = $_GET['id'];
     $ref_table = "books/$key";
     
+    //if the deleted book has an image -> remove it from FB storage aswell
     $image_name = $database->getReference($ref_table)->getValue()['image'];
     if($image_name > 0) {
         $bucket->object("images/$image_name")->delete();

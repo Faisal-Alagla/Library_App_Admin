@@ -21,6 +21,7 @@ if (isset($_POST['add_book'])) {
         $summary = $_POST['summary'];
         $times_borrowed = 0;
 
+        //if there's an uploaded image -> mix the isbn with its name and upload it to the FB storage
         if ($image != Null) {
             $image_name = $isbn . $image;
 
