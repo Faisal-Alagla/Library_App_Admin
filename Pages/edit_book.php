@@ -15,6 +15,7 @@ include('../includes/header.php');
                             <h3 class="mb-5 fw-bold" style="color:#212B5E;">Edit Book Information</h3>
 
                             <?php
+                            //feedback messages when book is updated
                             if (isset($_SESSION['book_updated'])) :
                                 $msg = $_SESSION['book_updated'];
 
@@ -35,7 +36,9 @@ include('../includes/header.php');
                                 unset($_SESSION['book_updated_flag']);
                             endif;
 
+
                             if (isset($_GET['id']) || isset($_SESSION['book_key'])) {
+                                //getting the book key
                                 if (isset($_SESSION['book_key'])) {
                                     $book_key = $_SESSION['book_key'];
                                     unset($_SESSION['book_key']);
@@ -43,6 +46,7 @@ include('../includes/header.php');
                                     $book_key = $_GET['id'];
                                 }
 
+                                //fetching the book to edit
                                 $ref_table = 'books';
                                 $book = $database->getReference($ref_table)->getChild($book_key)->getValue();
 
