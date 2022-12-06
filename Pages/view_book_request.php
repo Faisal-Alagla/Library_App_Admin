@@ -82,17 +82,17 @@ include('../includes/header.php');
                                 <!-- Image Field start -->
                                 <div class="col-sm-12 d-flex flex-row justify-content-center align-items-center mt-3" style="border: 1px solid #212B5E; border-radius: 15px;">
                                     <div class="input col-sm-3">
-                                        <label class="form-label" for="image" style="color:#212B5E;">To edit the image, go to edit books after accepting</label>
+                                        <label class="form-label" for="image" style="color:#212B5E;">To add an image, go to edit books after accepting</label>
                                         <input type="hidden" id="image" name="image"
                                             class="form-control form-control-lg shadow-lg"
                                             aria-describedby="basic-addon1" value="<?php echo $book['image'] ?>"
                                             style="border-radius: 15px"/>
                                         <!-- <i class="bi bi-card-image"></i> -->
                                     </div>
-                                    <div class="col-sm-2 d-flex justify-content-center">
-                                        <img src="<?php echo $book_img_url ?>"
+                                    <!-- <div class="col-sm-2 d-flex justify-content-center">
+                                        <img src="<?php //echo $book_img_url ?>"
                                             alt="No img" style="max-width: 45px;">
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- Image Field end -->
 
