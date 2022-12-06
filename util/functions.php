@@ -12,9 +12,11 @@ function item_exists($attribute, $db, $ref_table, $col_name)
 {
     $fetch_item = $db->getReference($ref_table)->getValue();
 
-    foreach ($fetch_item as $row) {
-        if ($row[$col_name] == $attribute) {
-            return true;
+    if ($fetch_item > 0 ) {
+        foreach ($fetch_item as $row) {
+            if ($row[$col_name] == $attribute) {
+                return true;
+            }
         }
     }
     return false;
@@ -34,9 +36,11 @@ function object_exists($obj_key, $attribute, $db, $ref_table, $col_name)
 {
     $fetch_item = $db->getReference($ref_table)->getValue();
 
-    foreach ($fetch_item as $fetched_key => $row) {
-        if (($row[$col_name] == $attribute) && !($fetched_key == $obj_key)) {
-            return true;
+    if ($fetch_item > 0) {
+        foreach ($fetch_item as $fetched_key => $row) {
+            if (($row[$col_name] == $attribute) && !($fetched_key == $obj_key)) {
+                return true;
+            }
         }
     }
     return false;
