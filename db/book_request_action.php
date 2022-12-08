@@ -10,7 +10,7 @@ if (isset($_POST['accept_request'])) {
     //check if this book already exists in the database
     $book_exists = item_exists($isbn, $database, 'books', 'isbn');
     if ($book_exists) {
-        $_SESSION['book_reuqest_flag'] = false;
+        $_SESSION['book_request_flag'] = false;
         $_SESSION['book_request_msg'] = "This book already exists in the database!";
 
         $_SESSION['book_key'] = $key;
@@ -45,6 +45,7 @@ if (isset($_POST['accept_request'])) {
             'image' => $image_name,
             'date' => $date,
             'summary' => $summary,
+            'timesBorrowed' => 0,
             'dateRegistered' => date("Y-m-d"),
             'ratings' => ['default' => '-1']
         ];
@@ -56,7 +57,7 @@ if (isset($_POST['accept_request'])) {
         $requests_table = "book_requests/$key";
         $database->getReference($requests_table)->remove();
 
-        $_SESSION['book_reuqest_flag'] = true;
+        $_SESSION['book_request_flag'] = true;
         $_SESSION['book_request_msg'] = "Book added successfully!";
     }
 }
@@ -72,10 +73,10 @@ else if (isset($_POST['decline_request'])) {
     $requests_table = "book_requests/$key";
     $database->getReference($requests_table)->remove();
 
-    $_SESSION['book_reuqest_flag'] = true;
+    $_SESSION['book_request_flag'] = true;
     $_SESSION['book_request_msg'] = "Request declined successfully!";
 } else {
-    $_SESSION['book_reuqest_flag'] = false;
+    $_SESSION['book_request_flag'] = false;
     $_SESSION['book_request_msg'] = "Something went wrong, please validate your inputs!";
 }
 

@@ -63,7 +63,7 @@ include('../includes/header.php');
                                     <label class="form-label" for="isbn" style="color:#212B5E;">ISBN</label>
                                     <input type="text" id="isbn" name="isbn"
                                         class="form-control form-control-lg shadow-lg "
-                                        style="border-radius: 15px; padding-right: 40px;" minlength="10" maxlength="10"
+                                        style="border-radius: 15px; padding-right: 40px;" minlength="10" maxlength="13"
                                         value="<?php echo $book['isbn'] ?>" required />
                                     <i class="bi bi-upc-scan"></i>
                                 </div>
