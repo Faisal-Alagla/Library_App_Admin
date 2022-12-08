@@ -99,10 +99,10 @@ if($fetch_working_hours > 0) {
 
                                         <div class="input col-sm-12 row">
                                             <!--Time From start-->
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-6 ps-5 pe-0">
                                                 <label class="form-label" for="from" style="color:#212B5E;">From</label>
                                                 <div class="input col-sm-12 row">
-                                                    <div class="col-sm-8 pe-0">
+                                                    <div class="col-sm-7 pe-0">
                                                         <select id="from" name="from"
                                                             class="form-control form-control-lg shadow-lg form-select text-center fs-5"
                                                             style="border-radius: 15px;">
@@ -123,7 +123,7 @@ if($fetch_working_hours > 0) {
 
                                                         </select>
                                                     </div>
-                                                    <div class="col-sm-4">
+                                                    <div class="col-sm-5">
                                                         <select id="from_AMPM" name="from_AMPM"
                                                         class="form-control form-control-lg shadow-lg form-select text-center fs-5"
                                                         style="border-radius: 15px;">
@@ -136,10 +136,10 @@ if($fetch_working_hours > 0) {
                                             <!--Time From End-->
 
                                             <!--Time To start-->
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-6 ps-5 pe-0">
                                                 <label class="form-label" for="to" style="color:#212B5E;">To</label>
                                                 <div class="input col-sm-12 row">
-                                                    <div class="col-sm-8 pe-0">
+                                                    <div class="col-sm-7 pe-0">
                                                         <select id="to" name="to"
                                                             class="form-control form-control-lg shadow-lg form-select text-center fs-5"
                                                             style="border-radius: 15px;">
@@ -160,7 +160,7 @@ if($fetch_working_hours > 0) {
 
                                                         </select>
                                                     </div>
-                                                    <div class="col-sm-4">
+                                                    <div class="col-sm-5">
                                                         <select id="to_AMPM" name="to_AMPM"
                                                         class="form-control form-control-lg shadow-lg form-select text-center fs-5"
                                                         style="border-radius: 15px;">
