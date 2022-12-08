@@ -1,6 +1,7 @@
 <?php
 include("config.php");
 
+//update working hours
 if(isset($_POST['update_workhours'])){
     $from = $_POST['from'];
     $from_ampm = $_POST['from_AMPM'];
@@ -29,8 +30,9 @@ if(isset($_POST['update_workhours'])){
         $_SESSION['workhours_update'] = "Opening and closing times can't be the same";
         $_SESSION['workhours_update_flag'] = false;
     }
+
+//close library for maintenance
 }else if (isset($_POST['close_library'])){
-    //close library for maintenance
     $ref_table = "announcements/-NI85zuxnOIZW6ngSJyN/workingHours";
     $fetch_working_hours = $database->getReference($ref_table)->getValue();
 
@@ -54,6 +56,8 @@ if(isset($_POST['update_workhours'])){
         $_SESSION['workhours_update'] = "The Library is already closed for maintenance";
         $_SESSION['workhours_update_flag'] = false;
     }
+
+//error case (no post)
 }else{
     $_SESSION['workhours_update'] = "Soemthing went wrong, try again please";
     $_SESSION['workhours_update_flag'] = false;
