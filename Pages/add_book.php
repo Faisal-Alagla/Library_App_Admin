@@ -79,11 +79,11 @@ include('../includes/header.php');
                                         <option value="">Select Category</option>
 
                                         <?php
-                                        //fetching data from the books table
+                                        //fetching categories
                                         $ref_table = 'categories';
                                         $fetch_category = $database->getReference($ref_table)->getValue();
 
-                                        //displaying table rows
+                                        //populate drop down menu with the categories
                                         if ($fetch_category > 0) :
                                             $num = 1;
                                             foreach ($fetch_category as $key => $row) :

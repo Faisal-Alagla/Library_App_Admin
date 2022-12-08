@@ -7,7 +7,7 @@ if (!isset($_SESSION['verified_user_id'])) {
 $cur_page = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
 $active = "active";
 
-if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_page == "edit_book.php") || ($cur_page == "post_announcement.php") || ($cur_page == "manage_categories.php")) {
+if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_page == "edit_book.php") || ($cur_page == "post_announcement.php") || ($cur_page == "manage_categories.php") || ($cur_page == "manage_working_hours.php")) {
   $actions_active = $active;
 } else {
   $actions_active = "";
@@ -95,6 +95,7 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
               <li><a class="dropdown-item" href="post_announcement.php">Post Announcements</a></li>
+              <li><a class="dropdown-item" href="manage_working_hours.php">Manage Working Hours</a></li>
               <li><a class="dropdown-item" href="add_book.php">Add a book</a></li>
               <li><a class="dropdown-item" href="book_list.php">Manage books</a></li>
               <li><a class="dropdown-item" href="manage_categories.php">Manage categories</a></li>
