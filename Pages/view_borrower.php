@@ -78,66 +78,68 @@ include('../includes/header.php');
                                                 $tomorrow = strtotime('+1 days');
                                                 $yesterday = strtotime('-1 days');
 
-                                                $borrowed_books = $fetch_borrower['borrowedBooks'];
-                                                $num = 1;
-                                                foreach ($borrowed_books as $isbn => $due_date) :
-                                                    //fetching the title of the book
-                                                    $title ="";
-                                                    $fetch_books = $database->getReference('books')->getValue();
-                                                    if($fetch_books > 0) {
-                                                        foreach($fetch_books as /*$book_key =>*/ $row){
-                                                            if($row['isbn'] == $isbn){
-                                                                $title = $row['title'];
-                                                                break;
+                                                if (isset($fetch_borrower['borrowedBooks'])) :
+                                                    $borrowed_books = $fetch_borrower['borrowedBooks'];
+                                                    $num = 1;
+                                                    foreach ($borrowed_books as $isbn => $due_date) :
+                                                        //fetching the title of the book
+                                                        $title ="";
+                                                        $fetch_books = $database->getReference('books')->getValue();
+                                                        if($fetch_books > 0) {
+                                                            foreach($fetch_books as /*$book_key =>*/ $row){
+                                                                if($row['isbn'] == $isbn){
+                                                                    $title = $row['title'];
+                                                                    break;
+                                                                }
                                                             }
                                                         }
-                                                    }
-                                                    unset($fetch_books);
-                                                        
-                                                    //check borrowed books due dates
-                                                    if($due_date == "pending") {
-                                                        //pending is fine
-                                                        $date_color = "text-success";
-                                                    }else{
-                                                        $date =  strtotime($due_date);
-                                                        if($date >= $tomorrow) {
-                                                        $date_color = "text-success";
-                                                        }else if(($date > $yesterday) && ($date < $tomorrow)){
-                                                            //if due-date is within 1 day
-                                                            $date_color = "text-warning";
+                                                        unset($fetch_books);
+                                                            
+                                                        //check borrowed books due dates
+                                                        if($due_date == "pending") {
+                                                            //pending is fine
+                                                            $date_color = "text-success";
                                                         }else{
-                                                            //if due-date passed without returning the book
-                                                            $date_color = "text-danger";
+                                                            $date =  strtotime($due_date);
+                                                            if($date >= $tomorrow) {
+                                                            $date_color = "text-success";
+                                                            }else if(($date > $yesterday) && ($date < $tomorrow)){
+                                                                //if due-date is within 1 day
+                                                                $date_color = "text-warning";
+                                                            }else{
+                                                                //if due-date passed without returning the book
+                                                                $date_color = "text-danger";
+                                                            }
                                                         }
-                                                    }
-                                                        
-                                            ?>
+                                                            
+                                                ?>
 
-                                            <tr>
-                                                <td>
-                                                    <?php echo $num++ ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $isbn ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $title ?>
-                                                </td>
-                                                <td>
-                                                    <p class="<?php echo $date_color ?>"><?php echo $due_date ?></p>
-                                                </td>
-                                                <td>
-                                                    <?php if($due_date != 'pending') {?>
-                                                    <a class="btn btn-success" style="border-radius: 5px"
-                                                        href="../db/return_borrowed_action.php?borrower=<?php echo $borrower_key ?>&book=<?php echo $isbn ?>">
-                                                        Returned
-                                                    </a>
-                                                    <?php } ?>
-                                                </td>
-                                            </tr>
+                                                <tr>
+                                                    <td>
+                                                        <?php echo $num++ ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $isbn ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $title ?>
+                                                    </td>
+                                                    <td>
+                                                        <p class="<?php echo $date_color ?>"><?php echo $due_date ?></p>
+                                                    </td>
+                                                    <td>
+                                                        <?php if($due_date != 'pending') {?>
+                                                        <a class="btn btn-success" style="border-radius: 5px"
+                                                            href="../db/return_borrowed_action.php?borrower=<?php echo $borrower_key ?>&book=<?php echo $isbn ?>">
+                                                            Returned
+                                                        </a>
+                                                        <?php } ?>
+                                                    </td>
+                                                </tr>
 
                                             <?php
-                                                endforeach;
+                                                    endforeach;
+                                                endif;
                                             ?>
 
                                         </tbody>
