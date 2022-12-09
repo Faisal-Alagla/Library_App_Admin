@@ -27,9 +27,9 @@ include('../includes/header.php');
 
                             ?>
 
-                            <div class="alert <?php echo $msg_color ?>" role="alert">
-                                <?php echo $msg ?>
-                            </div>
+                                <div class="alert <?php echo $msg_color ?>" role="alert">
+                                    <?php echo $msg ?>
+                                </div>
 
                             <?php
                                 //clearing session variables
@@ -44,9 +44,9 @@ include('../includes/header.php');
 
                             ?>
 
-                            <div class="alert <?php echo $msg_color ?>" role="alert">
-                                <?php echo $msg ?>
-                            </div>
+                                <div class="alert <?php echo $msg_color ?>" role="alert">
+                                    <?php echo $msg ?>
+                                </div>
 
                             <?php
                                 //clearing session variables
@@ -83,55 +83,50 @@ include('../includes/header.php');
                                             if ($fetch_books > 0) :
                                                 $num = 1;
                                                 foreach ($fetch_books as $key => $row) :
-                                                    if($row['image'] > 0){
-                                                        $book_img_url = "https://firebasestorage.googleapis.com/v0/b/".$bucket_name."/o/images%2F".$row['image']."?alt=media";
-                                                    } else{
+                                                    if ($row['image'] > 0) {
+                                                        $book_img_url = "https://firebasestorage.googleapis.com/v0/b/" . $bucket_name . "/o/images%2F" . $row['image'] . "?alt=media";
+                                                    } else {
                                                         $book_img_url = "";
                                                     }
                                             ?>
 
-                                            <tr>
-                                                <td>
-                                                    <?php echo $num++ ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row['isbn'] ?>
-                                                </td>
-                                                <td id="title">
-                                                    <?php echo $row['title'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row['author'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row['category'] ?>
-                                                </td>
-                                                <td>
-                                                    <img src="<?php echo $book_img_url ?>" alt=""
-                                                        style="max-width: 45px;">
-                                                </td>
-                                                <td>
-                                                    <?php echo $row['date'] ?>
-                                                </td>
-                                                <!-- <td>
+                                                    <tr>
+                                                        <td>
+                                                            <?php echo $num++ ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $row['isbn'] ?>
+                                                        </td>
+                                                        <td id="title">
+                                                            <?php echo $row['title'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $row['author'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $row['category'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <img src="<?php echo $book_img_url ?>" alt="" style="max-width: 45px;">
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $row['date'] ?>
+                                                        </td>
+                                                        <!-- <td>
                                                             <?php #echo $row['summary'] 
                                                             ?>
                                                         </td> -->
-                                                <td>
-                                                    <a class="btn text-white"
-                                                        style="background-color: #3e51b1; border-radius: 5px"
-                                                        href="edit_book.php?id=<?php echo $key ?>">
-                                                        Edit
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a class="btn text-white"
-                                                        style="background-color: #98030e; border-radius: 5px"
-                                                        href="../db/delete_book_action.php?id=<?php echo $key ?>">
-                                                        Delete
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                                        <td>
+                                                            <a class="btn text-white" style="background-color: #3e51b1; border-radius: 5px" href="edit_book.php?id=<?php echo $key ?>">
+                                                                Edit
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="btn text-white" style="background-color: #98030e; border-radius: 5px" href="../db/delete_book_action.php?id=<?php echo $key ?>">
+                                                                Delete
+                                                            </a>
+                                                        </td>
+                                                    </tr>
 
                                             <?php
                                                 endforeach;

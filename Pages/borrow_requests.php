@@ -27,9 +27,9 @@ include('../includes/header.php');
 
                             ?>
 
-                            <div class="alert <?php echo $msg_color ?>" role="alert">
-                                <?php echo $msg ?>
-                            </div>
+                                <div class="alert <?php echo $msg_color ?>" role="alert">
+                                    <?php echo $msg ?>
+                                </div>
 
                             <?php
                                 //clearing session variables
@@ -49,71 +49,71 @@ include('../includes/header.php');
                                     $num = 1;
                                 ?>
 
-                                <!-- Table start -->
-                                <div class="mb-4 table-responsive">
-                                    <table class="table table-dark table-hover text-center align-items-center" id="paginated">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" class="text-center pe-1">#</th>
-                                                <th scope="col" class="text-center pe-1">Email</th>
-                                                <th scope="col" class="text-center pe-1">ISBN</th>
-                                                <th scope="col" class="text-center pe-1">Title</th>
-                                                <th scope="col" class="text-center pe-1" style="width: 10%;">Accept</th>
-                                                <th scope="col" class="text-center pe-1" style="width: 10%;">Decline</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                                    <!-- Table start -->
+                                    <div class="mb-4 table-responsive">
+                                        <table class="table table-dark table-hover text-center align-items-center" id="paginated">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="text-center pe-1">#</th>
+                                                    <th scope="col" class="text-center pe-1">Email</th>
+                                                    <th scope="col" class="text-center pe-1">ISBN</th>
+                                                    <th scope="col" class="text-center pe-1">Title</th>
+                                                    <th scope="col" class="text-center pe-1" style="width: 10%;">Accept</th>
+                                                    <th scope="col" class="text-center pe-1" style="width: 10%;">Decline</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
-                                            <?php
+                                                <?php
                                                 foreach ($fetch_rquests as $key => $row) :
                                                 ?>
 
-                                            <tr>
-                                                <td>
-                                                    <?php echo $num++ ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row['userEmail'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row['isbn'] ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row['title'] ?>
-                                                </td>
-                                                <td>
-                                                    <a class="btn text-white" style="background-color: #3e51b1; border-radius: 5px" href="../db/borrow_request_action.php?accept=<?php echo $key ?>">
-                                                        Accept
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a class="btn text-light" style="background-color: #98030e; border-radius: 5px" href="../db/borrow_request_action.php?decline=<?php echo $key ?>">
-                                                        Decline
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <?php echo $num++ ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $row['userEmail'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $row['isbn'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $row['title'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <a class="btn text-white" style="background-color: #3e51b1; border-radius: 5px" href="../db/borrow_request_action.php?accept=<?php echo $key ?>">
+                                                                Accept
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class="btn text-light" style="background-color: #98030e; border-radius: 5px" href="../db/borrow_request_action.php?decline=<?php echo $key ?>">
+                                                                Decline
+                                                            </a>
+                                                        </td>
+                                                    </tr>
 
-                                            <?php
+                                                <?php
                                                 endforeach;
-                                            ?>
+                                                ?>
 
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- Table end -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- Table end -->
 
                                 <?php
                                 } else {
                                 ?>
 
-                                <!--No requests card-->
-                                <div class="card shadow-lg" style=" border-radius: 20px">
-                                    <div class="card-body p-5 pb-2 text-center">
-                                        <h3 class="mb-5 fw-bold text-success" style=" color:#212B5E; ">
-                                            There are currently no borrow requests
-                                        </h3>
+                                    <!--No requests card-->
+                                    <div class="card shadow-lg" style=" border-radius: 20px">
+                                        <div class="card-body p-5 pb-2 text-center">
+                                            <h3 class="mb-5 fw-bold text-success" style=" color:#212B5E; ">
+                                                There are currently no borrow requests
+                                            </h3>
+                                        </div>
                                     </div>
-                                </div>
 
                                 <?php
                                 }

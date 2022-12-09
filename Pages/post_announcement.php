@@ -10,26 +10,26 @@ if ($fetch_announcements > 0) {
     $announcements_key = array_keys($fetch_announcements)[0];
 
     //everyone announcement
-    if(isset($announcements['everyone'])){
+    if (isset($announcements['everyone'])) {
         $everyone_announcement = $announcements['everyone'];
-    }else{
+    } else {
         $everyone_announcement = "";
     }
     //students announcement
-    if(isset($announcements['students'])){
+    if (isset($announcements['students'])) {
         $students_announcement = $announcements['students'];
-    }else{
+    } else {
         $students_announcement = "";
     }
     //staff announcement
-    if(isset($announcements['staff'])){
+    if (isset($announcements['staff'])) {
         $staff_announcement = $announcements['staff'];
-    }else{
+    } else {
         $staff_announcement = "";
     }
 
     unset($announcements);
-//no announcements
+    //no announcements
 } else {
     $everyone_announcement = "";
     $students_announcement = "";
@@ -63,9 +63,9 @@ unset($fetch_announcements);
 
                             ?>
 
-                            <div class="alert <?php echo $msg_color ?>" role="alert">
-                                <?php echo $msg ?>
-                            </div>
+                                <div class="alert <?php echo $msg_color ?>" role="alert">
+                                    <?php echo $msg ?>
+                                </div>
 
                             <?php
                                 unset($_SESSION['post_announcement']);
@@ -77,11 +77,11 @@ unset($fetch_announcements);
                             $students_decoration = "none";
                             $staff_decoration = "none";
                             $selected_decoration = "underline fw-bold fs-3";
-                            
-                            //when choosing target announcement audience: default is "everyone"
-                            if(isset($_GET['announcement'])){
 
-                                switch($_GET['announcement']){
+                            //when choosing target announcement audience: default is "everyone"
+                            if (isset($_GET['announcement'])) {
+
+                                switch ($_GET['announcement']) {
                                     case "students":
                                         $students_decoration = $selected_decoration;
                                         $post_audience = "students";
@@ -96,14 +96,14 @@ unset($fetch_announcements);
                                         $everyone_decoration = $selected_decoration;
                                         $post_audience = "everyone";
                                         $cur_announcement = $everyone_announcement;
-                                    }
-                                }else{
-                                    $everyone_decoration = $selected_decoration;
-                                    $post_audience = "everyone";
-                                    $cur_announcement = $everyone_announcement;
                                 }
+                            } else {
+                                $everyone_decoration = $selected_decoration;
+                                $post_audience = "everyone";
+                                $cur_announcement = $everyone_announcement;
+                            }
                             ?>
-                            
+
                             <!--Announcement audience choices start-->
                             <div class="d-flex flex-row justify-content-evenly align-items-center">
                                 <a class="text-decoration-<?php echo $everyone_decoration ?>" style="color:#212B5E;" href="post_announcement.php?announcement=everyone">
@@ -121,39 +121,34 @@ unset($fetch_announcements);
                             <!--Form start-->
                             <form method="POST" action="../db/post_announcement_action.php">
                                 <input type="hidden" name="audience" value="<?php echo $post_audience ?>" />
-                                
+
                                 <div class="mb-4 text-end">
                                     <!-- text field start -->
                                     <div class="input mb-4 text-end mt-3">
-                                        <textarea type="text" name="announcement" rows="10" id="announcement"
-                                        class="form-control form-control-lg shadow-lg rows"
-                                        style="border-radius: 15px;"><?php echo $cur_announcement; ?></textarea>
+                                        <textarea type="text" name="announcement" rows="10" id="announcement" class="form-control form-control-lg shadow-lg rows" style="border-radius: 15px;"><?php echo $cur_announcement; ?></textarea>
                                     </div>
                                     <!-- text field end -->
                                 </div>
-                                
+
                                 <div class="col-sm-12 d-flex flex-row justify-content-center align-self-center">
                                     <div class="col-sm-6 px-1">
-                                        
-                                        <button class="btn btn-lg btn-block text-white w-100 display-2 mb-3"
-                                        style="background-color: #212B5E; border-radius: 15px" name="post" type="post">
+
+                                        <button class="btn btn-lg btn-block text-white w-100 display-2 mb-3" style="background-color: #212B5E; border-radius: 15px" name="post" type="post">
                                             <?php (strlen(trim($cur_announcement, " ")) > 0) ? print "Update" : print "Post" ?>
                                         </button>
-                                </div>
-                                
-                                <?php
+                                    </div>
+
+                                    <?php
                                     if (strlen(trim($cur_announcement, " ")) > 0) :
-                                        ?>
-                                    <div class="col-sm-6 px-1">
-                                        <button class="btn btn-lg btn-block text-white w-100 display-2 mb-3 "
-                                        style="background-color: #98030e; border-radius: 15px" name="delete"
-                                        type="delete">
-                                        Delete
-                                    </button>
-                                </div>
-                                <?php
+                                    ?>
+                                        <div class="col-sm-6 px-1">
+                                            <button class="btn btn-lg btn-block text-white w-100 display-2 mb-3 " style="background-color: #98030e; border-radius: 15px" name="delete" type="delete">
+                                                Delete
+                                            </button>
+                                        </div>
+                                    <?php
                                     endif;
-                                ?>
+                                    ?>
                                 </div>
                             </form>
                             <!--Form end-->
