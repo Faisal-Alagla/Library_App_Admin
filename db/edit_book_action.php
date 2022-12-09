@@ -2,6 +2,7 @@
 include("config.php");
 include("../util/functions.php");
 
+//update book
 if (isset($_POST['update_book'])) {
     $key = $_POST['key'];
     $isbn = $_POST['isbn'];
@@ -39,7 +40,7 @@ if (isset($_POST['update_book'])) {
 
             //if there was an image in DB
             if ($image_name > 0) {
-                $no_isbn_name = substr($image_name, 10);
+                $no_isbn_name = substr($image_name, strlen($isbn));
                 $new_image_name = $isbn . $no_isbn_name;
 
                 if ($image_name != $new_image_name) {
@@ -113,10 +114,41 @@ if (isset($_POST['update_book'])) {
             $_SESSION['book_updated'] = "Something went wrong, please try again later!";
         }
     }
-} else {
+//remove image
+} else if (isset($_POST['remove_img'])){
+    $key = $_POST['key'];
+    $ref_table = "books/$key";
+    $image = $database->getReference($ref_table)->getValue()['image'];
+
+    if (($image > 0) && (strlen($image) > 0)) {
+        //deleting the old img
+        $updateData = [
+            'image' => "",
+        ];
+
+        $bucket->object("images/$image")->delete();
+        $database->getReference($ref_table)->update($updateData);
+
+        //feedback messages
+        $_SESSION['book_key'] = $key;
+        $_SESSION['book_updated_flag'] = true;
+        $_SESSION['book_updated'] = "Image deleted successfully!";
+    }else{
+        //no uploaded image file
+        $_SESSION['book_key'] = $key;
+        $_SESSION['book_updated_flag'] = false;
+        $_SESSION['book_updated'] = "Something went wrong, please try again later!";
+    }
+}
+//error
+else {
     $_SESSION['book_key'] = false;
     $_SESSION['book_updated_flag'] = false;
-    $_SESSION['book_updated'] = "Something went wrong, please validate your inputs!";
+    $_SESSION['book_updated'] = "Something went wrong, please try again later!";
 }
 
-header('location: ../pages/edit_book.php');
+if (!isset($_SESSION['book_key'])){
+    header('location: ../pages/edit_book.php');
+}else{
+    header("location: ../pages/edit_book.php?id=".$_SESSION['book_key']);
+}

@@ -96,13 +96,13 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
               <li><a class="dropdown-item" href="post_announcement.php">Post Announcements</a></li>
               <li><a class="dropdown-item" href="manage_working_hours.php">Manage Working Hours</a></li>
-              <li><a class="dropdown-item" href="add_book.php">Add a book</a></li>
               <li><a class="dropdown-item" href="book_list.php">Manage books</a></li>
               <li><a class="dropdown-item" href="manage_categories.php">Manage categories</a></li>
-              <!-- <li>
+              <!--divider-->
+              <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+              <li><a class="dropdown-item" href="add_book.php">Add a book</a></li>
             </ul>
           </li>
           <li class="nav-item px-2">

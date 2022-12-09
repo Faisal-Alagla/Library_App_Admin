@@ -67,7 +67,7 @@ include('../includes/header.php');
                                     <label class="form-label" for="isbn" style="color:#212B5E;">ISBN</label>
                                     <input type="text" id="isbn" name="isbn"
                                         class="form-control form-control-lg shadow-lg "
-                                        style="border-radius: 15px; padding-right: 40px;" minlength="10" maxlength="10"
+                                        style="border-radius: 15px; padding-right: 40px;" minlength="10" maxlength="13"
                                         value="<?php echo $book['isbn'] ?>" required />
                                     <i class="bi bi-upc-scan"></i>
                                 </div>
@@ -97,11 +97,21 @@ include('../includes/header.php');
                                         <img class="pt-2" src="<?php echo $book_img_url ?>"
                                             alt="No img" style="max-width: 45px;">
                                     </div>
-                                    <div class="col-sm-3 d-flex justify-content-center">
-                                        <a class="btn btn-md btn-block text-white"
-                                            style="background-color: #98030e; border-radius: 15px" type="update_book"
-                                            name="update_book">Remove Image</a>
+
+                                    <?php
+                                        if (strlen($book['image']) > 0) :
+                                    ?>
+
+                                    <div class="col-sm-3 d-flex justify-content-center align-self-end mb-1">
+                                        <button class="btn btn-md btn-block text-white"
+                                            style="background-color: #98030e; border-radius: 15px" type="remove_img"
+                                            name="remove_img">Remove Image</button>
                                     </div>
+
+                                    <?php
+                                        endif;
+                                    ?>
+
                                 </div>
                                 <!-- Image Field end -->
 
