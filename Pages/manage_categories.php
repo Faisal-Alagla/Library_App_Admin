@@ -12,7 +12,7 @@ include('../includes/header.php');
                         <!--start of card-->
                         <div class="card-body p-5 pb-2 text-center">
 
-                            <h3 class="mb-5 fw-bold" style=" color:#212B5E; ">Add a Category</h3>
+                            <h3 class="mb-3 fw-bold" style=" color:#212B5E; ">Add a Category</h3>
 
                             <?php
                             if (isset($_SESSION['category_added'])) :
@@ -47,7 +47,7 @@ include('../includes/header.php');
                                         aria-describedby="basic-addon1" placeholder="Category name"
                                         style="border-radius: 15px; padding-left: 5px; padding-right: 5px;" required />
                                 </div>
-                                <div class="col-sm-7 d-flex flex-row justify-content-evenly align-items-center mt-2">
+                                <div class="col-sm-7 d-flex flex-row justify-content-evenly align-items-center mt-3">
                                     <button class="btn btn-md btn-block text-white display-2"
                                         style="background-color: #212B5E; border-radius: 15px; min-width: 40%;" type="add_category"
                                         name="add_category">Add</button>
