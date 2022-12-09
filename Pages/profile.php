@@ -61,13 +61,13 @@ $user = $auth->getUser($_SESSION['verified_user_id']);
                                         <i class="bi bi-person-fill"></i>
 
                                         <div class="d-flex flex-row justify-content-evenly align-items-center mt-2">
-                                            <button class="btn btn-lg btn-block text-white w-50 display-2 mx-1 "
+                                            <button class="btn btn-md btn-block text-white w-50 display-2 mx-1 "
                                                 style="background-color: #212B5E; border-radius: 15px"
                                                 type="update_dName" name="update_dName">
                                                 Update
                                             </button>
 
-                                            <a class="btn btn-lg btn-block text-white w-50 display-2 mx-1 "
+                                            <a class="btn btn-md btn-block text-white w-50 display-2 mx-1 "
                                                 style="background-color: #98030e; border-radius: 15px"
                                                 href="profile.php">
                                                 Cancel
@@ -111,24 +111,24 @@ $user = $auth->getUser($_SESSION['verified_user_id']);
                                         <label class="form-label pt-2" for="password"
                                             style="color:#212B5E;">Password</label>
                                         <input type="password" id="password" name="password"
-                                            class="form-control form-control-lg shadow-lg"
+                                            class="form-control form-control-lg shadow-lg" placeholder="Password"
                                             style="border-radius: 15px; padding-inline: 15px;" minlength="8" required />
 
                                         <label class="form-label pt-2" for="re-password"
                                             style="color:#212B5E;">Re-password</label>
                                         <input type="password" id="re-password" name="re-password"
-                                            class="form-control form-control-lg shadow-lg"
+                                            class="form-control form-control-lg shadow-lg" placeholder="Retype password"
                                             style="border-radius: 15px; padding-inline: 15px;" minlength="8" required />
 
                                         <div
                                             class="d-flex flex-row justify-content-evenly align-items-center mt-2 pt-2">
-                                            <button class="btn btn-lg btn-block text-white w-50 display-2 mx-1 "
+                                            <button class="btn btn-md btn-block text-white w-50 display-2 mx-1 "
                                                 style="background-color: #212B5E; border-radius: 15px" type="update_pwd"
                                                 name="update_pwd">
                                                 Update
                                             </button>
 
-                                            <a class="btn btn-lg btn-block text-white w-50 display-2 mx-1 "
+                                            <a class="btn btn-md btn-block text-white w-50 display-2 mx-1 "
                                                 style="background-color: #98030e; border-radius: 15px"
                                                 href="profile.php">
                                                 Cancel

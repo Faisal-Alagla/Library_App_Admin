@@ -37,19 +37,19 @@ include('../includes/header.php');
                             ?>
 
                             <!-- Add Category Field start -->
-                            <form class="col-sm-12 d-flex flex-row justify-content-center align-items-center mb-3"
+                            <form class="col-sm-12 d-flex flex-column justify-content-center align-items-center mb-3"
                                 method="post" action="../db/manage_categories_action.php">
                                 <div
                                     class="col-sm-7 d-flex flex-row justify-content-evenly align-items-center input text-start">
                                     <!-- <label class="form-label" for="category" style="color:#212B5E;">Category</label> -->
                                     <input type="text" id="category" name="category"
                                         class="form-control form-control-lg shadow-lg w-75"
-                                        aria-describedby="basic-addon1" value=""
+                                        aria-describedby="basic-addon1" placeholder="Category name"
                                         style="border-radius: 15px; padding-left: 5px; padding-right: 5px;" required />
                                 </div>
-                                <div class="col-sm-5 d-flex flex-row justify-content-evenly align-items-center">
-                                    <button class="btn btn-lg btn-block text-white display-2 w-100 ms-2"
-                                        style="background-color: #212B5E; border-radius: 15px" type="add_category"
+                                <div class="col-sm-7 d-flex flex-row justify-content-evenly align-items-center mt-2">
+                                    <button class="btn btn-md btn-block text-white display-2"
+                                        style="background-color: #212B5E; border-radius: 15px; min-width: 40%;" type="add_category"
                                         name="add_category">Add</button>
                                 </div>
                             </form>
@@ -73,7 +73,7 @@ include('../includes/header.php');
                             ?>
 
                             <!-- Edit Category Field start -->
-                            <form class="col-sm-12 d-flex flex-row justify-content-center align-items-center mb-3"
+                            <form class="col-sm-12 d-flex flex-column justify-content-center align-items-center mb-3"
                                 method="post" action="../db/manage_categories_action.php">
                                 <input type="hidden" name="key" value="<?php echo $category_key ?>" />
                                 <div
@@ -85,17 +85,19 @@ include('../includes/header.php');
                                         value="<?php echo $category['category'] ?>"
                                         style="border-radius: 15px; padding-left: 5px; padding-right: 5px;" required />
                                 </div>
-                                <div
-                                    class="col-sm-3 d-flex flex-row justify-content-center align-items-center align-self-end mx-1">
-                                    <button class="btn btn-lg btn-block text-white display-2 w-100"
-                                        style="background-color: #212B5E; border-radius: 15px" type="update_category"
+                                <div class="col-sm-12 d-flex flex-row justify-content-center align-items-center mt-2">
+                                    <div
+                                    class="col-sm-6 d-flex justify-content-end align-items-center align-self-end mx-1">
+                                        <button class="btn btn-md btn-block text-white display-2"
+                                        style="background-color: #212B5E; border-radius: 15px; min-width: 40%;" type="update_category"
                                         name="update_category">Update</button>
-                                </div>
-                                <div
-                                    class="col-sm-3 d-flex flex-row justify-content-center align-items-center align-self-end mx-1">
-                                    <a class="btn btn-lg btn-block text-white display-2 w-100"
-                                        style="background-color: #98030e; border-radius: 15px"
+                                    </div>
+                                    <div
+                                    class="col-sm-6 d-flex justify-content-start align-items-center align-self-start mx-1">
+                                        <a class="btn btn-md btn-block text-white display-2"
+                                        style="background-color: #98030e; border-radius: 15px; min-width: 40%;"
                                         href="manage_categories.php">Cancel</a>
+                                    </div>
                                 </div>
                             </form>
                             <!-- Edit Category Field end -->

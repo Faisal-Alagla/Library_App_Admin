@@ -85,7 +85,7 @@ include('../includes/header.php');
 
                                 <!-- Image Field start -->
                                 <div class="col-sm-12 d-flex flex-row justify-content-center align-items-center">
-                                    <div class="input col-sm-9">
+                                    <div class="input col-sm-6">
                                         <label class="form-label" for="image" style="color:#212B5E;">Image</label>
                                         <input type="file" id="image" name="image"
                                             class="form-control form-control-lg shadow-lg"
@@ -96,6 +96,11 @@ include('../includes/header.php');
                                     <div class="col-sm-3 d-flex justify-content-center">
                                         <img class="pt-2" src="<?php echo $book_img_url ?>"
                                             alt="No img" style="max-width: 45px;">
+                                    </div>
+                                    <div class="col-sm-3 d-flex justify-content-center">
+                                        <a class="btn btn-md btn-block text-white"
+                                            style="background-color: #98030e; border-radius: 15px" type="update_book"
+                                            name="update_book">Remove Image</a>
                                     </div>
                                 </div>
                                 <!-- Image Field end -->
