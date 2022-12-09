@@ -3,20 +3,24 @@ include("config.php");
 
 //update working hours
 if(isset($_POST['update_workhours'])){
+    $from_day = $_POST['from_day'];
+    $to_day = $_POST['to_day'];
     $from = $_POST['from'];
     $from_ampm = $_POST['from_AMPM'];
     $to = $_POST['to'];
     $to_ampm = $_POST['to_AMPM'];
 
     //check if opening and closing times are the same
-    if(!(($from == $to) && ($from_ampm == $to_ampm))){
+    if(!($from == $to) || !($from_ampm == $to_ampm)){
         //they're not the same -> update the announcements table with the new working hours
         
         $updateData = [
-            'workingHours' => "$from $from_ampm  -  $to $to_ampm",
+            'workingHours' => "From $from_day to $to_day at $from $from_ampm  -  $to $to_ampm",
             'from' => $from,
             'from_ampm' => $from_ampm,
             'to' => $to,
+            'from_day' => $from_day,
+            'to_day' => $to_day,
             'to_ampm' => $to_ampm
         ];
         

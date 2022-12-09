@@ -94,7 +94,7 @@ if (($cur_page == "add_book.php") || ($cur_page == "book_list.php") || ($cur_pag
               Actions
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="post_announcement.php">Post Announcements</a></li>
+              <li><a class="dropdown-item" href="post_announcement.php">Manage Announcements</a></li>
               <li><a class="dropdown-item" href="manage_working_hours.php">Manage Working Hours</a></li>
               <li><a class="dropdown-item" href="book_list.php">Manage books</a></li>
               <li><a class="dropdown-item" href="manage_categories.php">Manage categories</a></li>

@@ -27,27 +27,41 @@ $workhours_list = [
     "11:00",
     "11:30",
 ];
+$days_list = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+];
 
 $ref_table = "announcements/-NI85zuxnOIZW6ngSJyN";
 $fetch_working_hours = $database->getReference($ref_table)->getValue();
 
 
-//if closed for maintenance or couldn't fetch -> set to 12:00 AM as default
+//if closed for maintenance or couldn't fetch -> set to Friday 12:00 AM as default
 $from = "12:00";
 $from_ampm = "AM";
 $to = "12:00";
 $to_ampm = "AM";
+$from_day = "Friday";
+$to_day = "Friday";
+$closed = "The Library is closed for maintenance";
 
 if($fetch_working_hours > 0) {
-    if($fetch_working_hours['workingHours'] != "The Library is closed for maintenance"){
+    if($fetch_working_hours['workingHours'] != $closed){
         //if not closed for maintenance -> fetch working hours
+        $from_day = $fetch_working_hours['from_day'];
+        $to_day = $fetch_working_hours['to_day'];
         $from = $fetch_working_hours['from'];
         $from_ampm = $fetch_working_hours['from_ampm'];
         $to = $fetch_working_hours['to'];
         $to_ampm = $fetch_working_hours['to_ampm'];
     } else{
         if (!isset($_SESSION['workhours_update'])) {
-            $_SESSION['workhours_update'] = "The Library is closed for maintenance";
+            $_SESSION['workhours_update'] = $closed;
             $_SESSION['workhours_update_flag'] = false;
         }
     }
@@ -102,7 +116,31 @@ if($fetch_working_hours > 0) {
                                             <div class="col-sm-6 ps-5 pe-0">
                                                 <label class="form-label" for="from" style="color:#212B5E;">From</label>
                                                 <div class="input col-sm-12 row">
+                                                    
+                                                    <!-- select days from -->
+                                                    <div class="col-sm-12 pe-3">
+                                                        <select id="from_day" name="from_day"
+                                                            class="form-control form-control-lg shadow-lg form-select text-center fs-5 mb-2"
+                                                            style="border-radius: 15px;">
+
+                                                                <?php 
+                                                                foreach ($days_list as $option):
+                                                                    $selected = "";
+                                                                    if ($option == $from_day) {
+                                                                        $selected = "selected";
+                                                                    }
+                                                                ?>
+
+                                                                <option value="<?php echo $option; ?>" <?php  echo $selected; ?>><?php echo $option; ?></option>
+                                                                
+                                                                <?php
+                                                                endforeach;
+                                                                ?>
+
+                                                        </select>
+                                                    </div>
                                                     <div class="col-sm-7 pe-0">
+                                                        <!-- select hours from -->
                                                         <select id="from" name="from"
                                                             class="form-control form-control-lg shadow-lg form-select text-center fs-5"
                                                             style="border-radius: 15px;">
@@ -123,7 +161,7 @@ if($fetch_working_hours > 0) {
 
                                                         </select>
                                                     </div>
-                                                    <div class="col-sm-5">
+                                                    <div class="col-sm-5 pe-3">
                                                         <select id="from_AMPM" name="from_AMPM"
                                                         class="form-control form-control-lg shadow-lg form-select text-center fs-5"
                                                         style="border-radius: 15px;">
@@ -139,7 +177,32 @@ if($fetch_working_hours > 0) {
                                             <div class="col-sm-6 ps-5 pe-0">
                                                 <label class="form-label" for="to" style="color:#212B5E;">To</label>
                                                 <div class="input col-sm-12 row">
+
+                                                    <!-- select days to -->
+                                                    <div class="col-sm-12 pe-3">
+                                                        <select id="to_day" name="to_day"
+                                                            class="form-control form-control-lg shadow-lg form-select text-center fs-5 mb-2"
+                                                            style="border-radius: 15px;">
+
+                                                                <?php 
+                                                                foreach ($days_list as $option):
+                                                                    $selected = "";
+                                                                    if ($option == $to_day) {
+                                                                        $selected = "selected";
+                                                                    }
+                                                                ?>
+
+                                                                <option value="<?php echo $option; ?>" <?php echo $selected; ?>><?php echo $option; ?></option>
+                                                                
+                                                                <?php
+                                                                endforeach;
+                                                                ?>
+
+                                                        </select>
+                                                    </div>
+
                                                     <div class="col-sm-7 pe-0">
+                                                        <!-- select hours to -->
                                                         <select id="to" name="to"
                                                             class="form-control form-control-lg shadow-lg form-select text-center fs-5"
                                                             style="border-radius: 15px;">
@@ -160,7 +223,7 @@ if($fetch_working_hours > 0) {
 
                                                         </select>
                                                     </div>
-                                                    <div class="col-sm-5">
+                                                    <div class="col-sm-5 pe-3">
                                                         <select id="to_AMPM" name="to_AMPM"
                                                         class="form-control form-control-lg shadow-lg form-select text-center fs-5"
                                                         style="border-radius: 15px;">

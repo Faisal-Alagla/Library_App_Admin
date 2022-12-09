@@ -48,7 +48,7 @@ unset($fetch_announcements);
                     <div class="card shadow-lg" style=" border-radius: 20px">
                         <!--card start-->
                         <div class="card-body d-flex flex-column p-5 text-center">
-                            <h3 class="mb-5 fw-bold" style="color:#212B5E;">Post Announcements</h3>
+                            <h3 class="mb-5 fw-bold" style="color:#212B5E;">Manage Announcements</h3>
 
                             <?php
                             //feedback message after posting / updating announcements
