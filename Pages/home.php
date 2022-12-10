@@ -18,6 +18,66 @@ $user = $auth->getUser($_SESSION['verified_user_id']);
         <hr class="text-light w-50" />
     </div>
 
+    <!--Working hours card start-->
+    <div class="d-flex justify-content-center">
+        <div class="card bg-dark" style="border-radius: 20px; width: 60%; min-width: 200px;">
+            <div class="card-body d-flex flex-column justify-content-center">
+                <div class="text-center">
+                    <h2 class="text-light">Current Working Hours</h2>
+                </div>
+                <div class="d-flex justify-content-center align-items-center" style="height: 2vw">
+                    <hr class="text-light w-50" />
+                </div>
+
+                <?php
+                //fetching working hours
+                $ref_table = "announcements";
+                $fetch_announcements = $database->getReference($ref_table)->getValue();
+
+                if ($fetch_announcements > 0) {
+                    //if there are announcements -> get them
+                    //here: announcmeents should be an arrayof key-value pairs 
+                    //['workingHours' => 'workingHours string', 'everyone' => 'announcement for everyone', 'students' => 'announcement for students', ...]
+                    $announcements = current($fetch_announcements);
+                ?>
+
+                    <div class="bg-secondary" style="border-radius: 5px">
+                        <p class="m-2 text-white text-center" style="font-size: 18px;">
+
+                            <?php
+                            if (isset($announcements['workingHours'])) {
+                                echo $announcements['workingHours'];
+                            } else {
+                                echo "There is currently no working hours";
+                            }
+                            ?>
+
+                        </p>
+                    </div>
+
+                <?php
+                } else {
+                ?>
+
+                    <div class="bg-secondary" style="border-radius: 5px">
+                        <p class="m-2 text-white" style="font-size: 18px;">
+                            Working hours are not set yet
+                        </p>
+                    </div>
+
+                <?php
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+    <!--Working hours card end-->
+
+    <!--horizontal line-->
+    <div class="d-flex justify-content-center align-items-center" style="height: 5vw">
+        <hr class="text-light w-50" />
+    </div>
+
     <!--Announcements card start-->
     <div class="d-flex justify-content-center">
         <div class="card bg-dark" style="border-radius: 20px; width: 60%; min-width: 200px;">
@@ -31,14 +91,9 @@ $user = $auth->getUser($_SESSION['verified_user_id']);
 
                 <?php
                 //fetching announcements
-                $ref_table = "announcements";
-                $fetch_announcements = $database->getReference($ref_table)->getValue();
 
                 if ($fetch_announcements > 0) {
                     //if there are announcements -> get them
-                    //here: announcmeents should be an arrayof key-value pairs 
-                    //['everyone' => 'announcement for everyone', 'students' => 'announcement for students', 'staff' => 'announcement for staff']
-                    $announcements = current($fetch_announcements);
                 ?>
 
                     <!--Announcement for everyone start-->
@@ -53,10 +108,10 @@ $user = $auth->getUser($_SESSION['verified_user_id']);
                                 echo "There is currently no accouncement(s)";
                             }
                             ?>
-                            <!--Announcement for everyone end-->
 
                         </p>
                     </div>
+                    <!--Announcement for everyone end-->
 
                     <!--Announcement for students start-->
                     <h2 class="text-light text-center mt-5 mb-3">For Students</h2>
