@@ -12,11 +12,19 @@ if (isset($_POST['accept_request'])) {
     if ($book_exists) {
         $_SESSION['book_request_flag'] = false;
         $_SESSION['book_request_msg'] = "This book already exists in the database!";
-
         $_SESSION['book_key'] = $key;
         $send_to_view = true;
-        //doesn't exist -> add it
-    } else {
+        
+        //check if it contains none number values and of length other than 10 or 13
+    }else if (!ctype_digit($isbn) || !(strlen($isbn) == 10 || strlen($isbn) == 13)) {
+        $_SESSION['book_request_flag'] = false;
+        $_SESSION['book_request_msg'] = "ISBN should only contain numbers and of length 10 or 13!";
+        $_SESSION['book_key'] = $key;
+        $send_to_view = true;
+    }
+
+    //doesn't exist & contains only numbers of length 10 or 13 -> add it
+    else {
         $title = $_POST['title'];
         $author = $_POST['author'];
         $category = $_POST['category'];

@@ -11,7 +11,12 @@ if (isset($_POST['add_book'])) {
         $_SESSION['book_added_flag'] = false;
         $_SESSION['book_added'] = "This book already exists in the database!";
 
-    //doesn't exist -> add it
+    //check if it contains none number values and of length other than 10 or 13
+    }else if (!ctype_digit($isbn) || !(strlen($isbn) == 10 || strlen($isbn) == 13)) {
+        $_SESSION['book_added_flag'] = false;
+        $_SESSION['book_added'] = "ISBN should only contain numbers and of length 10 or 13!";
+
+    //doesn't exist & only numbers of length 10 or 13 -> add it
     } else {
         $title = $_POST['title'];
         $author = $_POST['author'];

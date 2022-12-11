@@ -7,13 +7,23 @@ if (isset($_POST['update_book'])) {
     $key = $_POST['key'];
     $isbn = $_POST['isbn'];
 
+    //check if a different book with the same isbn exists
     $book_exists = object_exists($key, $isbn, $database, 'books', 'isbn');
     if ($book_exists) {
-        //if a different book with the same isbn exists
         $_SESSION['book_key'] = $key;
         $_SESSION['book_updated_flag'] = false;
         $_SESSION['book_updated'] = "A book with the same isbn exists, please check if the book already exists in the books table!";
-    } else {
+    } 
+
+    //check if it contains none number values and of length other than 10 or 13
+    else if (!ctype_digit($isbn) || !(strlen($isbn) == 10 || strlen($isbn) == 13)) {
+        $_SESSION['book_key'] = $key;
+        $_SESSION['book_updated_flag'] = false;
+        $_SESSION['book_updated'] = "ISBN should only contain numbers and of length 10 or 13!";
+    }
+
+    //update
+    else {
         $title = $_POST['title'];
         $author = $_POST['author'];
         $category = $_POST['category'];
