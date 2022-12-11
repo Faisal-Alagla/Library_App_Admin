@@ -25,8 +25,9 @@ if(isset($_POST['update_workhours'])){
             'to_day' => $to_day,
             'to_ampm' => $to_ampm
         ];
-        
-        $ref_table = "announcements/-NI85zuxnOIZW6ngSJyN";
+
+        $key = $database->getReference("announcements")->getChildKeys()[0];
+        $ref_table = "announcements/$key";
         $database->getReference($ref_table)->update($updateData);
 
         $_SESSION['workhours_update'] = "Working hours have been updated!";
@@ -39,27 +40,28 @@ if(isset($_POST['update_workhours'])){
 
 //close library for maintenance
 }else if (isset($_POST['close_library'])){
-    $ref_table = "announcements/-NI85zuxnOIZW6ngSJyN/workingHours";
+    $key = $database->getReference("announcements")->getChildKeys()[0];
+    $ref_table = "announcements/$key/workingHours";
     $fetch_working_hours = $database->getReference($ref_table)->getValue();
 
-    if($fetch_working_hours != "The Library is closed for maintenance"){
+    if($fetch_working_hours != "The Library is closed"){
         //close for maintenance... -> set default values 12:00 AM
         $updateData = [
-            'workingHours' => "The Library is closed for maintenance",
+            'workingHours' => "The Library is closed",
             'from' => "12:00",
             'from_ampm' => "AM",
             'to' => "12:00",
             'to_ampm' => "AM"
         ];
         
-        $ref_table = "announcements/-NI85zuxnOIZW6ngSJyN";
+        $ref_table = "announcements/$key";
         $database->getReference($ref_table)->update($updateData);
 
-        $_SESSION['workhours_update'] = "The Library has been closed for maintenance";
+        $_SESSION['workhours_update'] = "The Library has been closed!";
         $_SESSION['workhours_update_flag'] = true;
     }else{
         //library is already closed...
-        $_SESSION['workhours_update'] = "The Library is already closed for maintenance";
+        $_SESSION['workhours_update'] = "The Library is already closed!";
         $_SESSION['workhours_update_flag'] = false;
     }
 

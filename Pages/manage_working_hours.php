@@ -37,7 +37,8 @@ $days_list = [
     "Saturday"
 ];
 
-$ref_table = "announcements/-NI85zuxnOIZW6ngSJyN";
+$key = $database->getReference("announcements")->getChildKeys()[0];
+$ref_table = "announcements/$key";
 $fetch_working_hours = $database->getReference($ref_table)->getValue();
 
 
@@ -48,7 +49,7 @@ $to = "12:00";
 $to_ampm = "AM";
 $from_day = "Friday";
 $to_day = "Friday";
-$closed = "The Library is closed for maintenance";
+$closed = "The Library is closed";
 
 if ($fetch_working_hours > 0) {
     if ($fetch_working_hours['workingHours'] != $closed) {
@@ -229,7 +230,7 @@ if ($fetch_working_hours > 0) {
                                                 Update
                                             </button>
                                             <button class="btn btn-lg btn-block text-white display-2 mx-1 " style="background-color: #98030e; border-radius: 15px;  width: 40%" type="close_library" name="close_library">
-                                                Close for maintenance
+                                                Close the Library
                                             </button>
                                         </div>
                                     </form>

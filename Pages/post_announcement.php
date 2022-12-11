@@ -7,7 +7,6 @@ $fetch_announcements = $database->getReference($ref_table)->getValue();
 
 if ($fetch_announcements > 0) {
     $announcements = current($fetch_announcements);
-    $announcements_key = array_keys($fetch_announcements)[0];
 
     //everyone announcement
     if (isset($announcements['everyone'])) {

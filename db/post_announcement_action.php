@@ -13,7 +13,7 @@ if (isset($_POST['post'])) {
     //if there's an announcements table -> update it
     if ($fetch_announcements > 0) {
         //getting the key of the table entry
-        $key = "-NI85zuxnOIZW6ngSJyN";
+        $key = $database->getReference($ref_table)->getChildKeys()[0];
 
         if (strlen($announcement) < 1) {
             //if empty string
@@ -67,8 +67,7 @@ if (isset($_POST['post'])) {
     $ref_table = "announcements";
     //fetching the key
     try {
-        $key = "-NI85zuxnOIZW6ngSJyN";
-
+        $key = $database->getReference($ref_table)->getChildKeys()[0];
         $delete_query_result =  $database->getReference("$ref_table/$key/$audience")->remove();
     
         if ($delete_query_result) {
