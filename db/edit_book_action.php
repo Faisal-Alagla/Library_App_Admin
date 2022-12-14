@@ -27,7 +27,8 @@ if (isset($_POST['update_book'])) {
         $title = $_POST['title'];
         $author = $_POST['author'];
         $category = $_POST['category'];
-        $image = $_FILES['image']['name'];
+        //removing white space from image name
+        $image = preg_replace('/\s+/', '', $_FILES['image']['name']);
         $date = $_POST['date'];
         $summary = $_POST['summary'];
 
